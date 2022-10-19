@@ -5,19 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>responsive_cards</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/bootstrap-rtl.min.css">
+    <title>تماس با ما</title>
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Spectral|Rubik">
     <link rel="shortcut icon" href="./assets/images/logo.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="stylee.css">
-
-
+    <link rel="stylesheet" href="call-form.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
     <div class="menubar d-flex align-items-center  justify-content-between">
         <div class="logo_menu">
             <a href="http://127.0.0.1:5500/index.html#">
@@ -31,7 +30,7 @@
             <div class="shopping_cart">
 
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" class="btn btn-primary cart-icon-" data-toggle="modal" data-target="#exampleModal">
                     <div class="icon">
                         <i class="mdi mdi-cart"></i>
                         <span class="cart_count">0</span>
@@ -186,288 +185,159 @@
         </div>
     </nav>
 
-    <div class="d-flex  justify-content-center text">
-        <h1 class="font-weight-bold pt-5 pb-4 mr-5">جدیدترین محصولات </h1>
-    </div>
-
-    <div class="container">
-
+    <div class="container mt-5 p-5">
         <div class="row">
-
-            <div class="col-sm-12 col-lg-4  col-md-4">
-                <div class="card ">
-                    <a href="http://127.0.0.1:5500/product_details.html">
-                        <img class="card-img-top " src="/assets/images/iphon13promax.jpg" alt="Card image"
-                            style="width:100%"></a>
-                    <div class="card-body">
-                        <div class="description">
-                            <h4 class="card-title my-3">iphon 13 pro max</h4>
-                            <p class="card-text">70,600,000</p>
-                            <a href="#" class="btn btn-primary">افزودن به سبد خرید</a>
-                        </div>
+            <div class="col-12">
+                <h1 class="title d-flex justify-content-start font-weight-bold pt-5 mb-5">
+                    تماس با ما
+                </h1>
+                <div class="col-12">
+                    <div class="alert alert-dark mt-5 mb-5" role="alert">
+                        لطفاً پیش از ارسال ایمیل، ابتدا پرسش‌‌های متداول را مشاهده کنید.
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-12 col-lg-4  col-md-4">
-                <div class="card ">
-                    <a href="http://127.0.0.1:5500/s22ultra.html">
-                        <img class="card-img-bottom" src="/assets/images/samsung-s22-ultra-rose.png" alt="Card image"
-                            style="width:100%"></a>
-                    <div class="card-body">
-                        <div class="description">
-                            <h4 class="card-title my-3">Samsung S22 Ultra</h4>
-                            <p class="card-text">38,900,000</p>
-                            <a href="#" class="btn btn-primary">افزودن به سبد خرید</a>
-                        </div>
+            <div class="form-group col-lg-6 col-xl-6 col-sm-12 col-md-6 d-flex flex-column">
+                <label for="exampleFormControlSelect1">موضوع:</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option>موضوع را انتخاب کنید</option>
+                    <option>پیشنهاد</option>
+                    <option>انتقاد و شکایات</option>
+                    <option>پیگیری سفارش</option>
+                    <option>پشتیبانی</option>
+                    <option>استعلام گارانتی</option>
+                    <option>سایر موضوعات</option>
+                </select>
+            </div>
+
+            <!-- <div class="col-6 d-flex flex-column ">
+                <label for="topic-select" class="label-style">موضوع:</label>
+                <select name="topic" id="topic-select" class="p-2">
+                    <option value="">موضوع را انتخاب کنید</option>
+                    <option value="dog">پیشنهاد </option>
+                    <option value="cat">انتقاد و شکایات</option>
+                    <option value="hamster">پیگیری سفارش </option>
+                    <option value="parrot">پشتیبانی</option>
+                    <option value="spider">استعلام گارانتی </option>
+                    <option value="goldfish">ز موضوعات</option>
+                </select>
+            </div> -->
+
+            <div class="col-lg-6 col-xl-6 col-sm-12 col-md-6 form-example d-flex flex-column mb-3">
+                <label for="name">نام و نام خانوادگی :</label>
+                <input class="form-control" type="text" class="p-2">
+                <!-- <input type="text" class="p-2" name="name" id="name" required> -->
+            </div>
+
+            <div class="form-group col-lg-6 col-xl-6 col-sm-12 col-md-6 d-flex flex-column">
+                <label for="exampleInputEmail1">ایمیل:</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+
+            <!-- <div class="col-6 d-flex flex-column">
+                <label for="name" class="label-style"> ایمیل :</label>
+                <input type="email" name="email" id="email" class="p-2">
+            </div> -->
+            <div class="col-lg-6 col-xl-6 col-sm-12 col-md-6 d-flex flex-column">
+                <label for="name">تلفن تماس :</label>
+                <input class="form-control" type="text" class="p-2">
+            </div>
+            <div class="col-12 mt-5 mb-5">
+
+                <label for="name"> جنسیت :</label>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="male" value="option1" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                        مرد
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="female" value="option2">
+                    <label class="form-check-label" for="exampleRadios2">
+                        زن
+                    </label>
+                </div>
+
+                <!-- <div>
+                    <input type="radio" id="men" name="drone" value="men" checked>
+                    <label for="male">مرد</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="female" name="drone" value="female">
+                    <label for="female">زن</label>
+                </div> -->
+            </div>
+            <div class="form-group col-12 pb-3">
+                <label for="exampleFormControlTextarea1">متن پیام:</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+            </div>
+
+            <!-- <div class="col-12 d-flex pb-5">
+                <label for="story" class="label-style pl-3 ">متن پیام:</label>
+                <textarea id="story" name="story" rows="8" cols="100">
+                </textarea>
+            </div> -->
+
+            <div class="form-group form-check col-12 mr-4">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">به ایمیل جواب ارسال شود.</label>
+            </div>
+            <!-- <div class="col-12 mr-5">
+                <input type="checkbox" id="scales" name="scales" checked>
+                <label for="scales">به ایمیل جواب ارسال شود. </label>
+            </div> -->
+
+            <!-- <div>
+                <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                      <img src="..." class="rounded mr-2" alt="...">
+                      <strong class="mr-auto">Bootstrap</strong>
+                      <small class="text-muted">11 mins ago</small>
+                      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="toast-body">
+                      Hello, world! This is a toast message.
+                    </div>
+                  </div>
+            </div> -->
+            <!-- <div>
+                <button type="button" class="btn btn-primary" id="button2">ثبت</button>
+                <div class="toast" id="toast2">
+                    <div class="toast-header">
+                        header
+                    </div>
+                    <div class="toast-body">
+                        content
+                    </div>
+                </div>
+            </div> -->
+            <button type="button" class="btn btn-primary submit-button" id="button2">ارسال پیام</button>
+            <div class="position-fixed bottom-0 right-0 p-3" style="z-index: 5; right: 0; bottom: 0;">
+                <div id="toast2" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true"
+                    data-delay="2000">
+                    <div class="toast-header">
+                        <img src="/assets/images/logo.jpg" class="rounded mr-2 logo" alt="logo">
+                        <strong class="mr-2">Technology</strong>
+                        <small class="mr-3 ml-2">11 mins ago</small>
+                        <button type="button" class="mr-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="toast-body p-4">
+                        پیام شما با موفقیت ارسال شد.
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-12 col-lg-4  col-md-4">
-                <div class="card ">
-                    <a href="http://127.0.0.1:5500/galaxyzfold.html">
-                        <img class="card-img-bottom" src="/assets/images/z fold.jpg" alt="Card image"
-                            style="width:100%">
-                    </a>
-                    <div class="card-body">
-                        <div class="description">
-                            <h4 class="card-title my-3"> Galaxy Z Fold 4</h4>
-                            <p class="card-text">60,000,000</p>
-                            <a href="#" class="btn btn-primary">افزودن به سبد خرید</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-lg-4 mt-3 col-md-4">
-                <div class="card ">
-                    <a href="http://127.0.0.1:5500/xiomi%20mi11.html">
-                        <img class="card-img-bottom" src="/assets/images/mi-11-Ultra-xiaomi.jpg" alt="Card image"
-                            style="width:100%"></a>
-                    <div class="card-body">
-                        <div class="description">
-                            <h4 class="card-title my-3">Xiaomi 11 ultra</h4>
-                            <p class="card-text">38,900,000</p>
-                            <a href="#" class="btn btn-primary">افزودن به سبد خرید</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
         </div>
-
-
-        <section class="mt-5">
-            <div>
-                <h4 class="font-weight-bold   text-secondary  mb-3">پرسش های متداول</h4>
-            </div>
-
-            <div class="accordion  " id="accordionExample">
-                <div class="card">
-                    <div class="card-header " id="headingOne">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-right text-dark  " type="button"
-                                data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                                aria-controls="collapseOne">
-                                هزینه ارسال چگونه محاسبه می شود؟
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                        data-parent="#accordionExample">
-                        <div class="card-body">
-                            هزینه ارسال بر اساس شیوه ارسال متفاوت است و در زمان ثبت سفارش نمایش داده می شود.
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingTwo">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-right text-dark collapsed" type="button"
-                                data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-                                aria-controls="collapseTwo">
-                                چطور میتوانم سفارشم را پیگیری کنم ؟
-                            </button>
-                        </h2>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                        <div class="card-body">
-                            وارد سایت شوید، روی گزینه سفارش های من کلیک کنید و در این قسمت با کلیک روی جزییات میتوانید
-                            سفارش
-                            خود را ببینید. میتوانید در این قسمت روند آماده سازی و مراحل ارسال سفارش خود را پیگیری کنید.
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingThree">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-right text-dark collapsed" type="button"
-                                data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
-                                aria-controls="collapseThree">
-                                شرایط گارانتی محصولات چیست؟
-                            </button>
-                        </h2>
-                    </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                        data-parent="#accordionExample">
-                        <div class="card-body">
-                            امروزه توجه به کیفیت کالا از مهمترین وظایف فروشندگان کالا است و خدمات پس از فروش ضامن حفظ
-                            این
-                            کیفیت می باشد.
-                            در همین راستا شرکت ما مفتخر به ارائه سرویس در اسرع وقت به مشتریان گرامی می باشد.
-                            جهت سهولت در پیگیری گارانتی دستگاه خود می توانید از طریق شماره 02161930010 اقدام نمائید.
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingfour">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-right text-dark collapsed" type="button"
-                                data-toggle="collapse" data-target="#collapsefour" aria-expanded="false"
-                                aria-controls="collapseTwo">
-                                شرایط استفاده از کد تخفیف اولین خرید چیست؟
-                            </button>
-                        </h2>
-                    </div>
-                    <div id="collapsefour" class="collapse" aria-labelledby="headingfour"
-                        data-parent="#accordionExample">
-                        <div class="card-body">
-                            سیستم هوشمند ما ، پس از بررسی حساب کاربری در صورتی که مالک آن مشتری جدید باشد امکان استفاده
-                            از
-                            کد تخفیف خرید اول را ایجاد می کند .
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
     </div>
-
-
-    </div>
-    <!-- <div class="col-sm-12 col-lg-6 col-md-4">
-            <div class="card" style="width:400px">
-                <img class="card-img-top" src="/assets/images/z fold.jpg" alt="Card image" style="width:100%">
-                <div class="card-body">
-                    <div class="description">
-                        <h4 class="card-title my-3 ">Samsung Galaxy Z Fold 4</h4>
-                        <p class="card-text">60,000,000</p>
-                        <a href="#" class="btn btn-primary ">افزودن به سبد خرید</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 col-lg-6 col-md-4">
-            <div class="card" style="width:400">
-                <img class="card-img-top" src="/assets/images/mi-11-Ultra-xiaomi.jpg" alt="Card image"
-                    style="width:100%">
-                <div class="card-body">
-                    <div class="description">
-                        <h4 class="card-title my-3">Xiaomi 11 ultra</h4>
-                        <p class="card-text">634,690,000</p>
-                        <a href="#" class="btn btn-primary">افزودن به سبد خرید</a>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-    <!-- <div class="item col-sm ml-5 mr-5">
-                <div class="card " style="width:400px">
-                    <img class="card-img-top " src="/assets/images/iphon13promax.jpg" alt="Card image"
-                        style="width:100%">
-                    <div class="card-body">
-                        <div class="description">
-                            <h4 class="card-title my-3">iphon 13 pro max</h4>
-                            <p class="card-text">70,600,000</p>
-                            <a href="#" class="btn btn-primary">افزودن به سبد خرید</a>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
-
-    <!-- <img src="/assets/images/iphon13promax.jpg" alt="iphon13promax" class="items_img">
-        <div class="description">
-            <p class="text_decoration">iphon 13 pro max</p>
-            <div class="price">
-              <p class="text_decoration">70,600,000</p>
-              <button class="button_card">افزودن به سبد خرید</button>
-            </div>
-        </div> -->
-
-
-    <!-- <div class="item col-sm ml-5 mr-4"> -->
-    <!-- <div class="card " style="width:400px">
-                    <img class="card-img-bottom" src="/assets/images/samsung-s22-ultra-rose.png" alt="Card image"
-                        style="width:100%">
-                    <div class="card-body">
-                        <div class="description">
-                            <h4 class="card-title my-3">Samsung S22 Ultra</h4>
-                            <p class="card-text">38,900,000</p>
-                            <a href="#" class="btn btn-primary">افزودن به سبد خرید</a>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
-    <!-- <img src="/assets/images/samsung-s22-ultra-rose.png" alt="s22ultra" class="items_img">
-         <div class="description">
-            <p class="text_decoration">Samsung S22 Ultra</p>
-            <div class="price">
-                <p class="text_decoration">38,900,000</p>
-                <button class="button_card">افزودن به سبد خرید</button>
-            </div> -->
-
-
-    <!-- <div class="item col-3 ml-5 mr-4"> -->
-    <!-- <div class="card" style="width:400px">
-                    <img class="card-img-top" src="/assets/images/z fold.jpg" alt="Card image" style="width:100%">
-                    <div class="card-body">
-                        <div class="description">
-                            <h4 class="card-title my-3 ">Samsung Galaxy Z Fold 4</h4>
-                            <p class="card-text">60,000,000</p>
-                            <a href="#" class="btn btn-primary ">افزودن به سبد خرید</a>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-    <!-- 
-         <img src="/assets/images/z fold.jpg" alt="galaxy" class="items_img">
-         <div class="description">
-            <p class="text_decoration">Samsung Galaxy Z Fold 4 </p>
-            <div class="price">
-              <p class="text_decoration">60,000,000</p>
-              <button class="button_card">افزودن به سبد خرید</button>
-            </div> -->
-
-    <!-- <div class="item">
-        <div class="card" style="width:auto">
-            <div class="card-body">
-                <img class="card-img-bottom" src="/assets/images/mi-11-Ultra-xiaomi.jpg" alt="Card image" style="width:100%">
-                <div class="description">
-                <h4 class="card-title">Xiaomi 11 ultra</h4>
-              <p class="card-text">634,690,000</p>
-              <a href="#" class="btn btn-primary">افزودن به سبد خرید</a>
-            </div>
-        </div>
-        </div> -->
-
-
-    <!-- <div class="item">
-        <img src="/assets/images/mi-11-Ultra-xiaomi.jpg" alt="xiaomi" class="items_img">
-        <div class="description">
-           <p class="text_decoration">Xiaomi 11 ultra </p>
-           <div class="price">
-             <p class="text_decoration">34,690,000</p>
-             <button class="button_card">افزودن به سبد خرید</button>
-           </div>
-           
-       </div> -->
-    <!-- </div> -->
-
     <footer>
         <div class="footer-style mt-5 pr-5 pl-5">
             <div class=" logo_menu mr-5 pt-5  d-flex justify-content-center align-items-center">
@@ -475,7 +345,7 @@
                 <p class="pr-3 font-weight-bolder">Technology</p>
             </div>
             <div class="d-flex justify-content-center pt-4">
-                <p ><i class="mdi mdi-phone"></i>
+                 <p ><i class="mdi mdi-phone"></i>
                     تلفن پشتیبانی 45200000  -  031 | 24 ساعته پاسخگوی شما هستیم</p>
             </div>
             <div class="icon-footer d-flex justify-content-around align-items-center p-4">
@@ -522,11 +392,17 @@
             <br><br><br><br>
         </div>
     </footer>
-    
-    </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min..js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#button2').click(function () {
+                $('#toast2').toast('show');
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>responsive_cards</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap-rtl.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css" />
+    <link rel="shortcut icon" href="./assets/images/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+    <div class="menubar d-flex align-items-center  justify-content-between">
+        <div class="logo_menu">
+            <a href="http://127.0.0.1:5500/index.html#">
+                <img src="/assets/images/logo.jpg" alt="logo" class="logo "></a>
+        </div>
+        <div class="web_name">
+            <p class="pt-4 ">Technology</p>
+        </div>
+        <div class="icon_menu d-flex flex-row ">
+
+            <div class="shopping_cart">
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <div class="icon">
+                        <i class="mdi mdi-cart"></i>
+                        <span class="cart_count">0</span>
+                    </div>
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h5 class="modal-title container" id="exampleModalLabel">سبد خرید</h5>
+                            </div>
+                            <div class="modal-body">
+                                <div class="shopping_cart_item">
+                                    <div class="d-flex flex-row align-content-center justify-content-between pt-2">
+                                        <div
+                                            class="cart_text_item d-flex flex-nowrap justify-content-center align-items-center">
+                                            <img src="/assets/images/iphon13promax.jpg" alt="iphon13promax"
+                                                class="logo pl-2">
+                                            <p class="shopping_cart_text">iphon 13 pro max</p>
+                                        </div>
+                                        <div
+                                            class="shopping_cart_button d-flex justify-content-center align-items-center">
+                                            <button type="button" class="btn btn-outline-info ml-2">+</button>
+                                            <input type="text" class="input_number">
+                                            <button type="button" class="btn btn-outline-info mr-2">-</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="shopping_cart_item">
+                                    <div class=" d-flex flex-row align-content-center justify-content-between pt-2">
+                                        <div
+                                            class="cart_text_item d-flex flex-nowrap justify-content-center align-items-center">
+                                            <img src="/assets/images/samsung-s22-ultra-rose.png" alt="iphon13promax"
+                                                class="logo pl-2">
+                                            <p class="shopping_cart_text">Samsung S22 Ultra</p>
+                                        </div>
+                                        <div class="shopping_cart_button">
+                                            <button type="button" class="btn btn-outline-info ml-2">+</button>
+                                            <input type="text" class="input_number">
+                                            <button type="button" class="btn btn-outline-info mr-2">-</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="shopping_cart_item">
+                                    <div class="d-flex flex-row align-content-center justify-content-between pt-2">
+                                        <div
+                                            class="cart_text_item d-flex flex-nowrap justify-content-center align-items-center">
+                                            <img src="/assets/images/mi-11-Ultra-xiaomi.jpg" alt="iphon13promax"
+                                                class="logo pl-2">
+                                            <p class="shopping_cart_text">Xiaomi 11 ultra</p>
+                                        </div>
+                                        <div class="shopping_cart_button">
+                                            <button type="button" class="btn btn-outline-info ml-2">+</button>
+                                            <input type="text" class="input_number">
+                                            <button type="button" class="btn btn-outline-info mr-2">-</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="shopping_cart_item">
+                                    <div class="d-flex flex-row align-content-center justify-content-between pt-2">
+                                        <div
+                                            class="cart_text_item d-flex flex-nowrap justify-content-center align-items-center">
+                                            <img src="/assets/images/z fold.jpg" alt="iphon13promax" class="logo pl-2">
+                                            <p class="shopping_cart_text">Samsung Z Fold 4</p>
+                                        </div>
+                                        <div class="shopping_cart_button">
+                                            <button type="button" class="btn btn-outline-info ml-2">+</button>
+                                            <input type="text" class="input_number">
+                                            <button type="button" class="btn btn-outline-info mr-2">-</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="hamburger_menu">
+                <div class="dropdown">
+                    <button class="btn  drowdown_menu_icon " type="button" data-toggle="dropdown" aria-expanded="false">
+                        <i class="mdi mdi-menu"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item text-right " href="#"><i
+                                class="mdi mdi-login-variant dropdown_icon pl-2"></i>ورود </a>
+                        <a class="dropdown-item text-right" href="#"><i
+                                class="mdi mdi-file-sign dropdown_icon pl-2"></i>ثبت
+                            نام</a>
+                        <a class="dropdown-item text-right" href="#"><i
+                                class="mdi mdi-logout-variant dropdown_icon pl-2"></i>خروج کاربر</a>
+                        <a class="dropdown-item text-right" href="#"><i
+                                class="mdi mdi-information dropdown_icon pl-2"></i>اطلاعات کاربر</a>
+                        <a class="dropdown-item text-right" href="#"><i
+                                class="mdi mdi-ticket dropdown_icon pl-2"></i>سوابق تراکنش</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#03045e;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon "></span>
+        </button>
+
+        <div class="collapse navbar-collapse navbarcollapse " id="navbarSupportedContent">
+            <ul class="navbar-nav  ml-auto ">
+                <li class="nav-item pl-2 pt-2">
+                    <a class="nav-link" href="#">
+                        <p><i class="mdi mdi-fire"></i> پرفروش ترین ها </p>
+                    </a>
+                </li>
+                <li class="nav-item pl-2 pt-2">
+                    <a class="nav-link" href="#">
+                        <p><i class="mdi mdi-percent"></i> تخفیف ها و پیشنهاد ها </p>
+                    </a>
+                </li>
+                <li class="nav-item pl-2 pt-2">
+                    <a class="nav-link" href="#">
+                        <p><i class="mdi mdi-brightness-percent"></i>شگفت انگیز </p>
+                    </a>
+                </li>
+                <li class="nav-item pl-2 pt-2">
+                    <a class="nav-link" href="#">
+                        <p><i class="mdi mdi-home"></i>خانه </p>
+                    </a>
+                </li>
+                <li class="nav-item pl-2 pt-2">
+                    <a class="nav-link" href="#">
+                        <p><i class="mdi mdi-advertisements"></i>تبلیغات </p>
+                    </a>
+                </li>
+                <li class="nav-item pl-2 pt-2">
+                    <a class="nav-link" href="http://127.0.0.1:5500/call-form.html">
+                        <p><i class="mdi mdi-phone"></i> تماس با ما </p>
+                    </a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="d-flex  justify-content-center text">
+        <h1 class="font-weight-bold pt-5 pb-4 mr-5">جدیدترین محصولات </h1>
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-sm-12 col-lg-4  col-md-4">
+                <div class="card ">
+                    <a href="http://127.0.0.1:5500/product_details.html">
+                        <img class="card-img-top " src="/assets/images/iphon13promax.jpg" alt="Card image"
+                            style="width:100%"></a>
+                    <div class="card-body">
+                        <div class="description">
+                            <h4 class="card-title my-3">iphon 13 pro max</h4>
+                            <p class="card-text">70,600,000</p>
+                            <a href="#" class="btn btn-primary">افزودن به سبد خرید</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-lg-4  col-md-4">
+                <div class="card ">
+                    <a href="http://127.0.0.1:5500/s22ultra.html">
+                        <img class="card-img-bottom" src="/assets/images/samsung-s22-ultra-rose.png" alt="Card image"
+                            style="width:100%"></a>
+                    <div class="card-body">
+                        <div class="description">
+                            <h4 class="card-title my-3">Samsung S22 Ultra</h4>
+                            <p class="card-text">38,900,000</p>
+                            <a href="#" class="btn btn-primary">افزودن به سبد خرید</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-lg-4  col-md-4">
+                <div class="card ">
+                    <a href="http://127.0.0.1:5500/galaxyzfold.html">
+                        <img class="card-img-bottom" src="/assets/images/z fold.jpg" alt="Card image"
+                            style="width:100%">
+                    </a>
+                    <div class="card-body">
+                        <div class="description">
+                            <h4 class="card-title my-3"> Galaxy Z Fold 4</h4>
+                            <p class="card-text">60,000,000</p>
+                            <a href="#" class="btn btn-primary">افزودن به سبد خرید</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-lg-4 mt-3 col-md-4">
+                <div class="card ">
+                    <a href="http://127.0.0.1:5500/xiomi%20mi11.html">
+                        <img class="card-img-bottom" src="/assets/images/mi-11-Ultra-xiaomi.jpg" alt="Card image"
+                            style="width:100%"></a>
+                    <div class="card-body">
+                        <div class="description">
+                            <h4 class="card-title my-3">Xiaomi 11 ultra</h4>
+                            <p class="card-text">38,900,000</p>
+                            <a href="#" class="btn btn-primary">افزودن به سبد خرید</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <section class="mt-5">
+            <div>
+                <h4 class="font-weight-bold   text-secondary  mb-3">پرسش های متداول</h4>
+            </div>
+
+            <div class="accordion  " id="accordionExample">
+                <div class="card">
+                    <div class="card-header " id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-right text-dark  " type="button"
+                                data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                aria-controls="collapseOne">
+                                هزینه ارسال چگونه محاسبه می شود؟
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                        data-parent="#accordionExample">
+                        <div class="card-body">
+                            هزینه ارسال بر اساس شیوه ارسال متفاوت است و در زمان ثبت سفارش نمایش داده می شود.
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-right text-dark collapsed" type="button"
+                                data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                aria-controls="collapseTwo">
+                                چطور میتوانم سفارشم را پیگیری کنم ؟
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            وارد سایت شوید، روی گزینه سفارش های من کلیک کنید و در این قسمت با کلیک روی جزییات میتوانید
+                            سفارش
+                            خود را ببینید. میتوانید در این قسمت روند آماده سازی و مراحل ارسال سفارش خود را پیگیری کنید.
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-right text-dark collapsed" type="button"
+                                data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                                aria-controls="collapseThree">
+                                شرایط گارانتی محصولات چیست؟
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                        data-parent="#accordionExample">
+                        <div class="card-body">
+                            امروزه توجه به کیفیت کالا از مهمترین وظایف فروشندگان کالا است و خدمات پس از فروش ضامن حفظ
+                            این
+                            کیفیت می باشد.
+                            در همین راستا شرکت ما مفتخر به ارائه سرویس در اسرع وقت به مشتریان گرامی می باشد.
+                            جهت سهولت در پیگیری گارانتی دستگاه خود می توانید از طریق شماره 02161930010 اقدام نمائید.
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingfour">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-right text-dark collapsed" type="button"
+                                data-toggle="collapse" data-target="#collapsefour" aria-expanded="false"
+                                aria-controls="collapseTwo">
+                                شرایط استفاده از کد تخفیف اولین خرید چیست؟
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapsefour" class="collapse" aria-labelledby="headingfour"
+                        data-parent="#accordionExample">
+                        <div class="card-body">
+                            سیستم هوشمند ما ، پس از بررسی حساب کاربری در صورتی که مالک آن مشتری جدید باشد امکان استفاده
+                            از
+                            کد تخفیف خرید اول را ایجاد می کند .
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+    </div>
+
+
+    </div>
+    <!-- <div class="col-sm-12 col-lg-6 col-md-4">
+            <div class="card" style="width:400px">
+                <img class="card-img-top" src="/assets/images/z fold.jpg" alt="Card image" style="width:100%">
+                <div class="card-body">
+                    <div class="description">
+                        <h4 class="card-title my-3 ">Samsung Galaxy Z Fold 4</h4>
+                        <p class="card-text">60,000,000</p>
+                        <a href="#" class="btn btn-primary ">افزودن به سبد خرید</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-6 col-md-4">
+            <div class="card" style="width:400">
+                <img class="card-img-top" src="/assets/images/mi-11-Ultra-xiaomi.jpg" alt="Card image"
+                    style="width:100%">
+                <div class="card-body">
+                    <div class="description">
+                        <h4 class="card-title my-3">Xiaomi 11 ultra</h4>
+                        <p class="card-text">634,690,000</p>
+                        <a href="#" class="btn btn-primary">افزودن به سبد خرید</a>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    <!-- <div class="item col-sm ml-5 mr-5">
+                <div class="card " style="width:400px">
+                    <img class="card-img-top " src="/assets/images/iphon13promax.jpg" alt="Card image"
+                        style="width:100%">
+                    <div class="card-body">
+                        <div class="description">
+                            <h4 class="card-title my-3">iphon 13 pro max</h4>
+                            <p class="card-text">70,600,000</p>
+                            <a href="#" class="btn btn-primary">افزودن به سبد خرید</a>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+
+    <!-- <img src="/assets/images/iphon13promax.jpg" alt="iphon13promax" class="items_img">
+        <div class="description">
+            <p class="text_decoration">iphon 13 pro max</p>
+            <div class="price">
+              <p class="text_decoration">70,600,000</p>
+              <button class="button_card">افزودن به سبد خرید</button>
+            </div>
+        </div> -->
+
+
+    <!-- <div class="item col-sm ml-5 mr-4"> -->
+    <!-- <div class="card " style="width:400px">
+                    <img class="card-img-bottom" src="/assets/images/samsung-s22-ultra-rose.png" alt="Card image"
+                        style="width:100%">
+                    <div class="card-body">
+                        <div class="description">
+                            <h4 class="card-title my-3">Samsung S22 Ultra</h4>
+                            <p class="card-text">38,900,000</p>
+                            <a href="#" class="btn btn-primary">افزودن به سبد خرید</a>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+    <!-- <img src="/assets/images/samsung-s22-ultra-rose.png" alt="s22ultra" class="items_img">
+         <div class="description">
+            <p class="text_decoration">Samsung S22 Ultra</p>
+            <div class="price">
+                <p class="text_decoration">38,900,000</p>
+                <button class="button_card">افزودن به سبد خرید</button>
+            </div> -->
+
+
+    <!-- <div class="item col-3 ml-5 mr-4"> -->
+    <!-- <div class="card" style="width:400px">
+                    <img class="card-img-top" src="/assets/images/z fold.jpg" alt="Card image" style="width:100%">
+                    <div class="card-body">
+                        <div class="description">
+                            <h4 class="card-title my-3 ">Samsung Galaxy Z Fold 4</h4>
+                            <p class="card-text">60,000,000</p>
+                            <a href="#" class="btn btn-primary ">افزودن به سبد خرید</a>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+    <!-- 
+         <img src="/assets/images/z fold.jpg" alt="galaxy" class="items_img">
+         <div class="description">
+            <p class="text_decoration">Samsung Galaxy Z Fold 4 </p>
+            <div class="price">
+              <p class="text_decoration">60,000,000</p>
+              <button class="button_card">افزودن به سبد خرید</button>
+            </div> -->
+
+    <!-- <div class="item">
+        <div class="card" style="width:auto">
+            <div class="card-body">
+                <img class="card-img-bottom" src="/assets/images/mi-11-Ultra-xiaomi.jpg" alt="Card image" style="width:100%">
+                <div class="description">
+                <h4 class="card-title">Xiaomi 11 ultra</h4>
+              <p class="card-text">634,690,000</p>
+              <a href="#" class="btn btn-primary">افزودن به سبد خرید</a>
+            </div>
+        </div>
+        </div> -->
+
+
+    <!-- <div class="item">
+        <img src="/assets/images/mi-11-Ultra-xiaomi.jpg" alt="xiaomi" class="items_img">
+        <div class="description">
+           <p class="text_decoration">Xiaomi 11 ultra </p>
+           <div class="price">
+             <p class="text_decoration">34,690,000</p>
+             <button class="button_card">افزودن به سبد خرید</button>
+           </div>
+           
+       </div> -->
+    <!-- </div> -->
+
+    <footer>
+        <div class="footer-style mt-5 pr-5 pl-5">
+            <div class=" logo_menu mr-5 pt-5  d-flex justify-content-center align-items-center">
+                <img src="/assets/images/logo.jpg" alt="logo" class="logo ">
+                <p class="pr-3 font-weight-bolder">Technology</p>
+            </div>
+            <div class="d-flex justify-content-center pt-4">
+                <p ><i class="mdi mdi-phone"></i>
+                    تلفن پشتیبانی 45200000  -  031 | 24 ساعته پاسخگوی شما هستیم</p>
+            </div>
+            <div class="icon-footer d-flex justify-content-around align-items-center p-4">
+                <div class="d-flex justify-content-center align-items-center flex-column ">
+                    <i class="mdi responsive pr-3 mdi-truck footer-icon"></i>
+                    <p class="responsive">امکان تحویل اکسپرس</p>
+                </div>
+                <div class="d-flex justify-content-center align-items-center flex-column p-4">
+                    <i class="mdi responsive pr-3 mdi-account-credit-card-outline footer-icon"></i>
+                    <p class="responsive">امکان پرداخت در محل</p>
+                </div>
+                <div class="d-flex justify-content-center align-items-center flex-column p-4">
+                    <i class="mdi responsive pr-3 mdi-shield-check footer-icon"></i>
+                    <p class="responsive">  ضمانت اصل بودن کالا </p>
+                </div>
+                <div class="d-flex justify-content-center align-items-center flex-column p-4">
+                    <i class="mdi responsive pr-3 mdi-package-variant footer-icon"></i>
+                    <p class="responsive">   ضمانت بازگشت کالا </p>
+                </div>
+            </div><br><br><br><br>
+            <div>
+                <div class="d-flex justify-content-around">
+                    <div class="d-flex align-items-center flex-column">
+                        <h3 class="pb-3">خدمات مشتریان</h3>
+                        <p>پاسخ به پرسش های متداول</p>
+                        <p>رویه های بازگرداندن کالا</p>
+                        <p>شرایط استفاده</p>
+                        <p>حریم خصوصی</p>
+                    </div>
+                    <div class="d-flex align-items-center flex-column">
+                        <h3 class="pb-3"> راهنمای خرید</h3>
+                        <p>   نحوه های ثبت سفارش </p>
+                        <p>رویه ارسال سفارش</p>
+                        <p>شیوه های پرداخت </p>
+                    </div>
+                    <div >
+                        <h3 class="pr-5 pb-3"> همراه ما باشید</h3>
+                        <i class="mdi pr-3 mdi-whatsapp footer-icon"></i>
+                        <i class="mdi pr-3 mdi-instagram footer-icon"></i>
+                        <i class="mdi pr-3 mdi-twitter footer-icon"></i>
+                    </div>
+                </div>
+            </div>
+            <br><br><br><br>
+        </div>
+    </footer>
+    
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "sahel";
+  src: url("assets/font/sahel-font-v1.0.0-alpha14/Sahel.ttf") format("truetype"), url("assets/font/sahel-font-v1.0.0-alpha14/Sahel.woff") format("woff"), url("assets/font/sahel-font-v1.0.0-alpha14/Sahel.woff2") format("woff2");
+}
+.title {
+  color: #303c6c;
+}
+
+.container {
+  border: 2px solid #e6e6e6;
+  border-radius: 20px;
+}
+
+.label-style {
+  color: #303c6c;
+  font-weight: bold;
+}/*# sourceMappingURL=call-form.css.map */

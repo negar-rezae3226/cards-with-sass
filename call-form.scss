@@ -1,0 +1,33 @@
+$primary: whitesmoke;
+$secondary: #303c6c;
+$titr: #b4dfe5;
+$cart_count: red;
+$icon-cart: white;
+$item_border: #e6e6e6;
+$box_shadow: #b3b3b3;
+$modal_backdrop: rgba(0, 0, 0, 0.6);
+$sticky_menu: midnightblue;
+$blue: #03045e;
+$eng-text: #6c757d;
+$white: #f8f8ff;
+$big_fontsize: 30px;
+$medium_fontsize: 17px;
+
+@font-face {
+    font-family: 'sahel';
+    src: url('assets/font/sahel-font-v1.0.0-alpha14/Sahel.ttf') format('truetype'),
+        url('assets/font/sahel-font-v1.0.0-alpha14/Sahel.woff') format('woff'),
+        url('assets/font/sahel-font-v1.0.0-alpha14/Sahel.woff2') format('woff2');
+}
+.title{
+    color: $secondary;
+    
+}
+.container{
+    border: 2px solid $item_border ;
+    border-radius: 20px;
+}
+.label-style{
+    color: $secondary;
+    font-weight: bold;
+}

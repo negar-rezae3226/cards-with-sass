@@ -31,7 +31,7 @@
             <div class="shopping_cart">
 
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary cart-icon-" data-toggle="modal"
+                <button type="button" class="btn btn-primary cart-icon-"  onclick="emptyModal()" data-toggle="modal"
                     data-target="#exampleModal">
                     <div class="icon ">
                         <i class="mdi mdi-cart"></i>
@@ -50,67 +50,8 @@
                                 </button>
                                 <h5 class="modal-title container" id="exampleModalLabel">سبد خرید</h5>
                             </div>
-                            <div class="modal-body">
-                                <div class="shopping_cart_item">
-                                    <div class="d-flex flex-row align-content-center justify-content-between pt-2">
-                                        <div
-                                            class="cart_text_item d-flex flex-nowrap justify-content-center align-items-center">
-                                            <img src="./assets/images/iphon13promax.jpg" alt="iphon13promax"
-                                                class="logo pl-2">
-                                            <p class="shopping_cart_text">iphon 13 pro max</p>
-                                        </div>
-                                        <div
-                                            class="shopping_cart_button d-flex justify-content-center align-items-center">
-                                            <button type="button" class="btn btn-outline-info ml-2">+</button>
-                                            <input type="text" class="input_number">
-                                            <button type="button" class="btn btn-outline-info mr-2">-</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="shopping_cart_item">
-                                    <div class=" d-flex flex-row align-content-center justify-content-between pt-2">
-                                        <div
-                                            class="cart_text_item d-flex flex-nowrap justify-content-center align-items-center">
-                                            <img src="./assets/images/samsung-s22-ultra-rose.png" alt="iphon13promax"
-                                                class="logo pl-2">
-                                            <p class="shopping_cart_text">Samsung S22 Ultra</p>
-                                        </div>
-                                        <div class="shopping_cart_button">
-                                            <button type="button" class="btn btn-outline-info ml-2">+</button>
-                                            <input type="text" class="input_number">
-                                            <button type="button" class="btn btn-outline-info mr-2">-</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="shopping_cart_item">
-                                    <div class="d-flex flex-row align-content-center justify-content-between pt-2">
-                                        <div
-                                            class="cart_text_item d-flex flex-nowrap justify-content-center align-items-center">
-                                            <img src="./assets/images/mi-11-Ultra-xiaomi.jpg" alt="iphon13promax"
-                                                class="logo pl-2">
-                                            <p class="shopping_cart_text">Xiaomi 11 ultra</p>
-                                        </div>
-                                        <div class="shopping_cart_button">
-                                            <button type="button" class="btn btn-outline-info ml-2">+</button>
-                                            <input type="text" class="input_number">
-                                            <button type="button" class="btn btn-outline-info mr-2">-</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="shopping_cart_item">
-                                    <div class="d-flex flex-row align-content-center justify-content-between pt-2">
-                                        <div
-                                            class="cart_text_item d-flex flex-nowrap justify-content-center align-items-center">
-                                            <img src="./assets/images/z fold.jpg" alt="iphon13promax" class="logo pl-2">
-                                            <p class="shopping_cart_text">Samsung Z Fold 4</p>
-                                        </div>
-                                        <div class="shopping_cart_button">
-                                            <button type="button" class="btn btn-outline-info ml-2">+</button>
-                                            <input type="text" class="input_number">
-                                            <button type="button" class="btn btn-outline-info mr-2">-</button>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="modal-body" id="modal">
+   
 
                             </div>
                         </div>
@@ -205,7 +146,7 @@
                         <div class="description">
                             <h4 class="card-title my-3">iphon 13 pro max</h4>
                             <p class="card-text">70,600,000</p>
-                            <a href="#" class="btn btn-primary">افزودن به سبد خرید</a>
+                            <a href="#"  class="btn btn-primary" id="iphonId"  onclick="onClickAddBtn('iphon 13 promax','./assets/images/iphon13promax.jpg','70,600,000' , 'iphonId')" >افزودن به سبد خرید</a>
                         </div>
                     </div>
                 </div>
@@ -220,7 +161,8 @@
                         <div class="description">
                             <h4 class="card-title my-3">Samsung S22 Ultra</h4>
                             <p class="card-text">38,900,000</p>
-                            <a href="#" class="btn btn-primary">افزودن به سبد خرید</a>
+                            <a href="#" class="btn btn-primary" id="samsungId" onclick="onClickAddBtn('Samsung S Ultra','./assets/images/samsung-s22-ultra-rose.png','38,900,000','samsungId')" >افزودن به سبد خرید</a>
+                            <!-- <a href="#" class="btn btn-danger mt-3" onclick="onClickDeleteBtn('Samsung S22 Ultra')">حذف از سبد خرید</a> -->
                         </div>
                     </div>
                 </div>
@@ -234,9 +176,10 @@
                     </a>
                     <div class="card-body">
                         <div class="description">
-                            <h4 class="card-title my-3"> Galaxy Z Fold 4</h4>
+                            <h4 class="card-title my-3">Galaxy Z Fold 4</h4>
                             <p class="card-text">60,000,000</p>
-                            <a href="#" class="btn btn-primary">افزودن به سبد خرید</a>
+                            <a href="#" class="btn btn-primary" id="xiomiId" onclick="onClickAddBtn('Galaxy Z Fold 4','./assets/images/z fold.jpg','60,000,000', 'xiomiId')" >افزودن به سبد خرید</a>
+                            <!-- <a href="#" class="btn btn-danger mt-3" onclick="onClickDeleteBtn('Galaxy Z Fold 4')">حذف از سبد خرید</a> -->
                         </div>
                     </div>
                 </div>
@@ -251,7 +194,8 @@
                         <div class="description">
                             <h4 class="card-title my-3">Xiaomi 11 ultra</h4>
                             <p class="card-text">38,900,000</p>
-                            <a href="#" class="btn btn-primary">افزودن به سبد خرید</a>
+                            <a href="#" class="btn btn-primary" id="zFoldId" onclick="onClickAddBtn('Xiaomi 11 ultra','./assets/images/mi-11-Ultra-xiaomi.jpg','38,900,000' , 'zFoldId')" >افزودن به سبد خرید</a>
+                            <!-- <a href="#" class="btn btn-danger mt-3" onclick="onClickDeleteBtn('Xiaomi 11 ultra')">حذف از سبد خرید</a> -->
                         </div>
                     </div>
                 </div>
@@ -406,6 +350,22 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="./cart.js"></script>
+    <!-- <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const el = document.querySelector(".navbar");
+            const a=document.createElement("a");
+            a.innerText="testjdskfjdsaklfjdakfjaskj"
+            el.appendChild(a)
+            // el.innerHTML="";
+            console.log("el", el)
+
+
+        });
+
+    </script> -->
 </body>
 
 </html>

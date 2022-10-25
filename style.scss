@@ -194,3 +194,23 @@ body {
 .footer-icon {
   font-size: 80px;
 }
+.modal-body{
+ 
+  height: 500px;
+}
+.modal-content{
+  width: 650px;
+}
+.modaltext{
+  color: $secondary;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 50px;
+}
+.modaltext2{
+  font-size: 20px;
+  padding-top: 10px;
+  text-align: center;
+  color: $box_shadow;
+}
+

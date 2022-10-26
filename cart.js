@@ -13,10 +13,15 @@ const images = [
   "./assets/images/mi-11-Ultra-xiaomi.jpg",
   "./assets/images/z fold.jpg",
 ];
-const productPrice = ["70,600,000", "38,900,000", "60,000,000", "38,900,000"];
+const productPrice = ['70,600,000', '38,900,000', '60,000,000', '38,900,000'];
 
+localStorage.setItem('storage' ,  JSON.stringify(productPrice) );
+localStorage.setItem('name' , JSON.stringify(productNames));
+localStorage.setItem('image' , JSON.stringify(images));
 
+getAllTask();
 emptyModal();
+
 
 productNames.splice(productNames.length - 4);
 images.splice(images.length - 4);
@@ -37,6 +42,7 @@ function onClickAddBtn(name, image, price ,buttonId ) {
   productPrice.push(price);
   creatItems();
   input(buttonId);
+
 }
 
 function creatItems() {
@@ -55,17 +61,21 @@ function creatItems() {
             <p class="shopping_cart_text">${productPrice[index]}</p>
             <div
                 class="shopping_cart_button d-flex justify-content-center align-items-center">
-                <button type="button" class="btn btn-outline-info ml-2">+</button>
-                <input type="text" class="input_number">
-                <button type="button" class="btn btn-outline-info mr-2">-</button>
+                <button type="button" class="btn btn-outline-info ml-2"  onclick="incrementCart(+1)">+</button>
+                <input type="text" class="input_number" id="parCart" value="0">
+                <button type="button" class="btn btn-outline-info mr-2" onclick="incrementCart(-1)">-</button>
             </div>
-            <button class=" btn-danger btn-sm float-right mr-3 delete"  onclick="onClickDeleteBtn('${productNames[index]}')">X</button>
+            <button class=" btn-danger btn-sm float-right mr-3 delete"   onclick="onClickDeleteBtn('${productNames[index]}')">X</button>
         </div>
         </div>
         `;
+//         let tasks = getAllTask();
+// localStorage.setItem('tasks' ,  JSON.stringify(tasks) );
+
   }
 
   modal.innerHTML = items;
+  getAllTask(items);
 }
 function input(buttonId){
     let inputt = `<div class="shopping_cart_button d-flex justify-content-center align-items-center"> <button type="button" class="btn btn-outline-info ml-2"   onclick="increment(+1)">+</button><input type="text" class="input_number" id="par" value="0" ><button type="button" class="btn btn-outline-info mr-2" onclick="increment(-1)">-</button></div>`;
@@ -78,7 +88,14 @@ function input(buttonId){
     // button.innerHTML=inputt;
 }
 function increment(value) {
-  let input = document.getElementById("par");
+    let input = document.getElementById("par");
+    let currentValue = input.value.split("")[0];
+    input.value = +currentValue + value + "";
+}
+
+
+function incrementCart(value) {
+  let input = document.getElementById("parCart");
   let currentValue = input.value.split("")[0];
   input.value = +currentValue + value + "";
 }
@@ -98,3 +115,16 @@ function onClickDeleteBtn(name) {
     emptyModal();
   }
 }
+ function getAllTask(task){
+  let tasks;
+
+  if(localStorage.getItem('tasks') == null )
+  {
+    tasks = [];
+  }
+  else{
+    tasks = localStorage.getItem('tasks').split(',');
+  }
+  tasks.push(task);
+  localStorage.setItem('tasks' , task );
+ }

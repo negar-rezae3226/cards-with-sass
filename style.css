@@ -76,9 +76,10 @@ body {
 .input_number {
   text-align: center;
   color: #303c6c;
-  border: 2px solid #303c6c;
+  border: 2px solid;
   width: 50px;
   height: 35px;
+  font-size: small;
 }
 
 .text {

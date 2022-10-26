@@ -87,9 +87,10 @@ body {
 .input_number {
   text-align: center;
   color: $secondary;
-  border: 2px solid $secondary;
+  border: 2px solid ;
   width: 50px;
   height: 35px;
+  font-size: small;
 }
 .text {
   @include flex();

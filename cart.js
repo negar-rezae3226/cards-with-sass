@@ -22,28 +22,28 @@ function emptyModal() {
 }
 creatItems();
 
-
-
-function onClickAddBtn(name, image, price,value, buttonId) {
+function onClickAddBtn(name, image, price, value, productId) {
   const obj = {
-    id: buttonId,
+    id: productId,
     productNames: name,
     images: image,
-    productPrice: price,};
-    // inputNumber : document.getElementById("par").value,
-    // inputNumber: data,
-    emptyModal();
-    shoppingBaskeItems.push(obj);
-    creatItems();
-    input(buttonId);
-    increment(value,buttonId);
+    count: 1,
+    productPrice: price,
   };
+  // inputNumber : document.getElementById("par").value,
+  // inputNumber: data,
+  emptyModal();
+  shoppingBaskeItems.push(obj);
+  creatItems();
+  input(productId);
+  // increment(value,productId);
+}
 
 function creatItems() {
   items = "";
   for (let product of shoppingBaskeItems) {
     items += `
-        <div class="shopping_cart_item">
+        <div class="shopping_cart_item" id="shopping_cart">
         <div class="d-flex flex-row align-items-center justify-content-between pt-2">
             <div
                 class="cart_text_item d-flex flex-nowrap justify-content-center align-items-center">
@@ -54,9 +54,9 @@ function creatItems() {
             <p class="shopping_cart_text">${product.productPrice}</p>
             <div
                 class="shopping_cart_button d-flex justify-content-center align-items-center">
-                <button type="button" class="btn btn-outline-info ml-2"  onclick="incrementCart(+1)">+</button>
-                <input type="text" class="input_number" id="parCart" value="1">
-                <button type="button" class="btn btn-outline-info mr-2" onclick="incrementCart(-1)">-</button>
+                <button type="button" class="btn btn-outline-info ml-2"  onclick="incrementCart(${product.id})">+</button>
+                <input type="text" class="input_number"  value="1">
+                <button type="button" class="btn btn-outline-info mr-2" onclick="incrementCart(${product.id})">-</button>
             </div>
             <button class=" btn-danger btn-sm float-right mr-3 delete"   onclick="onClickDeleteBtn('${product.productNames}')">X</button>
         </div>
@@ -69,10 +69,23 @@ function creatItems() {
   modal.innerHTML = items;
   // getAllTask(items);
 }
-function input(buttonId) {
+function input(productId) {
+  let inputt = `
+  <div class="shopping_cart_button d-flex justify-content-center align-items-center">
 
-  let inputt = `<div class="shopping_cart_button d-flex justify-content-center align-items-center"> <button type="button" class="btn btn-outline-info ml-2"   onclick="increment(+1)">+</button><input type="text" class="input_number"  value="1" ><button type="button" class="btn btn-outline-info mr-2" onclick="decrement(-1)">-</button></div>`;
-  let card = document.getElementById(buttonId);
+   <button type="button" class="btn btn-outline-info ml-2"   onclick="increment('${productId}')">
+   +
+   </button>
+
+   <input type="text" class="input_number"  value="1" >
+
+   <button type="button" class="btn btn-outline-info mr-2" onclick="decrement('${productId}')">
+   -
+   </button>
+
+   </div>
+   `;
+  let card = document.getElementById(productId);
   let button = card.querySelector(".btn");
   let div = document.createElement("div");
   div.innerHTML = inputt;
@@ -80,50 +93,105 @@ function input(buttonId) {
   button.remove();
 }
 
-function increment(value,buttonId) {
-  debugger
-  let card = document.getElementById(buttonId);
+function increment(productId) {
+  let card = document.getElementById(productId);
   let input = card.querySelector(".input_number");
   let currentValue = input.value.split("")[0];
-  input.value = +currentValue + value;
+  const product = shoppingBaskeItems.find((p) => {
+    return p.id === productId;
+  });
+  product.count = +currentValue + 1;
+  input.value = product.count;
 }
 
-function decrement(value,buttonId) {
-  let card = document.getElementById(buttonId);
+function decrement(productId) {
+  let card = document.getElementById(productId);
   let input = card.querySelector(".input_number");
-  if (input.value >= 1) {
-    let currentValue = input.value.split("")[0];
-    input.value = +currentValue + value;
-  }
-}
-function incrementCart(value) {
-  let input = document.getElementById("parCart");
   let currentValue = input.value.split("")[0];
-  input.value = +currentValue + value + "";
-}
-
-function decrementCart(value) {
-  let input = document.getElementById("parCart");
-  if (input.value >= 1) {
-    let currentValue = input.value.split("")[0];
-    input.value = +currentValue + value;
+  if (input.value >= 2) {
+    const product = shoppingBaskeItems.find((p) => {
+      return p.id === productId;
+    });
+    product.count = +currentValue - 1;
+    input.value = product.count;
+  } else if (input.value < 2) {
+    removeObjectWithId(shoppingBaskeItems, productId);
   }
 }
+// function incrementCart(productId) {
+//   // let cart = document.getElementsByClassName("shopping-cart");
+//   // let inputCart = cart.querySelector(".input_number");
+//   let inputCart = document
+//     .getElementById("shopping_cart")
+//     .querySelectorAll("input");
+//   let currentValue = inputCart.value.split("")[0];
+//   const product = shoppingBaskeItems.find((p) => {
+//     return p.id === productId;
+//   });
+//   product.count = +currentValue + 1;
+//   inputCart.value = product.count;
+// }
 
-function onClickDeleteBtn(name) {
-  const index = productNames.indexOf(name);
-  if (
-    index > -1 &&
-    confirm("کالا از سبد خرید شما حذف خواهد شد.آیا مطمئن هستید؟")
-  ) {
-    // only splice array when item is found
-    productNames.splice(index, 1); // 2nd parameter means remove one item only
-    images.splice(index, 1);
-    productPrice.splice(index, 1);
-
-    creatItems();
-    emptyModal();
+// function decrementCart(productId) {
+//   let cart = document.getElementById("shopping-cart");
+//   let inputCart = cart.querySelector(".input_number");
+//   let currentValue = inputCart.value.split("")[0];
+//   if (inputCart.value >= 1) {
+//     const product = shoppingBaskeItems.find((p) => {
+//       return p.id === productId;
+//     });
+//     product.count = +currentValue - 1;
+//     inputCart.value = product.count;
+//   }
+// }
+function removeObjectWithId(arr, id) {
+  const objWithIdIndex = arr.findIndex((p)=>p.id === id);
+  if (confirm("کالا از سبد خرید شما حذف خواهد شد.آیا مطمئن هستید؟")) {
+    arr.splice(objWithIdIndex, 1);
+    const cartItem = document.getElementById('shopping_cart');
+    cartItem.remove();
   }
+  
+}
+// function addCartBotton(productId) {
+//   let button = `
+//   <a href="#" class="btn btn-primary" >افزودن به سبد خرید</a>
+//    `;
+//   let card = document.getElementById(productId);
+//   let button = card.querySelector("input");
+//   let div = document.createElement("div");
+//   div.innerHTML = buttton;
+//   button.before(div);
+//   button.remove();
+// }
+
+// function incrementCart(value) {
+//   let input = document.getElementById("parCart");
+//   let currentValue = input.value.split("")[0];
+//   input.value = +currentValue + value + "";
+// }
+
+// function decrementCart(value) {
+//   let input = document.getElementById("parCart");
+//   if (input.value >= 1) {
+//     let currentValue = input.value.split("")[0];
+//     input.value = +currentValue + value;
+//   }
+// }
+
+function onClickDeleteBtn() {
+  if (confirm("کالا از سبد خرید شما حذف خواهد شد.آیا مطمئن هستید؟")) {
+  const cartItem = document.getElementById('shopping_cart');
+  cartItem.remove();
+  emptyModal();
+}
+
+  // const objWithIdIndex = arr.findIndex((p)=>p.id === id);
+  // if (confirm("کالا از سبد خرید شما حذف خواهد شد.آیا مطمئن هستید؟")) {
+  //   arr.splice(objWithIdIndex, 1);
+  //   const cartItem = document.getElementById();
+  //   cartItem.remove();
+  // }
 }
 // document.addEventListener('DOMContentLoaded' , function (e)  {
 //     let tasks;
@@ -174,4 +242,3 @@ function onClickDeleteBtn(name) {
 //   var mylist = document.getElementById("parCart");
 //   document.getElementById("par").value = mylist[mylist.selectedIndex].text;
 // }
-

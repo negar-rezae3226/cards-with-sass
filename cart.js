@@ -1,17 +1,12 @@
 let modal = document.getElementById("modal");
-const cartCount = document.querySelector(".cart_count")
-// let data = document.getElementById("par").value;
-// let par = document.querySelector('#par');
-// const innerInput = document.getElementById("par").value;
-let addToCartButton  = "";
+const cartCount = document.querySelector(".cart_count");
+let addToCartButton = "";
 let items = "";
-// let inputt = "";
 const shoppingBaskeItems = [];
 // localStorage.setItem('storage' ,  JSON.stringify(productPrice) );
 // localStorage.setItem('name' , JSON.stringify(productNames));
 // localStorage.setItem('image' , JSON.stringify(images));
 
-// shoppingBaskeItems.splice(shoppingBaskeItems.length - 4);
 
 emptyModal();
 
@@ -21,7 +16,6 @@ function emptyModal() {
       ' <p class="modaltext mt-5">سبد خرید شما خالی است!</p><p class="modaltext2">می‌توانید برای مشاهده محصولات بیشتر به صفحه <a href="/cards-with-sass">محصولات</a> بروید.</p>';
   }
 }
-createItems();
 
 function onClickAddBtn(name, image, price, value, productId) {
   const obj = {
@@ -31,14 +25,12 @@ function onClickAddBtn(name, image, price, value, productId) {
     count: 1,
     productPrice: price,
   };
-  // inputNumber : document.getElementById("par").value,
-  // inputNumber: data,
   emptyModal();
   shoppingBaskeItems.push(obj);
+  cartCountNumber();
   createItems();
   input(productId);
-  
-  // increment(value,productId);
+
 }
 
 function createItems() {
@@ -61,29 +53,22 @@ function createItems() {
             <p class="shopping_cart_text">${productPrice}</p>
             <div
                 class="shopping_cart_button d-flex justify-content-center align-items-center">
-                <button type="button" class="btn btn-outline-info ml-2"  onclick="incrementCart('${productId}')">+</button>
+                <button type="button" class="btn btn-outline-info ml-2"  onclick="increment('${productId}')">+</button>
                 <input type="text" class="input_number"  value="1">
-                <button type="button" class="btn btn-outline-info mr-2" onclick="decrementCart('${productId}')">-</button>
+                <button type="button" class="btn btn-outline-info mr-2" onclick="decrement('${productId}')">-</button>
             </div>
             <button class=" btn-danger btn-sm float-right mr-3 delete"   onclick="onClickDeleteBtn('${productId}')">X</button>
         </div>
         </div>
         `;
-    //         let tasks = getAllTask();
-    // localStorage.setItem('tasks' ,  JSON.stringify(tasks) );
   }
-// let x = document.querySelector(".input_number")
-// x.innerText=
-  // let div = document.getElementById('item_443');
-
-  // var div = document.createElement('div');
   modal.innerHTML = items;
 
   // getAllTask(items);
 }
 function input(productId) {
   let inputt = `
-  <div class="shopping_cart_button d-flex justify-content-center align-items-center">
+  <div class="shopping_cart_button d-flex justify-content-center align-items-center onclick="cartCountNumber()" >
 
    <button type="button" class="btn btn-outline-info ml-2"   onclick="increment('${productId}')">
    +
@@ -105,11 +90,19 @@ function input(productId) {
   button.remove();
 }
 function buttonCard(productId) {
+  let addToCartButton = "";
 
-  addToCartButton = "";
-  addToCartButton = `<a href="#" class="btn btn-primary"  onclick="onClickAddBtn()" >
-  افزودن به سبد خرید
-  </a>`;
+  for (let product of shoppingBaskeItems) {
+    let productId = product.id;
+    let image = product.images;
+    let productName = product.productNames;
+    let productPrice = product.productPrice;
+    
+    addToCartButton = ` <a class="btn btn-primary"  onclick="onClickAddBtn('${productName}','${image}','${productPrice}',1,'${productId}')" >
+    افزودن به سبد خرید
+    </a> `;
+  }
+  input(productId);
   let card = document.getElementById(productId);
   let button = card.querySelector(".shopping_cart_button");
   let div = document.createElement("div");
@@ -118,22 +111,60 @@ function buttonCard(productId) {
   button.remove();
 }
 
+// function buttonCard(productId) {
+
+//   let butttonCart = document.getElementById(productId);
+//   let btn = butttonCart.querySelector(".btn");
+
+//     // addToCartButton = `<a class="btn btn-primary"  onclick="onClickAddBtn()" >
+//     // افزودن به سبد خرید
+//     // </a>`;
+
+//     let div = document.createElement("div");
+//     let divv= div.appendChild(btn);
+//     // div.innerHTML = addToCartButton;
+//     divv.before(div);
+//     divv.remove();
+//   }
+
 function increment(productId) {
   let card = document.getElementById(productId);
   let input = card.querySelector(".input_number");
   let currentValue = input.value.split("")[0];
+  let cart = document.getElementById("shopping_" + productId);
+  let inputCart = cart.querySelector(".input_number");
+  let currentValueCart = inputCart.value.split("")[0];
+
   const product = shoppingBaskeItems.find((p) => {
     return p.id === productId;
   });
+  const productCart = shoppingBaskeItems.find((p) => {
+    return p.id === productId;
+  });
+
   product.count = +currentValue + 1;
   input.value = product.count;
-  cartCount.innerText = product.count;
+  productCart.count = +currentValueCart + 1;
+  inputCart.value = productCart.count;
+  
+  // cartCount.innerText = product.count;
+}
+function cartCountNumber() {
+  cartCount.innerText++;
+}
+function cartCountNumberr() {
+
+    cartCount.innerText--;
+
+
 }
 
-
 function decrement(productId) {
+  let cart = document.getElementById("shopping_" + productId);
+  let inputCart = cart.querySelector(".input_number");
   let card = document.getElementById(productId);
   let input = card.querySelector(".input_number");
+
   let currentValue = input.value.split("")[0];
   if (input.value >= 2) {
     const product = shoppingBaskeItems.find((p) => {
@@ -141,54 +172,65 @@ function decrement(productId) {
     });
     product.count = +currentValue - 1;
     input.value = product.count;
-        cartCount.innerText = product.count;
-
   } else if (input.value < 2) {
-    removeObjectWithId(shoppingBaskeItems, productId ,productId );
-        cartCount.innerText = 0;
-
-    buttonCard(productId) ;
+    buttonCard(productId);
+    removeObjectWithId(shoppingBaskeItems, productId, productId);
+    cartCountNumberr();
   }
 
+  let currentValueCart = inputCart.value.split("")[0];
+  if (inputCart.value >= 2) {
+    const product = shoppingBaskeItems.find((p) => {
+      return p.id === productId;
+    });
+    product.count = +currentValueCart - 1;
+    
+    inputCart.value = product.count;
+  }
 }
-function removeObjectWithId(arr, id,productId) {
-  const objWithIdIndex = arr.findIndex((p) => p.id === id);
+function removeObjectWithId(arr, id, productId) {
   if (confirm("کالا از سبد خرید شما حذف خواهد شد.آیا مطمئن هستید؟")) {
+  const objWithIdIndex = arr.findIndex((p) => p.id === id);
     arr.splice(objWithIdIndex, 1);
-    const cartItem = document.getElementById("shopping_"+ productId);
+    const cartItem = document.getElementById("shopping_" + productId);
     cartItem.remove();
   }
 }
 function onClickDeleteBtn(productId) {
   if (confirm("کالا از سبد خرید شما حذف خواهد شد.آیا مطمئن هستید؟")) {
-    const cartItem = document.getElementById("shopping_"+ productId);
+    let cart = document.getElementById("shopping_" + productId);
+    let inputCart = cart.querySelector(".input_number");
+    const cartItem = document.getElementById("shopping_" + productId);
     cartItem.remove();
-  }
-}
-function incrementCart(productId) {
-  let card = document.getElementById("shopping_"+ productId);
-  let input = card.querySelector(".input_number");
-  let currentValue = input.value.split("")[0];
-  const product = shoppingBaskeItems.find((p) => {
-    return p.id === productId;
-  });
-  product.count = +currentValue + 1;
-  input.value = product.count;
-  cartCount.innerText = product.count;
-}
+    buttonCard(productId);
+    cartCountNumberr();
 
-function decrementCart(productId) {
-  let cart = document.getElementById("shopping_"+ productId);
-  let inputCart = cart.querySelector(".input_number");
-  let currentValue = inputCart.value.split("")[0];
-  if (inputCart.value >= 1) {
-    const product = shoppingBaskeItems.find((p) => {
-      return p.id === productId;
-    });
-    product.count = +currentValue - 1;
-    inputCart.value = product.count;
   }
+
 }
+// function incrementCart(productId) {
+//   let card = document.getElementById("shopping_"+ productId);
+//   let input = card.querySelector(".input_number");
+//   let currentValue = input.value.split("")[0];
+//   const product = shoppingBaskeItems.find((p) => {
+//     return p.id === productId;
+//   });
+//   product.count = +currentValue + 1;
+//   input.value = product.count;
+//   cartCount.innerText = product.count;
+// }
+
+// function decrementCart(productId) {
+//   let inputCart = cart.querySelector(".input_number");
+//   let currentValue = inputCart.value.split("")[0];
+//   if (inputCart.value >= 1) {
+//     const product = shoppingBaskeItems.find((p) => {
+//       return p.id === productId;
+//     });
+//     product.count = +currentValue - 1;
+//     inputCart.value = product.count;
+//   }
+// }
 
 // function incrementCart(value) {
 //   let input = document.getElementById("parCart");

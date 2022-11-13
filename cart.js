@@ -10,6 +10,13 @@ const shoppingBaskeItems = [];
 
 emptyModal();
 
+// var oldItems = JSON.parse(localStorage.getItem('itemsArray')) || [];
+
+// oldItems.push(shoppingBaskeItems);
+
+// localStorage.setItem('itemsArray', JSON.stringify(oldItems));
+
+
 function emptyModal() {
   if (shoppingBaskeItems.length == 0) {
     modal.innerHTML =
@@ -28,6 +35,7 @@ function onClickAddBtn(name, image, price, value, productId) {
   emptyModal();
   shoppingBaskeItems.push(obj);
   cartCountNumber();
+  
   createItems();
   input(productId);
 
@@ -54,7 +62,7 @@ function createItems() {
             <div
                 class="shopping_cart_button d-flex justify-content-center align-items-center">
                 <button type="button" class="btn btn-outline-info ml-2"  onclick="increment('${productId}')">+</button>
-                <input type="text" class="input_number"  value="1">
+                <input type="text" class="input_number"  value="1" >
                 <button type="button" class="btn btn-outline-info mr-2" onclick="decrement('${productId}')">-</button>
             </div>
             <button class=" btn-danger btn-sm float-right mr-3 delete"   onclick="onClickDeleteBtn('${productId}')">X</button>
@@ -63,7 +71,12 @@ function createItems() {
         `;
   }
   modal.innerHTML = items;
+// window.localStorage.setItem("myObject", JSON.stringify(items));
+// modal.innerHTML = window.localStorage.getItem("myObject");
 
+window.localStorage.setItem("myObject", JSON.stringify(items));
+let newObject = window.localStorage.getItem("myObject");
+console.log(JSON.parse(newObject));
   // getAllTask(items);
 }
 function input(productId) {
@@ -104,11 +117,11 @@ function buttonCard(productId) {
   }
   input(productId);
   let card = document.getElementById(productId);
-  let button = card.querySelector(".shopping_cart_button");
+  let buttonCard = card.querySelector(".shopping_cart_button");
   let div = document.createElement("div");
   div.innerHTML = addToCartButton;
-  button.before(div);
-  button.remove();
+  buttonCard.before(div);
+  buttonCard.remove();
 }
 
 // function buttonCard(productId) {
@@ -194,16 +207,18 @@ function removeObjectWithId(arr, id, productId) {
     arr.splice(objWithIdIndex, 1);
     const cartItem = document.getElementById("shopping_" + productId);
     cartItem.remove();
+    emptyModal();
   }
 }
 function onClickDeleteBtn(productId) {
-  if (confirm("کالا از سبد خرید شما حذف خواهد شد.آیا مطمئن هستید؟")) {
-    let cart = document.getElementById("shopping_" + productId);
-    let inputCart = cart.querySelector(".input_number");
+  if (confirm("کالا از سبد خرید شما حذف خواهد شد.آیا مطمئن هستید؟") == true) {
+    // let cart = document.getElementById("shopping_" + productId);
+    // let inputCart = cart.querySelector(".input_number");
     const cartItem = document.getElementById("shopping_" + productId);
     cartItem.remove();
     buttonCard(productId);
     cartCountNumberr();
+    emptyModal();
 
   }
 

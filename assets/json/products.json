@@ -1,0 +1,30 @@
+[
+     {
+        "id": 1,
+        "name": "iphon 13 pro max ",
+        "image": "./assets/images/iphon13promax.jpg",
+        "price": 70600000,
+        "productGroup": 1
+    },
+    {
+        "id": 2,
+        "name": "Samsung S22 Ultra",
+        "image": "./assets/images/samsung-s22-ultra-rose.png",
+        "price": 38900000,
+        "productGroup": 2
+    },
+    {
+        "id": 3,
+        "name": "Galaxy Z Fold 4",
+        "image": "./assets/images/z fold.jpg",
+        "price": 60000000,
+        "productGroup": 3
+    },
+    {
+        "id": 4,
+        "name": "Samsung S22 Ultra",
+        "image": "./assets/images/mi-11-Ultra-xiaomi.jpg",
+        "price": 38900000,
+        "productGroup": 4
+    }
+]

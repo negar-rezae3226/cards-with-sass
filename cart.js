@@ -1,90 +1,132 @@
+let products;
+ fetch('./assets/json/products.json') .then(x => x.json()) .then((json)=>{
+  products=json;
+  console.log(products);
+ })
+
+ 
+
 let modal = document.getElementById("modal");
 let cartCount = document.querySelector(".cart_count");
 let addToCartButton = "";
 let items = "";
-var shoppingBaskeItems = [];
+var shoppingBasketItems = [];
+// let dataProducts = JSON.parse(products); 
+// console.log(dataProducts);
 
+(function () {
 
+  const items = JSON.parse(localStorage.getItem("basketItems"));
+  calcBasketItems();
 
-
-// cartCount.innerText = shoppingBaskeItems.length;
+  if (items) {
+    shoppingBasketItems = items;
+    createBasketItems();
+    shoppingBasketItems.forEach((item)=>{
+      addQuantityInputToProdutsCart(item.id,item.count);
+    })
+  }
+})();
 
 function emptyModal() {
-  console.log(shoppingBaskeItems);
-  if (shoppingBaskeItems.length == 0) {
+
+  if (shoppingBasketItems.length == 0) {
     modal.innerHTML =
       ' <p class="modaltext mt-5">سبد خرید شما خالی است!</p><p class="modaltext2">می‌توانید برای مشاهده محصولات بیشتر به صفحه <a href="/cards-with-sass">محصولات</a> بروید.</p>';
   }
 }
 
-function onClickAddBtn(name, image, price, count, productId) {
-let obj = {
-    id: productId,
-    productNames: name,
-    images: image,
+// function onAddBasketItem(name, image, price, count, productId) {
+//   const newBasketItem = {
+//     id: productId,
+//     productName: name,
+//     image: image,
+//     count: 1,
+//     productPrice: price,
+//   };
+function onAddBasketItem(count) {
+  const newBasketItem = {
     count: 1,
-    productPrice: price,
   };
-  emptyModal();
-  shoppingBaskeItems.push(obj);
-  cartCountNumber();
-  createItems();
-  input(productId,count);
- setInLocalStorage();
-  
 
+
+  shoppingBasketItems.push(newBasketItem);
+
+  createBasketItems();
+  calcBasketItems();
+  addQuantityInputToProdutsCart(productId, count);
+  setBasketItemsInLocalStorage();
 }
 
-function createItems() {
+function createBasketItems() {
   items = "";
 
-  for (let product of shoppingBaskeItems) {
-    let productId = product.id;
-    let image = product.images;
-    let productName = product.productNames;
-    let productPrice = product.productPrice;
-    let count = product.count;
+  for (let product of shoppingBasketItems) {
     items += `
-        <div class="shopping_cart_item" id="shopping_${productId}">
+        <div class="shopping_cart_item" id="shopping_${product.id}">
         <div class="d-flex flex-row align-items-center justify-content-between pt-2">
             <div 
                 class="cart_text_item d-flex flex-nowrap justify-content-center align-items-center">
-                <img src="${image}" alt="mobile"
+                <img src="${product.image}" alt="mobile"
                     class="logo pl-2">
-                <p class="shopping_cart_text">${productName}</p>
+                <p class="shopping_cart_text">${product.productName}</p>
             </div>
-            <p class="shopping_cart_text">${productPrice}</p>
+            <p class="shopping_cart_text">${product.productPrice}</p>
             <div
                 class="shopping_cart_button d-flex justify-content-center align-items-center">
-                <button type="button" class="btn btn-outline-info ml-2"  onclick="increment('${productId}')">+</button>
-                <input type="text" class="input_number"  value="${count}" >
-                <button type="button" class="btn btn-outline-info mr-2" onclick="decrement('${productId}')">-</button>
+                <button type="button" class="btn btn-outline-info ml-2"  onclick="increment('${product.id}')">+</button>
+                <input type="text" class="input_number" data-productId="${product.id}"  value="${product.count}" >
+                <button type="button" class="btn btn-outline-info mr-2" onclick="decrement('${product.id}')">-</button>
             </div>
-            <button class=" btn-danger btn-sm float-right mr-3 delete"   onclick="onClickDeleteBtn('${productId}')">X</button>
+            <button class=" btn-danger btn-sm float-right mr-3 delete"   onclick="deleteButtonInBasket('${product.id}')">X</button>
         </div>
         </div>
         `;
   }
   modal.innerHTML = items;
-// window.localStorage.setItem("myObject", JSON.stringify(shoppingBaskeItems));
-// modal.innerHTML = window.localStorage.getItem("myObject");
-
-// window.localStorage.setItem("myObject", JSON.stringify(shoppingBaskeItems));
-// let newObject = window.localStorage.getItem("myObject");
-// console.log(JSON.parse(newObject));
-  // getAllTask(items);
 }
-function input(productId,count) {
-  let inputt = `
-  <div class="shopping_cart_button d-flex justify-content-center align-items-center onclick="cartCountNumber()" >
 
-   <button type="button" class="btn btn-outline-info ml-2"   onclick="increment('${productId}')">
+function calcBasketItems() {
+  if (!shoppingBasketItems) {
+    cartCount.innerText = 0;
+    return;
+  }
+  cartCount.innerText = shoppingBasketItems.length;
+}
+
+//#region localStorage
+
+function setBasketItemsInLocalStorage(productId) {
+  localStorage.setItem("basketItems", JSON.stringify(shoppingBasketItems));
+
+}
+function deleteLocalStorage() {
+
+  // const items = JSON.parse(localStorage.getItem("basketItems"));
+  // const filtered = items.filter(item => item.id !== productId);
+  // localStorage.setItem('items', JSON.stringify(filtered));
+
+  localStorage.removeItem("basketItems");
+}
+
+//#endregion
+
+//#region quantityInput
+
+function addQuantityInputToProdutsCart(productId, count) {
+
+  let quantityInput = `
+  <div class="shopping_cart_button d-flex justify-content-center align-items-center" >
+
+
+
+   <button type="button" class="btn btn-outline-info " onclick="increment('${productId}')">
    +
    </button>
 
-   <input type="text" class="input_number"  value="${count} " >
+   <input type="text" class="input_number mr-2 ml-2" data-productId="${productId}"  value="${count} " >
 
-   <button type="button" class="btn btn-outline-info mr-2" onclick="decrement('${productId}')">
+   <button type="button" class="btn btn-outline-info " onclick="decrement('${productId}')">
    -
    </button>
 
@@ -93,24 +135,34 @@ function input(productId,count) {
   let card = document.getElementById(productId);
   let button = card.querySelector(".btn");
   let div = document.createElement("div");
-  div.innerHTML = inputt;
+  div.innerHTML = quantityInput;
   button.before(div);
   button.remove();
 }
-function buttonCard(productId) {
+
+function updateQuantityInputValue(productId, value) {
+  const basketItemInputs = document.querySelectorAll(
+    `[data-productId=${productId}]`
+  );
+
+  basketItemInputs.forEach((input) => {
+    input.value = value;
+  });
+}
+
+//#endregion
+
+
+function changeButton(productId) {
   let addToCartButton = "";
 
-  for (let product of shoppingBaskeItems) {
-    let productId = product.id;
-    let image = product.images;
-    let productName = product.productNames;
-    let productPrice = product.productPrice;
+  for (let product of shoppingBasketItems) {
     
-    addToCartButton = ` <a class="btn btn-primary"  onclick="onClickAddBtn('${productName}','${image}','${productPrice}',1,'${productId}')" >
+    addToCartButton = ` <a class="btn btn-primary"  onclick="onAddBasketItem('${product.productName}','${product.image}','${product.productPrice}',1,'${product.id}')" >
     افزودن به سبد خرید
     </a> `;
   }
-  input(productId);
+  addQuantityInputToProdutsCart(productId);
   let card = document.getElementById(productId);
   let buttonCard = card.querySelector(".shopping_cart_button");
   let div = document.createElement("div");
@@ -119,143 +171,58 @@ function buttonCard(productId) {
   buttonCard.remove();
 }
 
-// function buttonCard(productId) {
-
-//   let butttonCart = document.getElementById(productId);
-//   let btn = butttonCart.querySelector(".btn");
-
-//     // addToCartButton = `<a class="btn btn-primary"  onclick="onClickAddBtn()" >
-//     // افزودن به سبد خرید
-//     // </a>`;
-
-//     let div = document.createElement("div");
-//     let divv= div.appendChild(btn);
-//     // div.innerHTML = addToCartButton;
-//     divv.before(div);
-//     divv.remove();
-//   }
-
 function increment(productId) {
-  let card = document.getElementById(productId);
-  let input = card.querySelector(".input_number");
-  let currentValue = input.value.split("")[0];
-  let cart = document.getElementById("shopping_" + productId);
-  let inputCart = cart.querySelector(".input_number");
-  let currentValueCart = inputCart.value.split("")[0];
-
-  const product = shoppingBaskeItems.find((p) => {
-    return p.id === productId;
-  });
-  const productCart = shoppingBaskeItems.find((p) => {
-    return p.id === productId;
-  });
-
-  product.count = +currentValue + 1;
-  input.value = product.count;
-  productCart.count = +currentValueCart + 1;
-  inputCart.value = productCart.count;
-  
-  // cartCount.innerText = product.count;
-}
-function cartCountNumber() {
-  cartCount.innerText = shoppingBaskeItems.length;
-}
-function cartCountNumberr() {
-
-    cartCount.innerText--;
-
-
+  const product = getBasketItemById(productId);
+  product.count += 1;
+  updateQuantityInputValue(productId, product.count);
+  setBasketItemsInLocalStorage();
 }
 
 function decrement(productId) {
-  let cart = document.getElementById("shopping_" + productId);
-  let inputCart = cart.querySelector(".input_number");
-  let card = document.getElementById(productId);
-  let input = card.querySelector(".input_number");
-
-  let currentValue = input.value.split("")[0];
-  if (input.value >= 2) {
-    const product = shoppingBaskeItems.find((p) => {
-      return p.id === productId;
-    });
-    product.count = +currentValue - 1;
-    input.value = product.count;
-  } else if (input.value < 2) {
-    buttonCard(productId);
-    removeObjectWithId(shoppingBaskeItems, productId, productId);
-    cartCountNumberr();
+  const product = getBasketItemById(productId);
+  if (product.count > 1) {
+    product.count -= 1;
+    updateQuantityInputValue(productId, product.count);
+    setBasketItemsInLocalStorage();
+  }
+  else if (product.count <= 1) {
+    changeButton(productId);
+    removeBasketItem(productId);
+    calcBasketItems();
   }
 
-  let currentValueCart = inputCart.value.split("")[0];
-  if (inputCart.value >= 2) {
-    const product = shoppingBaskeItems.find((p) => {
-      return p.id === productId;
-    });
-    product.count = +currentValueCart - 1;
-    
-    inputCart.value = product.count;
-  }
 }
-function removeObjectWithId(arr, id, productId) {
+
+function getBasketItemById(productId) {
+  const product = shoppingBasketItems.find((item) => {
+    return item.id === productId;
+  });
+
+  return product;
+}
+
+
+
+function removeBasketItem(productId) {
+  const basketItem = getBasketItemById(productId);
+  shoppingBasketItems.splice(basketItem, 1);
   if (confirm("کالا از سبد خرید شما حذف خواهد شد.آیا مطمئن هستید؟")) {
-  const objWithIdIndex = arr.findIndex((p) => p.id === id);
-    arr.splice(objWithIdIndex, 1);
     const cartItem = document.getElementById("shopping_" + productId);
     cartItem.remove();
-    emptyModal();
-  }
-}
-function onClickDeleteBtn(productId) {
-  if (confirm("کالا از سبد خرید شما حذف خواهد شد.آیا مطمئن هستید؟") == true) {
-    // let cart = document.getElementById("shopping_" + productId);
-    // let inputCart = cart.querySelector(".input_number");
-    const cartItem = document.getElementById("shopping_" + productId);
-    cartItem.remove();
-    buttonCard(productId);
-    cartCountNumberr();
-    emptyModal();
     deleteLocalStorage();
+    emptyModal();
   }
-
-}
-// (function () 
-//   {
-//     // let objItems = JSON.stringify(shoppingBaskeItems);
-//     // window.localStorage.setItem("myObject", objItems);
-//     // let x = window.localStorage.getItem("myObject");
-//     // console.log(x);
-
-//     window.localStorage.setItem("myObject", JSON.stringify(shoppingBaskeItems));
-// let newObject = window.localStorage.getItem("myObject");
-//   }
-// )
-// ();
-
-
-
-// // function deleteLocalStorage(){
-// //   localStorage.removeItem("myObject");
-// // }
-
-function  setInLocalStorage(){
-  localStorage.setItem("myObject", JSON.stringify(shoppingBaskeItems));
-  // let newObject = window.localStorage.getItem("myObject");
-}
-(function(){
-  cartCountNumber();
-  const items= JSON.parse( localStorage.getItem("myObject"));
-
-  if (items) {
-    shoppingBaskeItems=items;
-    createItems();
-  }
-})();
-
-function deleteLocalStorage(){
-  
-  localStorage.removeItem("myObject");
 }
 
-function cartCountNumber(){
-  cartCount.innerText = shoppingBaskeItems.length;
+function deleteButtonInBasket(productId) {
+  if (confirm("کالا از سبد خرید شما حذف خواهد شد.آیا مطمئن هستید؟") == true) {
+    const cartItem = document.getElementById("shopping_" + productId);
+    cartItem.remove();
+    changeButton(productId);
+    deleteLocalStorage();
+    calcBasketItems();
+    emptyModal();
   }
+}
+
+

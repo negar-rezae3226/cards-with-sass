@@ -1,18 +1,8 @@
-let products;
- fetch('./assets/json/products.json') .then(x => x.json()) .then((json)=>{
-  products=json;
-  console.log(products);
- })
-
- 
-
 let modal = document.getElementById("modal");
 let cartCount = document.querySelector(".cart_count");
 let addToCartButton = "";
 let items = "";
 var shoppingBasketItems = [];
-// let dataProducts = JSON.parse(products); 
-// console.log(dataProducts);
 
 (function () {
 
@@ -36,19 +26,14 @@ function emptyModal() {
   }
 }
 
-// function onAddBasketItem(name, image, price, count, productId) {
-//   const newBasketItem = {
-//     id: productId,
-//     productName: name,
-//     image: image,
-//     count: 1,
-//     productPrice: price,
-//   };
-function onAddBasketItem(count) {
+function onAddBasketItem(name, image, price, count, productId) {
   const newBasketItem = {
+    id: productId,
+    productName: name,
+    image: image,
     count: 1,
+    productPrice: price,
   };
-
 
   shoppingBasketItems.push(newBasketItem);
 
@@ -83,6 +68,7 @@ function createBasketItems() {
         </div>
         `;
   }
+  emptyModal();
   modal.innerHTML = items;
 }
 
@@ -209,8 +195,8 @@ function removeBasketItem(productId) {
   if (confirm("کالا از سبد خرید شما حذف خواهد شد.آیا مطمئن هستید؟")) {
     const cartItem = document.getElementById("shopping_" + productId);
     cartItem.remove();
-    deleteLocalStorage();
     emptyModal();
+    deleteLocalStorage();
   }
 }
 
@@ -219,9 +205,9 @@ function deleteButtonInBasket(productId) {
     const cartItem = document.getElementById("shopping_" + productId);
     cartItem.remove();
     changeButton(productId);
-    deleteLocalStorage();
     calcBasketItems();
     emptyModal();
+    deleteLocalStorage();
   }
 }
 

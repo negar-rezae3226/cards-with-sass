@@ -16,7 +16,7 @@
 
 </head>
 
-<body onload="calcBasketItems()">
+<body>
     <div class="menubar d-flex align-items-center  justify-content-between">
         <div class="logo_menu">
             <a href="http://127.0.0.1:5500/index.html#">
@@ -139,7 +139,7 @@
 
 
             <div class="col-sm-12 col-lg-4  col-md-4">
-                <div class="card " id="1">
+                <div class="card " id="iphonId">
                     <a href="http://127.0.0.1:5500/cards-with-sass/product_details.html">
                         <img class="card-img-top " src="./assets/images/iphon13promax.jpg" alt="Card image"
                             style="width:100%"></a>
@@ -154,7 +154,7 @@
             </div>
 
             <div class="col-sm-12 col-lg-4  col-md-4">
-                <div class="card " id="2">
+                <div class="card " id="samsungId">
                     <a href="http://127.0.0.1:5500/cards-with-sass/s22ultra.html">
                         <img class="card-img-bottom" src="./assets/images/samsung-s22-ultra-rose.png" alt="Card image"
                             style="width:100%"></a>
@@ -171,7 +171,7 @@
 
             
             <div class="col-sm-12 col-lg-4  col-md-4">
-                <div class="card " id="3">
+                <div class="card " id="xiomiId">
                     <a href="http://127.0.0.1:5500/cards-with-sass/galaxyzfold.html">
                         <img class="card-img-bottom" src="./assets/images/z fold.jpg" alt="Card image"
                             style="width:100%">
@@ -353,7 +353,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="./cart.js"></script>
-    <script src="./assets/json/products.json"></script>
+    <!-- <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const el = document.querySelector(".navbar");
+            const a=document.createElement("a");
+            a.innerText="testjdskfjdsaklfjdakfjaskj"
+            el.appendChild(a)
+            // el.innerHTML="";
+            console.log("el", el)
+
+
+        });
+
+    </script> -->
 </body>
 
 </html>

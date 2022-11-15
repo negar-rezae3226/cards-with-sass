@@ -1,7 +1,7 @@
 [
      {
         "id": 1,
-        "name": "iphon 13 pro max ",
+        "name": "  iphon  13  pro max   ",
         "image": "./assets/images/iphon13promax.jpg",
         "price": 70600000,
         "productGroup": 1
@@ -22,9 +22,9 @@
     },
     {
         "id": 4,
-        "name": "Samsung S22 Ultra",
+        "name": "Xiaomi Mi 11 Ultra",
         "image": "./assets/images/mi-11-Ultra-xiaomi.jpg",
-        "price": 38900000,
+        "price": 33499000,
         "productGroup": 4
     },
     {

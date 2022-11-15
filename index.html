@@ -19,12 +19,21 @@
 <body>
     <div class="menubar d-flex align-items-center  justify-content-between">
         <div class="logo_menu">
-            <a href="http://127.0.0.1:5500/index.html#">
-                <img src="./assets/images/logo.jpg" alt="logo" class="logo "></a>
+            <a href="http://127.0.0.1:5500/index.html#" class="d-flex flex-row align-items-center decor">
+                <img src="./assets/images/logo.jpg" alt="logo" class="logo ">
+                <div class="web_name pr-2">
+                    <p class="pt-4 ">Technology</p>
+                </div>
+            </a>
         </div>
-        <div class="web_name">
-            <p class="pt-4 ">Technology</p>
-        </div>
+
+
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="جست و جو" aria-label="Search">
+            <button class="btn btn-outline-primary my-2 my-sm-0 mr-3" type="submit"> <i class="mdi mdi-magnify"></i>
+            </button>
+        </form>
+
         <div class="icon_menu d-flex flex-row ">
 
             <div class="shopping_cart">
@@ -82,7 +91,7 @@
             </div>
         </div>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#03045e;">
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#03045e;">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon "></span>
@@ -121,17 +130,57 @@
                     </a>
                 </li>
             </ul>
-
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="جست و جو" aria-label="Search">
-                <button class="btn btn-outline-primary my-2 my-sm-0 mr-3" type="submit"> <i class="mdi mdi-magnify"></i>
-                </button>
-            </form>
         </div>
-    </nav>
+    </nav>  -->
+    <div class="navbar">
+        <div class="subnav">
+            <button class="subnavbtn"><i class="mdi mdi-menu pl-2"></i>دسته بندی کالا ها</button>
+            <div class="subnav-content">
+                <div class=" d-flex align-items-center justify-content-center">
+                    <a href="#company">گوشی اپل</a>
+                    <a href="#team">گوشی سامسونگ</a>
+                    <a href="#careers">گوشی شیائومی</a>
+                    <a href="#careers">گوشی هوآوی</a>
+                    <a href="#careers">گوشی نوکیا</a>
+                </div>
 
 
-    <div class="d-flex  justify-content-center text">
+            </div>
+        </div>
+        <div class="subnav">
+            <button class="subnavbtn"><i class="mdi mdi-fire"></i>پرفروش ترین ها </button>
+            <div class="subnav-content">
+                <div class=" d-flex align-items-center justify-content-center">
+                    <a href="#company"> روز گذشته</a>
+                    <a href="#team">هفته روز گذشته</a>
+                    <a href="#careers">ماه گذشته</a>
+                </div>
+            </div>
+        </div>
+        <div class="subnav">
+            <button class="subnavbtn"><i class="mdi mdi-percent"></i> تخفیف ها و پیشنهاد ها </button>
+            <div class="subnav-content">
+                <div class=" d-flex align-items-center justify-content-center">
+                <a href="#bring">بیشترین تخفیف ها</a>
+                <a href="#package">پربازدیدترین تخفیفات</a>
+                <a href="#deliver">پیشنهادات امروز</a>
+                <a href="#express">تخفیفات شگفت انگیز</a>
+            </div>
+            </div>
+        </div>
+        <div class="subnav">
+            <button class="subnavbtn"><i class="mdi mdi-brightness-percent"></i>شگفت انگیز </button>
+        </div>
+        <div class="subnav">
+            <button class="subnavbtn"><i class="mdi mdi-advertisements"></i>تبلیغات </button>
+        </div>
+        <div class="subnav">
+            <button class="subnavbtn"><i class="mdi mdi-phone"></i> تماس با ما </button>
+        </div>
+
+    </div>
+
+    <div class="d-flex  justify-content-center text pt-5">
         <h1 class="font-weight-bold pt-5 pb-4 mr-5">جدیدترین محصولات </h1>
     </div>
 
@@ -353,8 +402,8 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- <script  src="./assets/js/card.js"></script> -->
     <script src="./assets/js/cart.js"></script>
-    <script src="./assets/js/card.js"></script>
 </body>
 
 </html>

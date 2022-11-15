@@ -26,5 +26,19 @@
         "image": "./assets/images/mi-11-Ultra-xiaomi.jpg",
         "price": 38900000,
         "productGroup": 4
+    },
+    {
+        "id": 5,
+        "name": "Huawei P50 Pocket",
+        "image": "./assets/images/Huawei-P50.jpg",
+        "price": 47999900,
+        "productGroup": 5
+    },
+    {
+        "id": 6,
+        "name": "Nokia G21 TA-1418",
+        "image": "./assets/images/nokia_G21.jpg",
+        "price": 4749000,
+        "productGroup": 6
     }
 ]

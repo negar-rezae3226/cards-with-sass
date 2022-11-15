@@ -127,6 +127,7 @@ function addQuantityInputToProdutsCart(productId, count) {
 }
 
 function updateQuantityInputValue(productId, value) {
+  const getId = document.getElementById
   const basketItemInputs = document.querySelectorAll(
     `[data-productId=${productId}]`
   );
@@ -145,7 +146,7 @@ function changeButton(productId) {
   for (let product of shoppingBasketItems) {
     
     addToCartButton = ` <a class="btn btn-primary"  onclick="onAddBasketItem('${product.productName}','${product.image}','${product.productPrice}',1,'${product.id}')" >
-    افزودن به سبد خرید
+    افزودن به سبد 
     </a> `;
   }
   addQuantityInputToProdutsCart(productId);

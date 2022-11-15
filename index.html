@@ -30,7 +30,7 @@
             <div class="shopping_cart">
 
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary cart-icon-"  onclick="emptyModal()" data-toggle="modal"
+                <button type="button" class="btn btn-primary cart-icon-" onclick="emptyModal()" data-toggle="modal"
                     data-target="#exampleModal">
                     <div class="icon ">
                         <i class="mdi mdi-cart"></i>
@@ -50,7 +50,7 @@
                                 <h5 class="modal-title container" id="exampleModalLabel">سبد خرید</h5>
                             </div>
                             <div class="modal-body" id="modal">
-   
+
 
                             </div>
                         </div>
@@ -121,24 +121,24 @@
                     </a>
                 </li>
             </ul>
-            
+
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="جست و جو" aria-label="Search">
-                <button class="btn btn-outline-primary my-2 my-sm-0 mr-3" type="submit"> <i class="mdi mdi-magnify"></i> </button>
+                <button class="btn btn-outline-primary my-2 my-sm-0 mr-3" type="submit"> <i class="mdi mdi-magnify"></i>
+                </button>
             </form>
         </div>
     </nav>
+
 
     <div class="d-flex  justify-content-center text">
         <h1 class="font-weight-bold pt-5 pb-4 mr-5">جدیدترین محصولات </h1>
     </div>
 
     <div class="container">
+        <div class="row" id="cardItems">
 
-        <div class="row">
-
-
-            <div class="col-sm-12 col-lg-4  col-md-4">
+            <!-- <div class="col-sm-12 col-lg-4  col-md-4">
                 <div class="card " id="iphonId">
                     <a href="http://127.0.0.1:5500/cards-with-sass/product_details.html">
                         <img class="card-img-top " src="./assets/images/iphon13promax.jpg" alt="Card image"
@@ -163,8 +163,8 @@
                             <h4 class="card-title my-3">Samsung S22 Ultra</h4>
                             <p class="card-text">38,900,000</p>
                             <a  class="btn btn-primary"  onclick="onAddBasketItem('Samsung S Ultra','./assets/images/samsung-s22-ultra-rose.png','38,900,000',1,'samsungId')">افزودن به سبد خرید</a>
-                            <!-- <a href="#" class="btn btn-danger mt-3" onclick="onClickDeleteBtn('Samsung S22 Ultra')">حذف از سبد خرید</a> -->
-                        </div>
+                             <a href="#" class="btn btn-danger mt-3" onclick="onClickDeleteBtn('Samsung S22 Ultra')">حذف از سبد خرید</a> -->
+            <!-- </div>
                     </div>
                 </div>
             </div>
@@ -181,12 +181,12 @@
                             <h4 class="card-title my-3">Galaxy Z Fold 4</h4>
                             <p class="card-text">60,000,000</p>
                             <a  class="btn btn-primary"  onclick="onAddBasketItem('Galaxy Z Fold 4','./assets/images/z fold.jpg','60,000,000',1, 'xiomiId')" >افزودن به سبد خرید</a>
-                            <!-- <a href="#" class="btn btn-danger mt-3" onclick="onClickDeleteBtn('Galaxy Z Fold 4')">حذف از سبد خرید</a> -->
-                        </div>
+                            <a href="#" class="btn btn-danger mt-3" onclick="onClickDeleteBtn('Galaxy Z Fold 4')">حذف از سبد خرید</a> -->
+            <!-- </div>
                     </div>
                 </div>
-            </div>
-
+            </div> -->
+            <!-- 
             <div class="col-sm-12 col-lg-4 mt-3 col-md-4">
                 <div class="card " id="zFoldId">
                     <a href="http://127.0.0.1:5500/cards-with-sass/xiomi%20mi11.html">
@@ -197,13 +197,14 @@
                             <h4 class="card-title my-3">Xiaomi 11 ultra</h4>
                             <p class="card-text">38,900,000</p>
                             <a  class="btn btn-primary"  onclick="onAddBasketItem('Xiaomi 11 ultra','./assets/images/mi-11-Ultra-xiaomi.jpg','38,900,000' ,1, 'zFoldId')" >افزودن به سبد خرید</a>
-                            <!-- <a href="#" class="btn btn-danger mt-3" onclick="onClickDeleteBtn('Xiaomi 11 ultra')">حذف از سبد خرید</a> -->
+                            <a href="#" class="btn btn-danger mt-3" onclick="onClickDeleteBtn('Xiaomi 11 ultra')">حذف از سبد خرید</a>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>   -->
 
         </div>
+
 
 
         <section class="mt-5">
@@ -352,22 +353,8 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="./cart.js"></script>
-    <!-- <script>
-
-        document.addEventListener("DOMContentLoaded", () => {
-
-            const el = document.querySelector(".navbar");
-            const a=document.createElement("a");
-            a.innerText="testjdskfjdsaklfjdakfjaskj"
-            el.appendChild(a)
-            // el.innerHTML="";
-            console.log("el", el)
-
-
-        });
-
-    </script> -->
+    <script src="./assets/js/cart.js"></script>
+    <script src="./assets/js/card.js"></script>
 </body>
 
 </html>

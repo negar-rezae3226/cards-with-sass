@@ -1,30 +1,36 @@
 let products;
+let cardItem = document.getElementById("cardItems");
+
  fetch('./assets/json/products.json') .then(x => x.json()) .then((json)=>{
   products=json;
   console.log(products);
  })
 
- 
+//  (function () {
+// createCard();
+// })();
+
+// function createCard(){
+//     debugger;
  products.forEach((product) => {
 
     items += `
-      <div class="shopping_cart_item" id="shopping_${product.id}">
-      <div class="d-flex flex-row align-items-center justify-content-between pt-2">
-          <div 
-              class="cart_text_item d-flex flex-nowrap justify-content-center align-items-center">
-              <img src="${product.image}" alt="mobile"
-                  class="logo pl-2">
-              <p class="shopping_cart_text">${product.name}</p>
-          </div>
-          <p class="shopping_cart_text">${product.price}</p>
-          <div
-              class="shopping_cart_button d-flex justify-content-center align-items-center">
-              <button type="button" class="btn btn-outline-info ml-2"  onclick="increment('${product[key]}')">+</button>
-              <input type="text" class="input_number" data-productId="${product[key]}"  value="${product.count}" >
-              <button type="button" class="btn btn-outline-info mr-2" onclick="decrement('${product[key]}')">-</button>
-          </div>
-          <button class=" btn-danger btn-sm float-right mr-3 delete"   onclick="deleteButtonInBasket('${product[key]}')">X</button>
-      </div>
-      </div>
+          <div class="col-sm-12 col-lg-4  col-md-4">
+                <div class="card " id="${product.id}">
+                    <a href="http://127.0.0.1:5500/cards-with-sass/product_details.html">
+                        <img class="card-img-top " src="${product.image}" alt="Card image" style="width:100%">
+                    </a>
+                    <div class="card-body">
+                        <div class="description">
+                            <h4 class="card-title my-3">${product.name}</h4>
+                            <p class="card-text">${product.price}</p>
+                            <a   class="btn btn-primary"   onclick="onAddBasketItem('${product.name}','${product.image}','${product.price}',1, '${product.id}')" >افزودن به سبد خرید</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
       `;
   });
+  cardItem.innerHTML = items;
+  console.log(items
+    );

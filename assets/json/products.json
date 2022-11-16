@@ -14,13 +14,6 @@
         "productGroup": 2
     },
     {
-        "id": 3,
-        "name": "Galaxy Z Fold 4",
-        "image": "./assets/images/z fold.jpg",
-        "price": 60000000,
-        "productGroup": 3
-    },
-    {
         "id": 4,
         "name": "Xiaomi Mi 11 Ultra",
         "image": "./assets/images/mi-11-Ultra-xiaomi.jpg",
@@ -40,5 +33,12 @@
         "image": "./assets/images/nokia_G21.jpg",
         "price": 4749000,
         "productGroup": 6
+    },
+    {
+        "id": 3,
+        "name": "Samsung Z Fold 4",
+        "image": "./assets/images/z fold.jpg",
+        "price": 60000000,
+        "productGroup": 2
     }
 ]

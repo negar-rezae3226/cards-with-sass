@@ -4,10 +4,10 @@ let cartCount;
 let addToCartButton = "";
 let items = "";
 let cardItem = document.getElementById("cardItems");
+let phoneId = document.querySelectorAll("products-name");
+
 let dollarUS = Intl.NumberFormat("en-US");
 var shoppingBasketItems = [];
-
-
 //#region card
 (function () {
   fetch("./assets/json/products.json")
@@ -24,7 +24,6 @@ var shoppingBasketItems = [];
 })();
 
 function createCard() {
-
   products.forEach((product) => {
     let price = product.price;
     let dollarUSLocale = Intl.NumberFormat("en-US");
@@ -49,11 +48,10 @@ function createCard() {
         `;
 
     cardItem.innerHTML = items;
-    
   });
-  
+
   initCart();
-} 
+}
 //#endregion
 
 //#region GlobalParamtres
@@ -72,29 +70,23 @@ function initCart() {
 }
 
 function setGlobalParamtres() {
-
   modal = document.getElementById("modal");
   cartCount = document.querySelector(".cart_count");
-
 }
 //#endregion
 
 //#region eptyModal
 function emptyModal() {
-
   if (shoppingBasketItems.length == 0) {
-
     modal.innerHTML =
       ' <p class="modaltext mt-5">سبد خرید شما خالی است!</p><p class="modaltext2">می‌توانید برای مشاهده محصولات بیشتر به صفحه <a href="/cards-with-sass">محصولات</a> بروید.</p>';
-  
-    }
+  }
 }
 //#endregion
 
 //#region Basket
 
 function onAddBasketItem(name, image, price, count, productId) {
-
   const newBasketItem = {
     id: productId,
     productName: name,
@@ -109,7 +101,6 @@ function onAddBasketItem(name, image, price, count, productId) {
   calcBasketItems();
   addQuantityInputToProdutsCart(productId, count);
   setBasketItemsInLocalStorage();
-
 }
 
 function createBasketItems() {
@@ -220,7 +211,6 @@ function addQuantityInputToProdutsCart(productId, count) {
 }
 
 function updateQuantityInputValue(productId, value) {
-  debugger;
   const productInputs = document.querySelectorAll(`[data-productId]`);
   let basketItemInputs = [];
   productInputs.forEach((item) => {
@@ -273,4 +263,16 @@ function decrement(productId) {
     calcBasketItems();
   }
 }
+//#endregion
+
+//#region menu
+
+for (let i = 0 ; i < products.length ; i++) {
+  debugger
+  items += `
+    <a href="#">${products[i].name}</a>
+  `;
+   phoneId.appendChild(items);                                                        
+}
+
 //#endregion

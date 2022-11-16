@@ -1,0 +1,74 @@
+[
+    {
+        "id": "1",
+        "name": "گوشی آیفون",
+        "subGroups":[
+            {
+                "id": "11",
+                "name": "iphon 13 pro max"
+            }
+
+        ]
+    },
+    {
+        "id": "2",
+        "name": "گوشی سامسونگ",
+        "subGroups":[
+            {
+                "id": "21",
+                "name": "Samsung S22 Ultra"
+            },
+            {
+                "id": "22",
+                "name": "Galaxy Z Fold 4"
+            }
+
+        ]
+    },
+    {
+        "id": "4",
+        "name": "گوشی شیائومی",
+        "subGroups":[
+            {
+                "id": "41",
+                "name": "Xiaomi Mi 11 Ultra"
+            }
+
+        ]
+    },
+    {
+        "id": "5",
+        "name": "گوشی هوآوی",
+        "subGroups":[
+            {
+                "id": "51",
+                "name": "Huawei P50 Pocket"
+            }
+
+        ]
+    },
+    {
+        "id": "6",
+        "name": "گوشی نوکیا",
+        "subGroups":[
+            {
+                "id": "6",
+                "name": "Nokia G21 TA-1418"
+            }
+
+        ]
+    },
+    {
+        "id": "1",
+        "name": "گوشی آیفون",
+        "subGroups":[
+            {
+                "id": "1",
+                "name": "iphon 13 pro max"
+            }
+
+        ]
+    }
+
+
+]

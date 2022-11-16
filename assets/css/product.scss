@@ -20,12 +20,12 @@ $medium_fontsize: 17px;
   justify-content: center;
   align-items: center;
 }
+
 body {
   background-color: $primary;
   direction: rtl;
   font-family: Vazirmatn;
   margin: 0;
-  
 }
 .menu {
   display: flex;
@@ -284,111 +284,3 @@ body {
 }
 
 .navbar .megamenu{ padding: 1rem; }
-
-/* ============ desktop view ============ */
-@media all and (min-width: 992px) {
-
-  .navbar .has-megamenu{position:static!important;}
-  .navbar .megamenu{left:0; right:0; width:100%; margin-top:0;  }
-
-}	
-/* ============ desktop view .end// ============ */
-
-/* ============ mobile view ============ */
-@media(max-width: 991px){
-  .navbar.fixed-top .navbar-collapse, .navbar.sticky-top .navbar-collapse{
-    overflow-y: auto;
-      max-height: 90vh;
-      margin-top:10px;
-  }
-}
-/* ============ mobile view .end// ============ */
-
-
-
- 
-nav ul li:hover > ul {
-	display: block;
-}
-
-
-nav ul:after {
-	content: "";
-	clear: both;
-	display: block;
-}
-
-nav ul {
-	background: $titr;
-	box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
-	padding: 0 0px;
-	list-style: none;
-	position: relative;
-	display: inline-table;
-  width: 100%;
-
-}
-nav ul:after {
-	content: "";
-	clear: both;
-	display: block;
-}
-
-nav ul li {
-	float: right;
-	position: relative;
-	font-weight: bold;
-}
-
-nav ul li:hover {
-	background: #5fa8d3;
-}
-
-nav ul li:hover a {
-	color: #fff;
-  text-decoration: none;
-}
-
-nav ul li a {
-	display: block;
-	padding: 15px 32px;
-	color: #4e4e4e;
-	text-decoration: none;
-  
-}
-
-nav ul ul {
-	display: none;
-	background: #5fa8d3;
-	border-radius: 0px;
-	padding: 0;
-	position: absolute;
-	top: 100%;
-	right: 0;
-	width: 200px;
-}
-nav ul ul li {
-	float: none;
-	border-top: 1px solid #5fa8d3;
-	border-bottom: 1px solid #5fa8d3;
-	position: relative;
-}
-nav ul ul li a {
-	padding: 15px 20px;
-	color: #fff;
-}	
-nav ul ul li a:hover {
-	background: $secondary;
-}
-
-nav ul ul ul {
-	position: absolute;
-	right: 100%;
-	top:0;
-}
-
-nav ul ul ul {
-	position: absolute;
-	right: 100%;
-	top:0;
-}

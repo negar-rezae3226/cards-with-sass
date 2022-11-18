@@ -283,4 +283,63 @@ body {
 
 .navbar .megamenu {
   padding: 1rem;
+}
+
+/* ============ desktop view ============ */
+@media all and (min-width: 992px) {
+  .navbar .has-megamenu {
+    position: static !important;
+  }
+  .navbar .megamenu {
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin-top: 0;
+  }
+}
+/* ============ desktop view .end// ============ */
+/* ============ mobile view ============ */
+@media (max-width: 991px) {
+  .navbar.fixed-top .navbar-collapse, .navbar.sticky-top .navbar-collapse {
+    overflow-y: auto;
+    max-height: 90vh;
+    margin-top: 10px;
+  }
+}
+/* ============ mobile view .end// ============ */
+.filterDiv {
+  float: left;
+  width: 100px;
+  text-align: center;
+  display: none; /* Hidden by default */
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+  display: block;
+}
+
+/* Style the buttons */
+.btn-filter {
+  border: none;
+  outline: none;
+  padding: 20px 25px;
+  font-size: larger;
+  background-color: #b4dfe5;
+  cursor: pointer;
+}
+
+/* Add a light grey background on mouse-over */
+.btn-filter:hover {
+  background-color: #303c6c;
+}
+
+/* Add a dark background to the active button */
+.btn-filter .active {
+  background-color: #303c6c;
+  color: white;
+}
+
+#myBtnContainer {
+  margin-right: 350px;
 }/*# sourceMappingURL=product.css.map */

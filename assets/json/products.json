@@ -1,17 +1,17 @@
 [
      {
         "id": 1,
-        "name": "  iphon  13  pro max   ",
+        "name": "  iphone  13  pro max   ",
         "image": "./assets/images/iphon13promax.jpg",
         "price": 70600000,
-        "productGroup": 1
+        "productGroup": 11
     },
     {
         "id": 2,
         "name": "Samsung S22 Ultra",
         "image": "./assets/images/samsung-s22-ultra-rose.png",
         "price": 38900000,
-        "productGroup": 2
+        "productGroup": 22
     },
     {
         "id": 4,
@@ -25,7 +25,7 @@
         "name": "Huawei P50 Pocket",
         "image": "./assets/images/Huawei-P50.jpg",
         "price": 47999900,
-        "productGroup": 5
+        "productGroup": 50
     },
     {
         "id": 6,
@@ -39,6 +39,104 @@
         "name": "Samsung Z Fold 4",
         "image": "./assets/images/z fold.jpg",
         "price": 60000000,
-        "productGroup": 2
+        "productGroup": 22
+    },
+        {
+        "id": 7,
+        "name": "Apple iPhone 13 CH",
+        "image": "./assets/images/iphone-13.jpg",
+        "price": 32389000,
+        "productGroup": 11
+    },
+        {
+        "id": 8,
+        "name": "Apple iPhone 12",
+        "image": "./assets/images/iphone-12-1-2 (1).jpg",
+        "price": 47999900,
+        "productGroup": 11
+    },
+        {
+        "id": 9,
+        "name": "Samsung  A52",
+        "image": "./assets/images/a52.jpg",
+        "price": 9590000,
+        "productGroup": 22
+    },
+        {
+        "id": 10,
+        "name": "Samsung  A73",
+        "image": "./assets/images/A73.jpg",
+        "price": 13899000,
+        "productGroup": 22
+    },
+        {
+        "id": 11,
+        "name": "Apple iPhone 11 ",
+        "image": "./assets/images/iphone-11.jpg",
+        "price": 24200000,
+        "productGroup": 11
+    },
+        {
+        "id": 12,
+        "name": "Xiaomi Note 11",
+        "image": "./assets/images/XiaomiNote11.jpg",
+        "price": 5349000,
+        "productGroup": 4
+    },
+        {
+        "id": 13,
+        "name": "Xiaomi Poco X4",
+        "image": "./assets/images/Poco-X4.jpg",
+        "price": 8749000,
+        "productGroup": 4
+    },
+        {
+        "id": 14,
+        "name": "Xiaomi 12T Pro",
+        "image": "./assets/images/xiaomi-12t.jpeg",
+        "price": 19800000,
+        "productGroup": 4
+    },
+        {
+        "id": 15,
+        "name": "Huawei Y9a",
+        "image": "./assets/images/huawei-y9a.jpg",
+        "price": 5125000,
+        "productGroup": 50
+    },
+        {
+        "id": 16,
+        "name": "Huawei nova Y70 ",
+        "image": "./assets/images/nova-y70.jpg",
+        "price": 3699000 ,
+        "productGroup": 50
+    },
+        {
+        "id": 17,
+        "name": "HUAWEI nova 9",
+        "image": "./assets/images/huawei-nova.jpg",
+        "price": 3699000,
+        "productGroup": 50
+    },
+        {
+        "id": 18,
+        "name": "Nokia C1",
+        "image": "./assets/images/nokia_C1.jpg",
+        "price": 1350000,
+        "productGroup": 6
+    },
+        {
+        "id": 19,
+        "name": "Nokia C31",
+        "image": "./assets/images/Nokia-C31.jpg",
+        "price": 4134000,
+        "productGroup": 6
+    },
+        {
+        "id": 20,
+        "name": "Nokia G20 ",
+        "image": "./assets/images/nokia_G20.jpg",
+        "price": 4300000,
+        "productGroup": 6
     }
 ]

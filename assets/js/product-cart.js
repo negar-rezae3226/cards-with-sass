@@ -31,7 +31,7 @@ function createCard() {
     let priceCards = dollarUSLocale.format(price);
 
     items += `
-            <div class="col-sm-12 col-lg-4  col-md-4 pt-5">
+            <div class="col-sm-12 col-lg-3  col-md-3 pt-5 filterDiv  ${product.productGroup}">
                   <div class="card " id="${product.id}">
                       <a href="#">
                           <img class="card-img-top " src="${product.image}" alt="Card image" style="width:100%">
@@ -75,7 +75,7 @@ function setGlobalParamtres() {
 }
 //#endregion
 
-//#region eptyModal
+//#region emptyModal
 function emptyModal() {
   if (shoppingBasketItems.length == 0) {
     modal.innerHTML =
@@ -268,10 +268,58 @@ function decrement(productId) {
 //#region menu
 
 for (let i = 0 ; i < products.length ; i++) {
+
   items += `
     <a href="#">${products[i].name}</a>
   `;
    phoneId.appendChild(items);                                                        
 }
 
+//#endregion
+
+
+//#region filter products
+
+filterSelection("all")
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("filterDiv");
+  if (c == "all") c = "";
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+  }
+}
+
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+  }
+}
+
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);     
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+// Add active class to the current button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn-filter");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += "active";
+  });
+}
 //#endregion

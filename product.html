@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>responsive_cards</title>
+    <title>محصولات</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/bootstrap-rtl.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css" />
     <link rel="shortcut icon" href="./assets/images/logo.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="./assets/css/product.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="product.css">
 
 
 </head>
@@ -180,11 +181,21 @@
 
     </div>
 
-    <div class="container">
-        <div class="row">
+    <div class="d-flex  justify-content-center text pt-5 pb-5">
+        <h1 class="font-weight-bold pt-5 pb-4 mr-5">همه محصولات موبایل </h1>
+    </div>
 
-        </div>
-        
+<div id="myBtnContainer">
+  <button class="btn-filter active" onclick="filterSelection('all')">همه محصولات</button>
+  <button class="btn-filter" onclick="filterSelection('11')">iphone</button>
+  <button class="btn-filter" onclick="filterSelection('22')">Samsung</button>
+  <button class="btn-filter" onclick="filterSelection('4')">Xiaomi</button>
+  <button class="btn-filter" onclick="filterSelection('50')">Huawei</button>
+  <button class="btn-filter" onclick="filterSelection('6')">Nokia</button>
+
+</div>
+    <div class="container">
+
         <div class="row" id="cardItems">
         </div>
 
@@ -249,7 +260,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="./assets/js/cart.js"></script>
+    <script src="./assets/js/product-cart.js"></script>
 </body>
 
 </html>

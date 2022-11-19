@@ -214,7 +214,7 @@ body {
 
 .navbar {
   overflow: hidden;
-  background-color: #b4dfe5;
+  background-color: midnightblue;
   position: unset;
   display: flex;
   flex-wrap: wrap;
@@ -226,7 +226,7 @@ body {
 .navbar a {
   float: left;
   font-size: 16px;
-  color: #303c6c;
+  color: #90e0ef;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -241,7 +241,7 @@ body {
   font-size: 16px;
   border: none;
   outline: none;
-  color: #303c6c;
+  color: #caf0f8;
   padding: 14px 16px;
   background-color: inherit;
   font-family: inherit;
@@ -249,14 +249,14 @@ body {
 }
 
 .navbar a:hover, .subnav:hover .subnavbtn {
-  background-color: #e6e6e6;
+  background-color: #43bccd;
 }
 
 .subnav-content {
   display: none;
   position: absolute;
   left: 0;
-  background-color: #e6e6e6;
+  background-color: #43bccd;
   width: 100%;
   z-index: 1;
 }
@@ -346,7 +346,7 @@ body {
 
 /* Dropup Button */
 .dropbtn {
-  background-color: #e6e6e6;
+  background-color: #43bccd;
   color: #303c6c;
   padding: 16px;
   font-size: 16px;
@@ -390,5 +390,9 @@ body {
 
 /* Change the background color of the dropup button when the dropup content is shown */
 .dropup:hover .dropbtn {
-  background-color: #b4dfe5;
+  background-color: #2980B9;
+}
+
+.filteractive {
+  background-color: #03045e;
 }/*# sourceMappingURL=product.css.map */

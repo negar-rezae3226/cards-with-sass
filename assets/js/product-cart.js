@@ -4,9 +4,10 @@ let cartCount;
 let addToCartButton = "";
 let items = "";
 let cardItem = document.getElementById("cardItems");
-
 let dollarUS = Intl.NumberFormat("en-US");
 var shoppingBasketItems = [];
+
+
 //#region card
 (function () {
   fetch("./assets/json/products.json")
@@ -267,27 +268,25 @@ function decrement(productId) {
 //#region menu
 
 // for (let i = 0; i < products.length; i++) {
-  // items += `
-  //   <a href="#">${products[i].name}</a>
-  // `;
+//   items += `
+//     <a href="#">${products[i].name}</a>
+//   `;
 //   phoneId.appendChild(items);
 // }
 
-// function createProductName() {
+function createProductName(){
 
-//   let phoneId = document.getElementById("products-id");
-//   let producs = phoneId.querySelectorAll(".dropup-content");
-//   products.forEach((product) => {
+  let phoneId = document.getElementById("products-id");
+  let producs = phoneId.querySelectorAll(".dropup-content");
+  products.forEach((product) => {
 
-//       items += `
-//     <a href="#">${product[i].name}</a>
-//   `;
+      items += `
+    <a href="#">${product[i].name}</a>
+  `;
 
-//     producs.innerHTML = items;
-//   });
-
-//   initCart();
-// }
+    producs.innerHTML = items;
+  });
+}
 
 //#endregion
 
@@ -328,13 +327,13 @@ function removeClass(element, name) {
 }
 
 // Add active class to the current button (highlight it)
-let btnContainer = document.getElementById("myBtnContainer");
-let btns = btnContainer.getElementsByClassName("btn-filter");
-for (let i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function () {
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn-filter");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
     var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace("active", "");
-    this.className += "active";
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
   });
 }
 //#endregion

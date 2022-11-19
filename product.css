@@ -391,4 +391,8 @@ body {
 /* Change the background color of the dropup button when the dropup content is shown */
 .dropup:hover .dropbtn {
   background-color: #2980B9;
+}
+
+.filteractive {
+  background-color: #03045e;
 }/*# sourceMappingURL=product.css.map */

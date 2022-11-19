@@ -4,7 +4,6 @@ let cartCount;
 let addToCartButton = "";
 let items = "";
 let cardItem = document.getElementById("cardItems");
-let phoneId = document.querySelectorAll("products-name");
 
 let dollarUS = Intl.NumberFormat("en-US");
 var shoppingBasketItems = [];
@@ -17,7 +16,7 @@ var shoppingBasketItems = [];
       console.log(products);
     });
 
-  const timeOut = setTimeout(() => {
+    const timeOut = setTimeout(() => {
     createCard();
     clearTimeout(timeOut);
   }, 100);
@@ -268,10 +267,26 @@ function decrement(productId) {
 //#region menu
 
 // for (let i = 0; i < products.length; i++) {
-//   items += `
-//     <a href="#">${products[i].name}</a>
-//   `;
+  // items += `
+  //   <a href="#">${products[i].name}</a>
+  // `;
 //   phoneId.appendChild(items);
+// }
+
+// function createProductName() {
+
+//   let phoneId = document.getElementById("products-id");
+//   let producs = phoneId.querySelectorAll(".dropup-content");
+//   products.forEach((product) => {
+
+//       items += `
+//     <a href="#">${product[i].name}</a>
+//   `;
+
+//     producs.innerHTML = items;
+//   });
+
+//   initCart();
 // }
 
 //#endregion

@@ -274,17 +274,22 @@ function decrement(productId) {
 //    phoneId.appendChild(items);                                                        
 // }
 // function createProductName() {
+//   const productGroup = document.querySelectorAll(`[data-productgroup]`);
 
 //   let phoneId = document.getElementById("products-id");
 //   let productsMenu = phoneId.querySelectorAll(".dropup-content");
-  // products.forEach((product) => {
+//   products.forEach((product) => {
 
-  //     items += `
-  //   <a href="#">${product[i].name}</a>
-  // `;
+// if (product.productGroup == productGroup) {
 
-  //   productsMenu.innerHTML = items;
-  // });
+//   items += `
+//   <a href="#">${product.name}</a>
+//   `;
+//   productsMenu.innerHTML = items;
+// }
+
+
+//   });
 // }
 
 

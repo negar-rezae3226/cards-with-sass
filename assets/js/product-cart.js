@@ -328,13 +328,13 @@ function removeClass(element, name) {
 }
 
 // Add active class to the current button (highlight it)
-let btnContainer = document.getElementById("myBtnContainer");
-let btns = btnContainer.getElementsByClassName("btn-filter");
-for (let i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function () {
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn-filter");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
     var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace("active", "");
-    this.className += "active";
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
   });
 }
 //#endregion

@@ -4,9 +4,9 @@ let cartCount;
 let addToCartButton = "";
 let items = "";
 let cardItem = document.getElementById("cardItems");
-
 let dollarUS = Intl.NumberFormat("en-US");
 var shoppingBasketItems = [];
+
 //#region card
 (function () {
   fetch("./assets/json/products.json")
@@ -16,7 +16,7 @@ var shoppingBasketItems = [];
       console.log(products);
     });
 
-    const timeOut = setTimeout(() => {
+  const timeOut = setTimeout(() => {
     createCard();
     clearTimeout(timeOut);
   }, 100);
@@ -33,7 +33,7 @@ function createCard() {
             <div class="col-sm-12 col-lg-3  col-md-3 pt-5 filterDiv  ${product.productGroup}">
                   <div class="card " id="${product.id}">
                       <a href="#">
-                          <img class="card-img-top " src="${product.image}" alt="Card image" style="width:100%">
+                          <img class="card-img-top " id="22" src="${product.image[0]}" onmouseout="this.src='${product.image[0]}'" onmouseover="this.src='${product.image[1]}'"  alt="Card image" style="width:100%" >
                       </a>
                       <div class="card-body">
                           <div class="description">
@@ -111,8 +111,7 @@ function createBasketItems() {
         <div class="d-flex flex-row align-items-center justify-content-between pt-2">
             <div 
                 class="cart_text_item d-flex flex-nowrap justify-content-center align-items-center">
-                <img src="${product.image}" alt="mobile"
-                    class="logo pl-2">
+                <img src="${product.image}" alt="mobile" class="logo pl-2">
                 <p class="shopping_cart_text">${product.productName}</p>
             </div>
             <p class="shopping_cart_text">${product.productPrice}</p>
@@ -267,33 +266,29 @@ function decrement(productId) {
 //#region menu
 
 // for (let i = 0; i < products.length; i++) {
-  // items += `
-  //   <a href="#">${products[i].name}</a>
-  // `;
+//   items += `
+//     <a href="#">${products[i].name}</a>
+//   `;
 //   phoneId.appendChild(items);
 // }
 
-// function createProductName() {
+function createProductName() {
+  let phoneId = document.getElementById("products-id");
+  let producs = phoneId.querySelectorAll(".dropup-content");
+  products.forEach((product) => {
+    items += `
+    <a href="#">${product[i].name}</a>
+  `;
 
-//   let phoneId = document.getElementById("products-id");
-//   let producs = phoneId.querySelectorAll(".dropup-content");
-//   products.forEach((product) => {
-
-//       items += `
-//     <a href="#">${product[i].name}</a>
-//   `;
-
-//     producs.innerHTML = items;
-//   });
-
-//   initCart();
-// }
+    producs.innerHTML = items;
+  });
+}
 
 //#endregion
 
 //#region filter products
 
-filterSelection("all")
+filterSelection("all");
 function filterSelection(c) {
   var x, i;
   x = document.getElementsByClassName("filterDiv");
@@ -331,10 +326,34 @@ function removeClass(element, name) {
 var btnContainer = document.getElementById("myBtnContainer");
 var btns = btnContainer.getElementsByClassName("btn-filter");
 for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function() {
+  btns[i].addEventListener("click", function () {
     var current = document.getElementsByClassName("active");
     current[0].className = current[0].className.replace(" active", "");
     this.className += " active";
   });
 }
 //#endregion
+
+// function setnewimage1() {
+//   document.getElementById("22").src = "./assets/images/iphone_13_pro.jpg";
+// }
+
+// function setoldimage1() {
+//   document.getElementById("22").src = "./assets/images/iphon13promax.jpg";
+// }
+
+
+// for (var i = 0; i < products.length; i++) {
+//   products[i].image.addEventListener('mouseover', hover);
+//   products[i].image.addEventListener('mouseout', leave);
+// }
+
+// function hover() {
+//   document.getElementById("22").src = "./assets/images/iphone_13_pro.jpg";
+// }
+
+// function leave() {
+
+//   document.getElementById("22").src = "./assets/images/iphon13promax.jpg";
+
+// }

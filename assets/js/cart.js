@@ -267,11 +267,25 @@ function decrement(productId) {
 
 //#region menu
 
-for (let i = 0 ; i < products.length ; i++) {
-  items += `
-    <a href="#">${products[i].name}</a>
-  `;
-   phoneId.appendChild(items);                                                        
-}
+// for (let i = 0 ; i < products.length ; i++) {
+//   items += `
+//     <a href="#">${products[i].name}</a>
+//   `;
+//    phoneId.appendChild(items);                                                        
+// }
+// function createProductName() {
+
+//   let phoneId = document.getElementById("products-id");
+//   let productsMenu = phoneId.querySelectorAll(".dropup-content");
+  // products.forEach((product) => {
+
+  //     items += `
+  //   <a href="#">${product[i].name}</a>
+  // `;
+
+  //   productsMenu.innerHTML = items;
+  // });
+// }
+
 
 //#endregion

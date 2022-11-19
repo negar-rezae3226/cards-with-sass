@@ -272,17 +272,17 @@ function decrement(productId) {
 //   phoneId.appendChild(items);
 // }
 
-function createProductName() {
-  let phoneId = document.getElementById("products-id");
-  let producs = phoneId.querySelectorAll(".dropup-content");
-  products.forEach((product) => {
-    items += `
-    <a href="#">${product[i].name}</a>
-  `;
+// function createProductName() {
+//   let phoneId = document.getElementById("products-id");
+//   let producs = phoneId.querySelectorAll(".dropup-content");
+//   products.forEach((product) => {
+//     items += `
+//     <a href="#">${product[i].name}</a>
+//   `;
 
-    producs.innerHTML = items;
-  });
-}
+//     producs.innerHTML = items;
+//   });
+// }
 
 //#endregion
 
@@ -333,27 +333,3 @@ for (var i = 0; i < btns.length; i++) {
   });
 }
 //#endregion
-
-// function setnewimage1() {
-//   document.getElementById("22").src = "./assets/images/iphone_13_pro.jpg";
-// }
-
-// function setoldimage1() {
-//   document.getElementById("22").src = "./assets/images/iphon13promax.jpg";
-// }
-
-
-// for (var i = 0; i < products.length; i++) {
-//   products[i].image.addEventListener('mouseover', hover);
-//   products[i].image.addEventListener('mouseout', leave);
-// }
-
-// function hover() {
-//   document.getElementById("22").src = "./assets/images/iphone_13_pro.jpg";
-// }
-
-// function leave() {
-
-//   document.getElementById("22").src = "./assets/images/iphon13promax.jpg";
-
-// }

@@ -4,10 +4,11 @@ let cartCount;
 let addToCartButton = "";
 let items = "";
 let cardItem = document.getElementById("cardItems");
-let phoneId = document.querySelectorAll("products-name");
+// let phoneId = document.querySelectorAll("products-name");
 
 let dollarUS = Intl.NumberFormat("en-US");
 var shoppingBasketItems = [];
+
 //#region card
 (function () {
   fetch("./assets/json/products.json")
@@ -15,6 +16,7 @@ var shoppingBasketItems = [];
     .then((json) => {
       products = json;
       console.log(products);
+      x();
     });
 
   const timeOut = setTimeout(() => {
@@ -31,10 +33,10 @@ function createCard() {
     let priceCards = dollarUSLocale.format(price);
 
     items += `
-            <div class="col-sm-12 col-lg-4  col-md-4 pt-5">
+            <div class="col-sm-12 col-lg-4  col-md-4 pt-5 filterDiv  ${product.productGroup}">
                   <div class="card " id="${product.id}">
                       <a href="#">
-                          <img class="card-img-top " src="${product.image}" alt="Card image" style="width:100%">
+                          <img class="card-img-top " id="22" src="${product.image[0]}" onmouseout="this.src='${product.image[0]}'" onmouseover="this.src='${product.image[1]}'"  alt="Card image" style="width:100%" >
                       </a>
                       <div class="card-body">
                           <div class="description">
@@ -274,8 +276,7 @@ function decrement(productId) {
 //    phoneId.appendChild(items);                                                        
 // }
 // function createProductName() {
-//   const productGroup = document.querySelectorAll(`[data-productgroup]`);
-
+//   const productGroup = document.querySelector('[data-productgroup]');
 //   let phoneId = document.getElementById("products-id");
 //   let productsMenu = phoneId.querySelectorAll(".dropup-content");
 //   products.forEach((product) => {
@@ -291,6 +292,37 @@ function decrement(productId) {
 
 //   });
 // }
+
+function x(){
+const productGroup = document.querySelector(".dropup-content");
+// const productGroupItems = document.querySelector('[data-productgroup  ]');
+
+// // for (let i = 0; i < products.length; i++) {
+// //   if (products[i].productGroup == productGroup) {
+
+// //     const element = products[i].name;
+// //     console.log(element);
+// //   }
+// // }
+// // }
+
+
+let x = document.createElement("a");
+let y = document.createElement("a");
+let y1 = document.createElement("a");
+let y2 = document.createElement("a");
+
+x.innerHTML = products[0].name;
+y.innerHTML = products[6].name;
+y1.innerHTML = products[7].name;
+y2.innerHTML = products[10].name;
+
+productGroup.appendChild(x);
+productGroup.appendChild(y);
+productGroup.appendChild(y1);
+productGroup.appendChild(y2);
+console.log(productGroup);
+}
 
 
 //#endregion

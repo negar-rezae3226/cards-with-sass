@@ -14,6 +14,7 @@ var shoppingBasketItems = [];
     .then((json) => {
       products = json;
       console.log(products);
+      createGroupProducts();
     });
 
   const timeOut = setTimeout(() => {
@@ -265,24 +266,23 @@ function decrement(productId) {
 
 //#region menu
 
-// for (let i = 0; i < products.length; i++) {
-//   items += `
-//     <a href="#">${products[i].name}</a>
-//   `;
-//   phoneId.appendChild(items);
-// }
+function createGroupProducts() {
+  let productsGroups = "";
+  let productsGroup = document.getElementById("products-id")
 
-// function createProductName() {
-//   let phoneId = document.getElementById("products-id");
-//   let producs = phoneId.querySelectorAll(".dropup-content");
-//   products.forEach((product) => {
-//     items += `
-//     <a href="#">${product[i].name}</a>
-//   `;
+    for (let i = 0; i <5; i++) {
+      productsGroups += `
+      <div class="dropup">
+      <button class="dropbtn">${products[i].productGroup}</button>
+      <div class="dropup-content" >
+      </div>
+      </div>
+          `;
+  
+      productsGroup.innerHTML = productsGroups ;
+    }
 
-//     producs.innerHTML = items;
-//   });
-// }
+}
 
 //#endregion
 

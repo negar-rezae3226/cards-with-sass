@@ -16,7 +16,7 @@ var shoppingBasketItems = [];
     .then((json) => {
       products = json;
       console.log(products);
-      x();
+      createGroupProducts();
     });
 
   const timeOut = setTimeout(() => {
@@ -269,10 +269,30 @@ function decrement(productId) {
 
 //#region menu
 
+function createGroupProducts() {
+  let productsGroups = "";
+  let productsGroup = document.getElementById("products-id")
+
+    for (let i = 0; i <5; i++) {
+      productsGroups += `
+      <div class="dropup">
+      <button class="dropbtn"> <a href="./productsgroup.html/?productGroup=${products[i].productGroup}"> ${products[i].productGroup} </a></button>
+      <div class="dropup-content" >
+      </div>
+      </div>
+          `;
+  
+      productsGroup.innerHTML = productsGroups ;
+    }
+
+}
+
 //#endregion
 
 //#region url
-// let url = document.URL;
-// let productsPageUrl =
+// let params = (new URL(document.location)).searchParams;
+// let groupName = params.get('productGroup');
+
 
 //#endregion
+

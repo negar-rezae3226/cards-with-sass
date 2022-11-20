@@ -4,8 +4,6 @@ let cartCount;
 let addToCartButton = "";
 let items = "";
 let cardItem = document.getElementById("cardItems");
-// let phoneId = document.querySelectorAll("products-name");
-
 let dollarUS = Intl.NumberFormat("en-US");
 var shoppingBasketItems = [];
 
@@ -16,7 +14,6 @@ var shoppingBasketItems = [];
     .then((json) => {
       products = json;
       console.log(products);
-      x();
     });
 
   const timeOut = setTimeout(() => {
@@ -33,7 +30,7 @@ function createCard() {
     let priceCards = dollarUSLocale.format(price);
 
     items += `
-            <div class="col-sm-12 col-lg-4  col-md-4 pt-5 filterDiv  ${product.productGroup}">
+            <div class="col-sm-12 col-lg-3  col-md-3 pt-5 filterDiv  ${product.productGroup}">
                   <div class="card " id="${product.id}">
                       <a href="./product_details.html/${product.name}">
                           <img class="card-img-top " id="22" src="${product.image[0]}" onmouseout="this.src='${product.image[0]}'" onmouseover="this.src='${product.image[1]}'"  alt="Card image" style="width:100%" >
@@ -77,7 +74,7 @@ function setGlobalParamtres() {
 }
 //#endregion
 
-//#region eptyModal
+//#region emptyModal
 function emptyModal() {
   if (shoppingBasketItems.length == 0) {
     modal.innerHTML =
@@ -114,8 +111,7 @@ function createBasketItems() {
         <div class="d-flex flex-row align-items-center justify-content-between pt-2">
             <div 
                 class="cart_text_item d-flex flex-nowrap justify-content-center align-items-center">
-                <img src="${product.image}" alt="mobile"
-                    class="logo pl-2">
+                <img src="${product.image}" alt="mobile" class="logo pl-2">
                 <p class="shopping_cart_text">${product.productName}</p>
             </div>
             <p class="shopping_cart_text">${product.productPrice}</p>
@@ -269,10 +265,71 @@ function decrement(productId) {
 
 //#region menu
 
+// for (let i = 0; i < products.length; i++) {
+//   items += `
+//     <a href="#">${products[i].name}</a>
+//   `;
+//   phoneId.appendChild(items);
+// }
+
+// function createProductName() {
+//   let phoneId = document.getElementById("products-id");
+//   let producs = phoneId.querySelectorAll(".dropup-content");
+//   products.forEach((product) => {
+//     items += `
+//     <a href="#">${product[i].name}</a>
+//   `;
+
+//     producs.innerHTML = items;
+//   });
+// }
+
 //#endregion
 
-//#region url
-// let url = document.URL;
-// let productsPageUrl =
+//#region filter products
 
+filterSelection("all");
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("filterDiv");
+  if (c == "all") c = "";
+  for (i = 0; i < x.length; i++) {
+    removeClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");
+  }
+}
+
+function addClass(element, name) {
+  let i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {
+      element.className += " " + arr2[i];
+    }
+  }
+}
+
+function removeClass(element, name) {
+  let i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+// Add active class to the current button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn-filter");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function () {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
 //#endregion

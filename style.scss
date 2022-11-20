@@ -339,7 +339,10 @@ body {
 }
 
 /* Change color of dropup links on hover */
-.dropup-content a:hover {background-color: #ddd}
+.dropup-content a:hover {
+  background-color: #ddd;
+  width: 100%;
+}
 
 /* Show the dropup menu on hover */
 .dropup:hover .dropup-content {
@@ -348,5 +351,5 @@ body {
 
 /* Change the background color of the dropup button when the dropup content is shown */
 .dropup:hover .dropbtn {
-  background-color: $titr;
+  background-color: #eee;
 }

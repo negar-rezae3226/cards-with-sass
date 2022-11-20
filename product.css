@@ -226,7 +226,7 @@ body {
 .navbar a {
   float: left;
   font-size: 16px;
-  color: #303c6c;
+  color: #90e0ef;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -372,15 +372,15 @@ body {
 
 /* Links inside the dropup */
 .dropup-content a {
-  color: black;
+  color: #303c6c;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
-/* Change color of dropup links on hover */
 .dropup-content a:hover {
   background-color: #ddd;
+  width: 100%;
 }
 
 /* Show the dropup menu on hover */
@@ -390,5 +390,5 @@ body {
 
 /* Change the background color of the dropup button when the dropup content is shown */
 .dropup:hover .dropbtn {
-  background-color: #b4dfe5;
+  background-color: #eee;
 }/*# sourceMappingURL=product.css.map */

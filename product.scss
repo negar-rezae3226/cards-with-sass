@@ -216,7 +216,7 @@ body {
 }
 .navbar {
   overflow: hidden;
-  background-color: $sticky_menu; 
+  background-color: $titr; 
   position: unset;
   display: flex ;
   flex-wrap: wrap ;
@@ -244,7 +244,7 @@ body {
   font-size: 16px;  
   border: none;
   outline: none;
-  color: #caf0f8;
+  color: $secondary;
   padding: 14px 16px;
   background-color: inherit;
   font-family: inherit;
@@ -252,14 +252,14 @@ body {
 }
 
 .navbar a:hover, .subnav:hover .subnavbtn {
-  background-color: #43bccd;
+  background-color: $item_border;
 }
 
 .subnav-content {
   display: none;
   position: absolute;
   left: 0;
-  background-color: #43bccd;
+  background-color: $item_border;
   width: 100%;
   z-index: 1;
 }
@@ -340,7 +340,7 @@ body {
 }
 /* Dropup Button */
 .dropbtn {
-  background-color: #43bccd;
+  background-color: $item_border;
   color: $secondary;
   padding: 16px;
   font-size: 16px;
@@ -366,14 +366,16 @@ body {
 
 /* Links inside the dropup */
 .dropup-content a {
-  color: black;
+  color: $secondary;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
-/* Change color of dropup links on hover */
-.dropup-content a:hover {background-color: #ddd}
+.dropup-content a:hover {
+  background-color: #ddd;
+  width: 100%;
+}
 
 /* Show the dropup menu on hover */
 .dropup:hover .dropup-content {
@@ -382,5 +384,5 @@ body {
 
 /* Change the background color of the dropup button when the dropup content is shown */
 .dropup:hover .dropbtn {
-  background-color: #2980B9;
+  background-color: #eee;
 }

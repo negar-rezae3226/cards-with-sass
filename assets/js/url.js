@@ -271,28 +271,32 @@ function decrement(productId) {
 
 function createGroupProducts() {
   let productsGroups = "";
-  let productsGroup = document.getElementById("products-id")
+  let productsGroup = document.getElementById("products-id");
 
-    for (let i = 0; i <5; i++) {
-      productsGroups += `
+  for (let i = 0; i < 5; i++) {
+    productsGroups += `
       <div class="dropup">
       <button class="dropbtn"> <a href="./productsgroup.html/?productGroup=${products[i].productGroup}"> ${products[i].productGroup} </a></button>
       <div class="dropup-content" >
       </div>
       </div>
           `;
-  
-      productsGroup.innerHTML = productsGroups ;
-    }
 
+    productsGroup.innerHTML = productsGroups;
+  }
 }
 
 //#endregion
 
 //#region url
-// let params = (new URL(document.location)).searchParams;
-// let groupName = params.get('productGroup');
-
-
+function url() {
+  let params = new URL(document.location).searchParams;
+  let groupName = params.get("productGroup");
+  // products.forEach((product) => {
+  // //  const found = product.find(product.productGroup => product.productGroup === groupName);
+  // });
+  let filterItems = products.filter(function (products) {
+    return products.productGroup === groupName;
+  });
+}
 //#endregion
-

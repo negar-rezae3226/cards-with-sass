@@ -5,19 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>محصولات</title>
+    <title>responsive_cards</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/bootstrap-rtl.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css" />
     <link rel="shortcut icon" href="./assets/images/logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="product.css">
 
 
 </head>
 
-<body >
+<body>
     <div class="menubar d-flex align-items-center  justify-content-between">
         <div class="logo_menu">
             <a href="http://127.0.0.1:5500/index.html#" class="d-flex flex-row align-items-center decor">
@@ -133,11 +132,115 @@
             </ul>
         </div>
     </nav>  -->
+     <!-- <div class="navbar">
+        <div class="subnav">
+            <button class="subnavbtn"><i class="mdi mdi-menu pl-2"></i>دسته بندی کالا ها</button>
+            <div class="subnav-content">
+                <div class=" d-flex align-items-center justify-content-center">
+                    <div class="subnav">
+                    <button class="subnavbtn">گوشی اپل</button>
+                    <div class="subnav-content" style="display: block;">
+                        <div class=" d-flex align-items-center justify-content-center">
+                            <a href="#company">1 </a>
+                            <a href="#team"> 2</a>
+                            <a href="#careers">3 </a>
+                            <a href="#careers">4 </a>
+                            <a href="#careers">5 </a>
+                        </div>
+                    </div>
+                    <a href="#team">گوشی سامسونگ</a>
+                    <a href="#careers">گوشی شیائومی</a>
+                    <a href="#careers">گوشی هوآوی</a>
+                    <a href="#careers">گوشی نوکیا</a>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="subnav">
+            <button class="subnavbtn"><i class="mdi mdi-fire"></i>پرفروش ترین ها </button>
+            <div class="subnav-content">
+                <div class=" d-flex align-items-center justify-content-center">
+                    <a href="#company"> روز گذشته</a>
+                    <a href="#team">هفت روز گذشته</a>
+                    <a href="#careers">ماه گذشته</a>
+                </div>
+            </div>
+        </div>
+        <div class="subnav">
+            <button class="subnavbtn"><i class="mdi mdi-percent"></i> تخفیف ها و پیشنهاد ها </button>
+            <div class="subnav-content">
+                <div class=" d-flex align-items-center justify-content-center">
+                <a href="#bring">بیشترین تخفیف ها</a>
+                <a href="#package">پربازدیدترین تخفیفات</a>
+                <a href="#deliver">پیشنهادات امروز</a>
+                <a href="#express">تخفیفات شگفت انگیز</a>
+            </div>
+            </div>
+        </div>
+        <div class="subnav">
+            <button class="subnavbtn"><i class="mdi mdi-brightness-percent"></i>شگفت انگیز </button>
+        </div>
+        <div class="subnav">
+            <button class="subnavbtn"><i class="mdi mdi-advertisements"></i>تبلیغات </button>
+        </div>
+        <div class="subnav">
+            <button class="subnavbtn"><i class="mdi mdi-phone"></i> تماس با ما </button>
+        </div>
+
+    </div>  -->
     <div class="navbar">
-        <div class="subnav" >
+        <div class="subnav">
             <button class="subnavbtn"><i class="mdi mdi-menu pl-2"></i>دسته بندی کالا ها</button>
             <div class="subnav-content">
                 <div class=" d-flex align-items-center justify-content-center" id="products-id">
+                    <div class="dropup">
+                        <button class="dropbtn">همه محصولات موبایل</button>
+                    </div>
+                    <!-- <div class="dropup">
+                      <button class="dropbtn">گوشی اپل</button>
+                      <div class="dropup-content" data-productgroup="11">
+                      </div>
+                    </div>
+
+                    <div class="dropup">
+                      <button class="dropbtn">گوشی سامسونگ</button>
+                      <div class="dropup-content" data-productgroup="22">
+                       <a href="#">Samsung S22 </a>
+                       <a href="#">Samsung Z Fold </a>
+                       <a href="#">Samsung A52</a>
+                       <a href="#">Samsung A73</a>
+                      </div>
+                    </div>
+
+                    <div class="dropup">
+                      <button class="dropbtn"> گوشی شیائومی </button>
+                      <div class="dropup-content" data-productgroup="4">
+                       <a href="#">Xiaomi Mi 11 Ultra</a>
+                       <a href="#">Xiaomi Note 11</a>
+                       <a href="#">Xiaomi Poco X4</a>
+                       <a href="#">Xiaomi 12T Pro</a>
+                      </div>
+                    </div>
+
+                    <div class="dropup">
+                      <button class="dropbtn">گوشی هوآوی</button>
+                      <div class="dropup-content" data-productgroup="50">
+                       <a href="#">Huawei P50 </a>
+                       <a href="#">Huawei Y9a</a>
+                       <a href="#">Huawei nova Y70</a>
+                       <a href="#">HUAWEI nova 9</a>
+                      </div>
+                    </div>
+
+                    <div class="dropup">
+                      <button class="dropbtn">گوشی نوکیا</button>
+                      <div class="dropup-content" data-productgroup="6">
+                       <a href="#">Nokia G21</a>
+                       <a href="#">Nokia C1</a>
+                       <a href="#">Nokia C31</a>
+                       <a href="#">Nokia G20</a>
+                      </div>
+                    </div> -->
                 </div>
 
 
@@ -176,23 +279,166 @@
 
     </div>
 
-    <div class="d-flex  justify-content-center text pt-5 pb-5">
-        <h1 class="font-weight-bold pt-5 pb-4 mr-5">همه محصولات موبایل </h1>
+    <div class="d-flex  justify-content-center text pt-5">
+        <h1 class="font-weight-bold pt-5 pb-4 mr-5">جدیدترین محصولات </h1>
     </div>
 
-<div id="myBtnContainer">
-  <button class="btn-filter active" onclick="filterSelection('all')">همه محصولات</button>
-  <button class="btn-filter" onclick="filterSelection('آیفون')">iphone</button>
-  <button class="btn-filter" onclick="filterSelection('سامسونگ')">Samsung</button>
-  <button class="btn-filter" onclick="filterSelection('شیائومی')">Xiaomi</button>
-  <button class="btn-filter" onclick="filterSelection('هوآوی')">Huawei</button>
-  <button class="btn-filter" onclick="filterSelection('نوکیا')">Nokia</button>
-
-</div>
-    <div class="container" >
-
+    <div class="container">
         <div class="row" id="cardItems">
+
+            <!-- <div class="col-sm-12 col-lg-4  col-md-4">
+                <div class="card " id="iphonId">
+                    <a href="http://127.0.0.1:5500/cards-with-sass/product_details.html">
+                        <img class="card-img-top " src="./assets/images/iphon13promax.jpg" alt="Card image"
+                            style="width:100%"></a>
+                    <div class="card-body">
+                        <div class="description">
+                            <h4 class="card-title my-3">iphon 13 pro max</h4>
+                            <p class="card-text">70,600,000</p>
+                            <a   class="btn btn-primary"   onclick="onAddBasketItem('iphon 13 promax','./assets/images/iphon13promax.jpg','70,600,000',1, 'iphonId')" >افزودن به سبد خرید</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-lg-4  col-md-4">
+                <div class="card " id="samsungId">
+                    <a href="http://127.0.0.1:5500/cards-with-sass/s22ultra.html">
+                        <img class="card-img-bottom" src="./assets/images/samsung-s22-ultra-rose.png" alt="Card image"
+                            style="width:100%"></a>
+                    <div class="card-body">
+                        <div class="description">
+                            <h4 class="card-title my-3">Samsung S22 Ultra</h4>
+                            <p class="card-text">38,900,000</p>
+                            <a  class="btn btn-primary"  onclick="onAddBasketItem('Samsung S Ultra','./assets/images/samsung-s22-ultra-rose.png','38,900,000',1,'samsungId')">افزودن به سبد خرید</a>
+                             <a href="#" class="btn btn-danger mt-3" onclick="onClickDeleteBtn('Samsung S22 Ultra')">حذف از سبد خرید</a> -->
+            <!-- </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="col-sm-12 col-lg-4  col-md-4">
+                <div class="card " id="xiomiId">
+                    <a href="http://127.0.0.1:5500/cards-with-sass/galaxyzfold.html">
+                        <img class="card-img-bottom" src="./assets/images/z fold.jpg" alt="Card image"
+                            style="width:100%">
+                    </a>
+                    <div class="card-body">
+                        <div class="description">
+                            <h4 class="card-title my-3">Galaxy Z Fold 4</h4>
+                            <p class="card-text">60,000,000</p>
+                            <a  class="btn btn-primary"  onclick="onAddBasketItem('Galaxy Z Fold 4','./assets/images/z fold.jpg','60,000,000',1, 'xiomiId')" >افزودن به سبد خرید</a>
+                            <a href="#" class="btn btn-danger mt-3" onclick="onClickDeleteBtn('Galaxy Z Fold 4')">حذف از سبد خرید</a> -->
+            <!-- </div>
+                    </div>
+                </div>
+            </div> -->
+            <!-- 
+            <div class="col-sm-12 col-lg-4 mt-3 col-md-4">
+                <div class="card " id="zFoldId">
+                    <a href="http://127.0.0.1:5500/cards-with-sass/xiomi%20mi11.html">
+                        <img class="card-img-bottom" src="./assets/images/mi-11-Ultra-xiaomi.jpg" alt="Card image"
+                            style="width:100%"></a>
+                    <div class="card-body">
+                        <div class="description">
+                            <h4 class="card-title my-3">Xiaomi 11 ultra</h4>
+                            <p class="card-text">38,900,000</p>
+                            <a  class="btn btn-primary"  onclick="onAddBasketItem('Xiaomi 11 ultra','./assets/images/mi-11-Ultra-xiaomi.jpg','38,900,000' ,1, 'zFoldId')" >افزودن به سبد خرید</a>
+                            <a href="#" class="btn btn-danger mt-3" onclick="onClickDeleteBtn('Xiaomi 11 ultra')">حذف از سبد خرید</a>
+                        </div>
+                    </div>
+                </div>
+            </div>   -->
+
         </div>
+
+
+
+        <section class="mt-5">
+            <div>
+                <h4 class="font-weight-bold   text-secondary  mb-3">پرسش های متداول</h4>
+            </div>
+
+            <div class="accordion  " id="accordionExample">
+                <div class="card">
+                    <div class="card-header " id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-right text-dark  " type="button"
+                                data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                aria-controls="collapseOne">
+                                هزینه ارسال چگونه محاسبه می شود؟
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                        data-parent="#accordionExample">
+                        <div class="card-body">
+                            هزینه ارسال بر اساس شیوه ارسال متفاوت است و در زمان ثبت سفارش نمایش داده می شود.
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-right text-dark collapsed" type="button"
+                                data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                aria-controls="collapseTwo">
+                                چطور میتوانم سفارشم را پیگیری کنم ؟
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            وارد سایت شوید، روی گزینه سفارش های من کلیک کنید و در این قسمت با کلیک روی جزییات میتوانید
+                            سفارش
+                            خود را ببینید. میتوانید در این قسمت روند آماده سازی و مراحل ارسال سفارش خود را پیگیری کنید.
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-right text-dark collapsed" type="button"
+                                data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                                aria-controls="collapseThree">
+                                شرایط گارانتی محصولات چیست؟
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                        data-parent="#accordionExample">
+                        <div class="card-body">
+                            امروزه توجه به کیفیت کالا از مهمترین وظایف فروشندگان کالا است و خدمات پس از فروش ضامن حفظ
+                            این
+                            کیفیت می باشد.
+                            در همین راستا شرکت ما مفتخر به ارائه سرویس در اسرع وقت به مشتریان گرامی می باشد.
+                            جهت سهولت در پیگیری گارانتی دستگاه خود می توانید از طریق شماره 02161930010 اقدام نمائید.
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingfour">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-right text-dark collapsed" type="button"
+                                data-toggle="collapse" data-target="#collapsefour" aria-expanded="false"
+                                aria-controls="collapseTwo">
+                                شرایط استفاده از کد تخفیف اولین خرید چیست؟
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapsefour" class="collapse" aria-labelledby="headingfour"
+                        data-parent="#accordionExample">
+                        <div class="card-body">
+                            سیستم هوشمند ما ، پس از بررسی حساب کاربری در صورتی که مالک آن مشتری جدید باشد امکان استفاده
+                            از
+                            کد تخفیف خرید اول را ایجاد می کند .
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </div>
     </div>
@@ -255,7 +501,8 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="./assets/js/url.js"></script>
+    <!-- <script  src="./assets/js/card.js"></script> -->
+    <script src="./assets/js/product-group.js"></script>
 </body>
 
 </html>

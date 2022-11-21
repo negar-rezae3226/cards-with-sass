@@ -4,10 +4,10 @@ let cartCount;
 let addToCartButton = "";
 let items = "";
 let cardItem = document.getElementById("cardItems");
+let x = [];
 // let phoneId = document.querySelectorAll("products-name");
 
 let dollarUS = Intl.NumberFormat("en-US");
-var shoppingBasketItems = [];
 
 //#region card
 (function () {
@@ -24,7 +24,6 @@ var shoppingBasketItems = [];
     clearTimeout(timeOut);
   }, 100);
 })();
-
 function createCard() {
   products.forEach((product) => {
     let price = product.price;
@@ -33,7 +32,7 @@ function createCard() {
     let priceCards = dollarUSLocale.format(price);
 
     items += `
-            <div class="col-sm-12 col-lg-4  col-md-4 pt-5 filterDiv  ${product.productGroup}">
+            <div class="col-sm-12 col-lg-3  col-md-3 pt-5 filterDiv  ${product.productGroup}">
                   <div class="card " id="${product.id}">
                       <a href="./product_details.html/${product.name}">
                           <img class="card-img-top " id="22" src="${product.image[0]}" onmouseout="this.src='${product.image[0]}'" onmouseover="this.src='${product.image[1]}'"  alt="Card image" style="width:100%" >
@@ -50,6 +49,7 @@ function createCard() {
         `;
 
     cardItem.innerHTML = items;
+
   });
 
   initCart();
@@ -276,8 +276,8 @@ function createGroupProducts() {
   for (let i = 0; i < 5; i++) {
     productsGroups += `
       <div class="dropup">
-      <button class="dropbtn"> <a href="./productsgroup.html/?productGroup=${products[i].productGroup}"> ${products[i].productGroup} </a></button>
-      <div class="dropup-content" >
+      <button class="dropbtn"> <a href="./productsgroup.html" onclick="filterProducts()"> ${products[i].productGroup} </a></button>
+      <div class="dropup-content">
       </div>
       </div>
           `;
@@ -288,15 +288,19 @@ function createGroupProducts() {
 
 //#endregion
 
-//#region url
-function url() {
-  let params = new URL(document.location).searchParams;
-  let groupName = params.get("productGroup");
-  // products.forEach((product) => {
-  // //  const found = product.find(product.productGroup => product.productGroup === groupName);
-  // });
-  let filterItems = products.filter(function (products) {
-    return products.productGroup === groupName;
-  });
+function filterProducts(){
+
 }
+
+//#region url
+// function url() {
+//   let params = new URL(document.location).searchParams;
+//   let groupName = params.get("productGroup");
+//   // products.forEach((product) => {
+//   // //  const found = product.find(product.productGroup => product.productGroup === groupName);
+//   // });
+//   let filterItems = products.filter(function (products) {
+//     return products.productGroup === groupName;
+//   });
+// }
 //#endregion

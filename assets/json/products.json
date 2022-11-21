@@ -5,6 +5,7 @@
         "image": ["./assets/images/iphon13promax.jpg" , "./assets/images/iphone_13_pro.jpg" ],
         "price": 70600000,
         "productGroup": "آیفون"
+        
     },
     {
         "id": 2,

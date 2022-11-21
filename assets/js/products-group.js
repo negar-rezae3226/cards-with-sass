@@ -29,27 +29,30 @@ function createCard() {
   products.forEach((product) => {
     let price = product.price;
     let dollarUSLocale = Intl.NumberFormat("en-US");
-
+    let urlPage = document.URL;
+    const url = new URL(urlPage);
+    let pathNamePage = url.pathname;
     let priceCards = dollarUSLocale.format(price);
-
-    items += `
-            <div class="col-sm-12 col-lg-4  col-md-4 pt-5 filterDiv  ${product.productGroup}">
-                  <div class="card " id="${product.id}">
-                      <a href="./product_details.html/${product.name}">
-                          <img class="card-img-top " id="22" src="${product.image[0]}" onmouseout="this.src='${product.image[0]}'" onmouseover="this.src='${product.image[1]}'"  alt="Card image" style="width:100%" >
-                      </a>
-                      <div class="card-body">
-                          <div class="description">
-                              <h4 class="card-title my-3">${product.name}</h4>
-                              <p class="card-text"> ${priceCards}  تومان</p>
-                              <a   class="btn btn-primary"   onclick="onAddBasketItem('${product.name}','${product.image}',${product.price},1, '${product.id}')" >افزودن به سبد </a>
-                          </div>
+    if (product.webName === pathNamePage) {
+      items += `
+        <div class="col-sm-12 col-lg-3  col-md-3 pt-5 filterDiv  ${product.productGroup}">
+              <div class="card " id="${product.id}">
+                  <a href="./product_details.html/${product.name}">
+                      <img class="card-img-top " id="22" src="${product.image[0]}" onmouseout="this.src='${product.image[0]}'" onmouseover="this.src='${product.image[1]}'"  alt="Card image" style="width:100%" >
+                  </a>
+                  <div class="card-body">
+                      <div class="description">
+                          <h4 class="card-title my-3">${product.name}</h4>
+                          <p class="card-text"> ${priceCards}  تومان</p>
+                          <a   class="btn btn-primary"   onclick="onAddBasketItem('${product.name}','${product.image}',${product.price},1, '${product.id}')" >افزودن به سبد </a>
                       </div>
                   </div>
               </div>
-        `;
+          </div>
+    `;
 
-    cardItem.innerHTML = items;
+      cardItem.innerHTML = items;
+    }
   });
 
   initCart();
@@ -178,9 +181,6 @@ function deleteButtonInBasket(productId) {
 function setBasketItemsInLocalStorage(productId) {
   localStorage.setItem("basketItems", JSON.stringify(shoppingBasketItems));
 }
-
-let x = localStorage.setItem("groupName",JSON.stringify(products[1].productGroup) );
-
 function deleteLocalStorage() {
   localStorage.removeItem("basketItems");
 }
@@ -274,28 +274,17 @@ function decrement(productId) {
 
 function createGroupProducts() {
   let productsGroups = "";
-  let productsGroup = document.getElementById("products-id")
+  let productsGroup = document.getElementById("products-id");
 
-    for (let i = 0; i <5; i++) {
-      productsGroups += `
+  for (let i = 0; i < 5; i++) {
+    productsGroups += `
       <div class="dropup">
       <button class="dropbtn"> <a href="./productsgroup.html/?productGroup=${products[i].productGroup}"> ${products[i].productGroup} </a></button>
       <div class="dropup-content" >
       </div>
       </div>
           `;
-  
-      productsGroup.innerHTML = productsGroups ;
-    }
 
+    productsGroup.innerHTML = productsGroups;
+  }
 }
-
-//#endregion
-
-//#region url
-// let params = (new URL(document.location)).searchParams;
-// let groupName = params.get('productGroup');
-
-
-//#endregion
-

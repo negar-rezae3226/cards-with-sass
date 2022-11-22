@@ -29,11 +29,11 @@ function createCard() {
   products.forEach((product) => {
     let price = product.price;
     let dollarUSLocale = Intl.NumberFormat("en-US");
-    let urlPage = document.URL;
-    const url = new URL(urlPage);
-    let pathNamePage = url.pathname;
+    // let urlPage = document.URL;
+    // const url = new URL(urlPage);
+    // let pathNamePage = url.pathname;
     let priceCards = dollarUSLocale.format(price);
-    if (product.webName === pathNamePage) {
+    // if (product.webName === pathNamePage) {
       items += `
         <div class="col-sm-12 col-lg-3  col-md-3 pt-5 filterDiv  ${product.productGroup}">
               <div class="card " id="${product.id}">
@@ -52,7 +52,7 @@ function createCard() {
     `;
 
       cardItem.innerHTML = items;
-    }
+    // }
   });
 
   initCart();

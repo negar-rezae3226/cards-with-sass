@@ -1,9 +1,7 @@
-@font-face {
-  font-family: "sahel";
-  src: url("assets/font/sahel-font-v1.0.0-alpha14/Sahel.ttf") format("truetype"), url("assets/font/sahel-font-v1.0.0-alpha14/Sahel.woff") format("woff"), url("assets/font/sahel-font-v1.0.0-alpha14/Sahel.woff2") format("woff2");
-}
+@import url("assets/font/Vazir/Vazirmatn-font-face.css");
 body {
   background-color: white;
+  font-family: Vazirmatn;
 }
 
 @media only screen and (max-width: 480px) {
@@ -49,6 +47,7 @@ body {
 .product_img {
   height: 400px;
   width: 400px;
+  border-radius: 85px;
 }
 
 .product_summary {
@@ -111,14 +110,14 @@ body {
 }
 
 .product_text, .product_features i {
+  text-align: center;
   padding-right: 5px;
   color: #303c6c;
   font-size: 18px;
 }
 
 .Specification_item {
-  display: flex;
-  align-items: center;
+
   padding-bottom: 5px;
 }
 

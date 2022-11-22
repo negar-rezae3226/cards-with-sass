@@ -85,6 +85,13 @@ body {
   color: #303c6c;
   font-size: large;
 }
+.text-del{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #6c757d;
+  font-size: large; 
+}
 
 .description {
   display: flex;
@@ -354,4 +361,8 @@ body {
 /* Change the background color of the dropup button when the dropup content is shown */
 .dropup:hover .dropbtn {
   background-color: #eee;
+}
+
+.card .card-img-top {
+  height: 250px;
 }/*# sourceMappingURL=style.css.map */

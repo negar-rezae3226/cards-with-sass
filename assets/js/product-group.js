@@ -4,11 +4,8 @@ let cartCount;
 let addToCartButton = "";
 let items = "";
 let cardItem = document.getElementById("cardItems");
-let x = [];
-// let phoneId = document.querySelectorAll("products-name");
-
 let dollarUS = Intl.NumberFormat("en-US");
-
+var shoppingBasketItems = [];
 //#region card
 (function () {
   fetch("./assets/json/products.json")
@@ -24,12 +21,13 @@ let dollarUS = Intl.NumberFormat("en-US");
     clearTimeout(timeOut);
   }, 100);
 })();
+
 function createCard() {
   products.forEach((product) => {
     let price = product.price;
     let dollarUSLocale = Intl.NumberFormat("en-US");
-
     let priceCards = dollarUSLocale.format(price);
+if (product.productGroup =='آیفون') {
 
     items += `
             <div class="col-sm-12 col-lg-3  col-md-3 pt-5 filterDiv  ${product.productGroup}">
@@ -49,7 +47,7 @@ function createCard() {
         `;
 
     cardItem.innerHTML = items;
-
+    }
   });
 
   initCart();
@@ -63,6 +61,7 @@ function initCart() {
   calcBasketItems();
 
   if (items) {
+    debugger;
     shoppingBasketItems = items;
     createBasketItems();
     shoppingBasketItems.forEach((item) => {
@@ -178,6 +177,12 @@ function deleteButtonInBasket(productId) {
 function setBasketItemsInLocalStorage(productId) {
   localStorage.setItem("basketItems", JSON.stringify(shoppingBasketItems));
 }
+
+let x = localStorage.setItem(
+  "groupName",
+  JSON.stringify(products[1].productGroup)
+);
+
 function deleteLocalStorage() {
   localStorage.removeItem("basketItems");
 }
@@ -268,7 +273,6 @@ function decrement(productId) {
 //#endregion
 
 //#region menu
-
 function createGroupProducts() {
   let productsGroups = "";
   let productsGroup = document.getElementById("products-id");
@@ -276,7 +280,7 @@ function createGroupProducts() {
   for (let i = 0; i < 5; i++) {
     productsGroups += `
       <div class="dropup">
-      <button class="dropbtn"> <a href="./productsgroup.html" onclick="filterProducts()"> ${products[i].productGroup} </a></button>
+      <button class="dropbtn"> <a onclick="goProductGroup('${products[i].productGroup}')"> ${products[i].productGroup} </a></button>
       <div class="dropup-content">
       </div>
       </div>
@@ -286,21 +290,19 @@ function createGroupProducts() {
   }
 }
 
-//#endregion
-
-function filterProducts(){
-
+function goProductGroup(productGroupName) {
+  localStorage.setItem("productGroupNameSelected", productGroupName);
+  window.location.replace("http://127.0.0.1:5500/productsgroup.html");
+  // MyApp.productGroup = JSON.parse(localStorage.getItem("productGroupNameSelected"));
+  // localStorage.removeItem("productGroupNameSelected");
+  // const items = JSON.parse(localStorage.getItem("productGroupNameSelected"));
+  // pro = items;
 }
 
+//#endregion
+
 //#region url
-// function url() {
-//   let params = new URL(document.location).searchParams;
-//   let groupName = params.get("productGroup");
-//   // products.forEach((product) => {
-//   // //  const found = product.find(product.productGroup => product.productGroup === groupName);
-//   // });
-//   let filterItems = products.filter(function (products) {
-//     return products.productGroup === groupName;
-//   });
-// }
+// let params = (new URL(document.location)).searchParams;
+// let groupName = params.get('productGroup');
+
 //#endregion

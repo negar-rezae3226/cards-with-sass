@@ -19,7 +19,6 @@ var shoppingBasketItems = [];
       // createGroupProducts();
       createCard();
     });
-
 })();
 
 function createCard() {
@@ -39,7 +38,7 @@ function createCard() {
                           <div class="description">
                               <h6 class="card-title my-3">${product.title}</h6>
                               <p class="card-text"> $ ${priceCards}</p>
-                              <a   class="btn btn-primary"   onclick="onAddBasketItem('${product.title}','${product.images}',${priceCards},1, '${product.id}')" >افزودن به سبد </a>
+                              <a  class="btn btn-primary"   onclick="onAddBasketItem('${product.title}','${product.images}',${priceCards},1, '${product.id}')" >افزودن به سبد </a>
                           </div>
                       </div>
                   </div>
@@ -74,7 +73,7 @@ function setGlobalParamtres() {
 }
 //#endregion
 
-//#region eptyModal
+//#region emptyModal
 function emptyModal() {
   if (shoppingBasketItems.length == 0) {
     modal.innerHTML =
@@ -124,7 +123,7 @@ function createBasketItems() {
         </div>
         </div>
         `;
-      });
+  });
   emptyModal();
   modal.innerHTML = items;
 }

@@ -279,7 +279,7 @@ function createGroupProducts() {
     for (let i = 0; i <5; i++) {
       productsGroups += `
       <div class="dropup">
-      <button class="dropbtn"> <a href="./productsgroup.html/?productGroup=${products[i].productGroup}"> ${products[i].productGroup} </a></button>
+      <button class="dropbtn"> <a href="./productsgroup.html" > ${products[i].productGroup} </a></button>
       <div class="dropup-content" >
       </div>
       </div>

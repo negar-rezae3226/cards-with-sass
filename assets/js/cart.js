@@ -4,24 +4,45 @@ let cartCount;
 let addToCartButton = "";
 let items = "";
 let cardItem = document.getElementById("cardItems");
+let searchInput = document.getElementById("search-products");
+let buttonSearch = document.getElementById("button-search");
 // let phoneId = document.querySelectorAll("products-name");
-
+let url = "https://dummyjson.com/products";
 let dollarUS = Intl.NumberFormat("en-US");
 var shoppingBasketItems = [];
 
 //#region cardproducts
-(function () {
-  fetch("https://dummyjson.com/products")
+
+searchInput.addEventListener("change", (event) => {
+  searchProducts(event.target.value);
+});
+
+getAllProducts();
+
+function searchProducts(searchText) {
+  fetch(url + `/search?q=${searchText}`)
     .then((res) => res.json())
     .then((json) => {
       allProducts = json.products;
       console.log(allProducts);
-      // createGroupProducts();
       createCard();
     });
-})();
+}
+
+function getAllProducts() {
+  fetch(url)
+    .then((res) => res.json())
+    .then((json) => {
+      allProducts = json.products;
+      console.log(allProducts);
+      createCard();
+    });
+}
 
 function createCard() {
+
+  cardItem.innerHTML = "";
+  items = "";
   allProducts.forEach((product) => {
     let price = product.price;
     let dollarUSLocale = Intl.NumberFormat("en-US");

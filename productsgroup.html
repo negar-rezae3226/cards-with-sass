@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>گروه محصولات</title>
+    <title>محصولات</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/bootstrap-rtl.min.css">
     <link rel="stylesheet"
@@ -29,9 +29,9 @@
 
 
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="جست و جو" aria-label="Search">
-            <button class="btn btn-outline-primary my-2 my-sm-0 mr-3" type="submit"> <i class="mdi mdi-magnify"></i>
-            </button>
+            <input class="form-control mr-sm-2"  type="search" placeholder="جست و جو" id="search-products" aria-label="Search">
+            <a class="btn btn-outline-primary my-2 my-sm-0 mr-3"   id="button-search"> <i class="mdi mdi-magnify"></i>
+            </a>
         </form>
 
         <div class="icon_menu d-flex flex-row ">
@@ -193,9 +193,9 @@
             <button class="subnavbtn"><i class="mdi mdi-menu pl-2"></i>دسته بندی کالا ها</button>
             <div class="subnav-content">
                 <div class=" d-flex align-items-center justify-content-center" id="products-id">
-                    <div class="dropup">
+                    <!-- <div class="dropup">
                         <button class="dropbtn">همه محصولات موبایل</button>
-                    </div>
+                    </div> -->
                     <!-- <div class="dropup">
                       <button class="dropbtn">گوشی اپل</button>
                       <div class="dropup-content" data-productgroup="11">
@@ -354,7 +354,6 @@
         </div>
 
 
-
         <section class="mt-5">
             <div>
                 <h4 class="font-weight-bold   text-secondary  mb-3">پرسش های متداول</h4>
@@ -501,8 +500,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <!-- <script  src="./assets/js/card.js"></script> -->
-    <script src="./assets/js/product-group.js"></script>
+    <script src="./assets/js/products-group.js"></script>
 </body>
 
 </html>

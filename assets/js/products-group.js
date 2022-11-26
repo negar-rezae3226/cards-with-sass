@@ -24,7 +24,7 @@ allProductsCategories();
 
 
 function getAllProducts() {
-  fetch(url)
+  fetch('https://dummyjson.com/products/category/' + `${getProductsGroup} `)
     .then((res) => res.json())
     .then((json) => {
       allProducts = json.products;
@@ -60,7 +60,6 @@ function createCard() {
     let dollarUSLocale = Intl.NumberFormat("en-US");
 
     let priceCards = dollarUSLocale.format(price);
-if (getProductsGroup === product.category) {
     items += `
             <div class="col-sm-12 col-lg-4  col-md-4 pt-5 filterDiv  ${product.brand}">
                   <div class="card" id="${product.id}">
@@ -79,7 +78,6 @@ if (getProductsGroup === product.category) {
         `;
 
     cardItem.innerHTML = items;
-}
   });
 
   initCart();

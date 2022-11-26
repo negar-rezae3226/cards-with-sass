@@ -318,9 +318,6 @@ function createGroupProducts() {
 function goProductGroup(productGroupName){
   localStorage.setItem("productGroupNameSelected",productGroupName);
   window.location.replace("http://127.0.0.1:5500/productsgroup.html");
-  // localStorage.removeItem("productGroupNameSelected");
-  const items = JSON.parse(localStorage.getItem("productGroupNameSelected"));
-  pro = items;
 }
 
 //#endregion

@@ -1,65 +1,45 @@
 let modal;
-let allProducts;
+let products;
 let cartCount;
 let addToCartButton = "";
 let items = "";
 let cardItem = document.getElementById("cardItems");
-let searchInput = document.getElementById("search-products");
-let buttonSearch = document.getElementById("button-search");
-// let phoneId = document.querySelectorAll("products-name");
-let url = "https://dummyjson.com/products";
 let dollarUS = Intl.NumberFormat("en-US");
 var shoppingBasketItems = [];
-
-//#region cardproducts
-
-searchInput.addEventListener("change", (event) => {
-  searchProducts(event.target.value);
-});
-
-getAllProducts();
-
-function searchProducts(searchText) {
-  fetch(url + `/search?q=${searchText}`)
-    .then((res) => res.json())
+//#region card
+(function () {
+  fetch("./assets/json/products.json")
+    .then((x) => x.json())
     .then((json) => {
-      allProducts = json.products;
-      console.log(allProducts);
-      createCard();
+      products = json;
+      console.log(products);
+      createGroupProducts();
     });
-}
 
-function getAllProducts() {
-  fetch(url)
-    .then((res) => res.json())
-    .then((json) => {
-      allProducts = json.products;
-      console.log(allProducts);
-      createCard();
-    });
-}
+  const timeOut = setTimeout(() => {
+    createCard();
+    clearTimeout(timeOut);
+  }, 100);
+})();
 
 function createCard() {
-
-  cardItem.innerHTML = "";
-  items = "";
-  allProducts.forEach((product) => {
+  products.forEach((product) => {
     let price = product.price;
     let dollarUSLocale = Intl.NumberFormat("en-US");
-
     let priceCards = dollarUSLocale.format(price);
+if (product.productGroup =='آیفون') {
 
     items += `
-            <div class="col-sm-12 col-lg-4  col-md-4 pt-5 filterDiv  ${product.brand}">
-                  <div class="card" id="${product.id}">
-                      <a href="#">
-                          <img class="card-img-top" src="${product.images[0]}" onmouseout="this.src='${product.images[0]}'" onmouseover="this.src='${product.images[1]}'"  alt="Card image" style="width:100%" >
+            <div class="col-sm-12 col-lg-3  col-md-3 pt-5 filterDiv  ${product.productGroup}">
+                  <div class="card " id="${product.id}">
+                      <a href="./product_details.html/${product.name}">
+                          <img class="card-img-top " id="22" src="${product.image[0]}" onmouseout="this.src='${product.image[0]}'" onmouseover="this.src='${product.image[1]}'"  alt="Card image" style="width:100%" >
                       </a>
                       <div class="card-body">
                           <div class="description">
-                              <h6 class="card-title my-3">${product.title}</h6>
-                              <p class="card-text"> $ ${priceCards}</p>
-                              <a  class="btn btn-primary"   onclick="onAddBasketItem('${product.title}','${product.images}',${priceCards},1, '${product.id}')" >افزودن به سبد </a>
+                              <h4 class="card-title my-3">${product.name}</h4>
+                              <p class="card-text"> ${priceCards}  تومان</p>
+                              <a   class="btn btn-primary"   onclick="onAddBasketItem('${product.name}','${product.image}',${product.price},1, '${product.id}')" >افزودن به سبد </a>
                           </div>
                       </div>
                   </div>
@@ -67,6 +47,7 @@ function createCard() {
         `;
 
     cardItem.innerHTML = items;
+    }
   });
 
   initCart();
@@ -80,6 +61,7 @@ function initCart() {
   calcBasketItems();
 
   if (items) {
+    debugger;
     shoppingBasketItems = items;
     createBasketItems();
     shoppingBasketItems.forEach((item) => {
@@ -94,7 +76,7 @@ function setGlobalParamtres() {
 }
 //#endregion
 
-//#region emptyModal
+//#region eptyModal
 function emptyModal() {
   if (shoppingBasketItems.length == 0) {
     modal.innerHTML =
@@ -124,13 +106,15 @@ function onAddBasketItem(name, image, price, count, productId) {
 
 function createBasketItems() {
   items = "";
-  shoppingBasketItems.forEach((product) => {
+
+  for (let product of shoppingBasketItems) {
     items += `
         <div class="shopping_cart_item" id="shopping_${product.id}">
         <div class="d-flex flex-row align-items-center justify-content-between pt-2">
             <div 
                 class="cart_text_item d-flex flex-nowrap justify-content-center align-items-center">
-                <img src="${product.images}" alt="mobile" class="logo pl-2">
+                <img src="${product.image}" alt="mobile"
+                    class="logo pl-2">
                 <p class="shopping_cart_text">${product.productName}</p>
             </div>
             <p class="shopping_cart_text">${product.productPrice}</p>
@@ -144,7 +128,7 @@ function createBasketItems() {
         </div>
         </div>
         `;
-  });
+  }
   emptyModal();
   modal.innerHTML = items;
 }
@@ -193,6 +177,11 @@ function deleteButtonInBasket(productId) {
 function setBasketItemsInLocalStorage(productId) {
   localStorage.setItem("basketItems", JSON.stringify(shoppingBasketItems));
 }
+
+let x = localStorage.setItem(
+  "groupName",
+  JSON.stringify(products[1].productGroup)
+);
 
 function deleteLocalStorage() {
   localStorage.removeItem("basketItems");
@@ -247,7 +236,7 @@ function changeButton(productId) {
   let addToCartButton = "";
 
   for (let product of shoppingBasketItems) {
-    addToCartButton = ` <a class="btn btn-primary"  onclick="onAddBasketItem('${product.productName}','${product.images}','${product.productPrice}',1,'${product.id}')" >
+    addToCartButton = ` <a class="btn btn-primary"  onclick="onAddBasketItem('${product.productName}','${product.image}','${product.productPrice}',1,'${product.id}')" >
     افزودن به سبد 
     </a> `;
   }
@@ -284,23 +273,31 @@ function decrement(productId) {
 //#endregion
 
 //#region menu
+function createGroupProducts() {
+  let productsGroups = "";
+  let productsGroup = document.getElementById("products-id");
 
-// function createGroupProducts() {
-//   let productsGroups = "";
-//   let productsGroup = document.getElementById("products-id");
+  for (let i = 0; i < 5; i++) {
+    productsGroups += `
+      <div class="dropup">
+      <button class="dropbtn"> <a onclick="goProductGroup('${products[i].productGroup}')"> ${products[i].productGroup} </a></button>
+      <div class="dropup-content">
+      </div>
+      </div>
+          `;
 
-//   for (let i = 0; i < 5; i++) {
-//     productsGroups += `
-//       <div class="dropup">
-//       <button class="dropbtn"> <a href="./productsgroup.html"> ${products[i].productGroup} </a></button>
-//       <div class="dropup-content" >
-//       </div>
-//       </div>
-//           `;
+    productsGroup.innerHTML = productsGroups;
+  }
+}
 
-//     productsGroup.innerHTML = productsGroups;
-//   }
-// }
+function goProductGroup(productGroupName) {
+  localStorage.setItem("productGroupNameSelected", productGroupName);
+  window.location.replace("http://127.0.0.1:5500/productsgroup.html");
+  // MyApp.productGroup = JSON.parse(localStorage.getItem("productGroupNameSelected"));
+  // localStorage.removeItem("productGroupNameSelected");
+  // const items = JSON.parse(localStorage.getItem("productGroupNameSelected"));
+  // pro = items;
+}
 
 //#endregion
 

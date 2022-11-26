@@ -1,77 +1,24 @@
 let modal;
-let allProducts;
+let ProductDetail;
 let cartCount;
 let addToCartButton = "";
 let items = "";
+let details = "";
 let cardItem = document.getElementById("cardItems");
-let searchInput = document.getElementById("search-products");
-let buttonSearch = document.getElementById("button-search");
-// let phoneId = document.querySelectorAll("products-name");
-let url = "https://dummyjson.com/products";
 let dollarUS = Intl.NumberFormat("en-US");
 var shoppingBasketItems = [];
 
-//#region cardproducts
+(function () {
 
-searchInput.addEventListener("change", (event) => {
-  searchProducts(event.target.value);
-});
-
-getAllProducts();
-
-function searchProducts(searchText) {
-  fetch(url + `/search?q=${searchText}`)
+  fetch("https://dummyjson.com/products/1")
     .then((res) => res.json())
     .then((json) => {
-      allProducts = json.products;
-      console.log(allProducts);
-      createCard();
+      ProductDetail = json;
+      console.log(ProductDetail);
+      productsDetail();
+      createSpecificationTable();
     });
-}
-
-function getAllProducts() {
-  fetch(url)
-    .then((res) => res.json())
-    .then((json) => {
-      allProducts = json.products;
-      console.log(allProducts);
-      createCard();
-    });
-}
-
-function createCard() {
-
-  cardItem.innerHTML = "";
-  items = "";
-  allProducts.forEach((product) => {
-    let price = product.price;
-    let dollarUSLocale = Intl.NumberFormat("en-US");
-
-    let priceCards = dollarUSLocale.format(price);
-
-    items += `
-            <div class="col-sm-12 col-lg-4  col-md-4 pt-5 filterDiv  ${product.brand}">
-                  <div class="card" id="${product.id}">
-                      <a href="#">
-                          <img class="card-img-top" src="${product.images[0]}" onmouseout="this.src='${product.images[0]}'" onmouseover="this.src='${product.images[1]}'"  alt="Card image" style="width:100%" >
-                      </a>
-                      <div class="card-body">
-                          <div class="description">
-                              <h6 class="card-title my-3">${product.title}</h6>
-                              <p class="card-text"> $ ${priceCards}</p>
-                              <a  class="btn btn-primary"   onclick="onAddBasketItem('${product.title}','${product.images}',${priceCards},1, '${product.id}')" >افزودن به سبد </a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-        `;
-
-    cardItem.innerHTML = items;
-  });
-
-  initCart();
-}
-//#endregion
+})();
 
 //#region GlobalParamtres
 function initCart() {
@@ -94,7 +41,92 @@ function setGlobalParamtres() {
 }
 //#endregion
 
-//#region emptyModal
+//#region producstdetail
+function productsDetail() {
+  let productDetails = document.getElementById("details");
+  // ProductDetail.forEach((product) => {
+  details = `
+<div class="product_summary row">
+<div class="md-6">
+    <img src="${ProductDetail.images[0]}" alt="iphon13promax" class="product_img">
+</div>
+<div class="md-6">
+    <div class="description_product pt-3 pr-1">
+        <p class="title_product">${ProductDetail.title}</p>
+        <p class="text_eng">${ProductDetail.description}</p>
+        <div class="product_feature">
+            <ul>
+                <li>
+                    <div class="feature_list">
+                        <p class="text_eng">فناوری صفحه‌ نمایش :</p>
+                        <p class="text">Super Retina XDR OLED</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="feature_list">
+                        <p>اندازه:</p>
+                        <p class="text">6.7</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="feature_list">
+                        <p>نسخه سیستم عامل :</p>
+                        <p class="text">iOS 15</p>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="feature_list">
+                        <p>رزولوشن عکس :</p>
+                        <p class="text">12 مگاپیکسل</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+`;
+  productDetails.innerHTML = details;
+}
+function createSpecificationTable() {
+  totalValue =Math.floor(
+    (ProductDetail.price * (100 - ProductDetail.discountPercentage)) / 100);
+  let specificationTable = document.getElementById("Specification");
+  specificationItem = `
+    <div class="product_features">
+    <div class="Specification_item border-bottom pb-2 pt-4">
+        
+        <p class="product_text"> <i class="mdi pl-1 mdi-store"></i>فروشگاه دیجیتال موبایل </p>
+    </div>
+    <div class="Specification_item border-bottom pt-3 pb-2">
+        
+        <p class="product_text"> <i class="mdi pl-1 mdi-shield-check"></i>گارانتی 18 ماهه شهر دیجیتال</p>
+    </div>
+    <div class="Specification_item border-bottom pt-3 pb-2">
+        
+        <p class="product_text"><i class="mdi pl-1 mdi-check-decagram"></i>برند ${ProductDetail.brand}</p>
+    </div>
+    <div class="Specification_item pt-3 pb-2">
+
+        <p class="product_text"> <i class="mdi pl-1 mdi-currency-usd"></i>قیمت فروشنده </p>
+        <p class="text-del"><del> ${ProductDetail.price}</del> $</p>
+        <p class="text">${totalValue} $</p>
+        
+
+    </div>
+    <a  class="btn btn-primary button-product"   onclick="onAddBasketItem('${ProductDetail.title}','${ProductDetail.images}',${ProductDetail.price},1, '${ProductDetail.id}')" >افزودن به سبد </a>
+
+
+</div>`;
+  specificationTable.innerHTML = specificationItem;
+
+  initCart();
+}
+
+//#endregion
+
+//#region eptyModal
 function emptyModal() {
   if (shoppingBasketItems.length == 0) {
     modal.innerHTML =
@@ -204,22 +236,22 @@ function deleteLocalStorage() {
 
 function addQuantityInputToProdutsCart(productId, count) {
   let quantityInput = `
-  <div class="shopping_cart_button d-flex justify-content-center align-items-center" >
-
-
-
-   <button type="button" class="btn btn-outline-info " onclick="increment('${productId}')">
-   +
-   </button>
-
-   <input type="text" class="input_number mr-2 ml-2" data-productId="${productId}"  value="${count} " >
-
-   <button type="button" class="btn btn-outline-info " onclick="decrement('${productId}')">
-   -
-   </button>
-
-   </div>
-   `;
+    <div class="shopping_cart_button d-flex justify-content-center align-items-center" >
+  
+  
+  
+     <button type="button" class="btn btn-outline-info " onclick="increment('${productId}')">
+     +
+     </button>
+  
+     <input type="text" class="input_number mr-2 ml-2" data-productId="${productId}"  value="${count} " >
+  
+     <button type="button" class="btn btn-outline-info " onclick="decrement('${productId}')">
+     -
+     </button>
+  
+     </div>
+     `;
   let card = document.getElementById(productId);
   let button = card.querySelector(".btn");
   let div = document.createElement("div");
@@ -248,8 +280,8 @@ function changeButton(productId) {
 
   for (let product of shoppingBasketItems) {
     addToCartButton = ` <a class="btn btn-primary"  onclick="onAddBasketItem('${product.productName}','${product.images}','${product.productPrice}',1,'${product.id}')" >
-    افزودن به سبد 
-    </a> `;
+      افزودن به سبد 
+      </a> `;
   }
   addQuantityInputToProdutsCart(productId);
   let card = document.getElementById(productId);
@@ -281,31 +313,4 @@ function decrement(productId) {
     calcBasketItems();
   }
 }
-//#endregion
-
-//#region menu
-
-// function createGroupProducts() {
-//   let productsGroups = "";
-//   let productsGroup = document.getElementById("products-id");
-
-//   for (let i = 0; i < 5; i++) {
-//     productsGroups += `
-//       <div class="dropup">
-//       <button class="dropbtn"> <a href="./productsgroup.html"> ${products[i].productGroup} </a></button>
-//       <div class="dropup-content" >
-//       </div>
-//       </div>
-//           `;
-
-//     productsGroup.innerHTML = productsGroups;
-//   }
-// }
-
-//#endregion
-
-//#region url
-// let params = (new URL(document.location)).searchParams;
-// let groupName = params.get('productGroup');
-
 //#endregion

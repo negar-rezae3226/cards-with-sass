@@ -4,45 +4,28 @@ let cartCount;
 let addToCartButton = "";
 let items = "";
 let cardItem = document.getElementById("cardItems");
-let searchInput = document.getElementById("search-products");
-let buttonSearch = document.getElementById("button-search");
 // let phoneId = document.querySelectorAll("products-name");
-let url = "https://dummyjson.com/products";
+
 let dollarUS = Intl.NumberFormat("en-US");
 var shoppingBasketItems = [];
 
 //#region cardproducts
-
-searchInput.addEventListener("change", (event) => {
-  searchProducts(event.target.value);
-});
-
-getAllProducts();
-
-function searchProducts(searchText) {
-  fetch(url + `/search?q=${searchText}`)
+(function () {
+  fetch("https://dummyjson.com/products")
     .then((res) => res.json())
     .then((json) => {
       allProducts = json.products;
       console.log(allProducts);
+      // createGroupProducts();
       createCard();
     });
-}
 
-function getAllProducts() {
-  fetch(url)
-    .then((res) => res.json())
-    .then((json) => {
-      allProducts = json.products;
-      console.log(allProducts);
-      createCard();
-    });
-}
+  // const timeOut = setTimeout(() => {
+  //   clearTimeout(timeOut);
+  // }, 100);
+})();
 
 function createCard() {
-
-  cardItem.innerHTML = "";
-  items = "";
   allProducts.forEach((product) => {
     let price = product.price;
     let dollarUSLocale = Intl.NumberFormat("en-US");
@@ -50,7 +33,7 @@ function createCard() {
     let priceCards = dollarUSLocale.format(price);
 
     items += `
-            <div class="col-sm-12 col-lg-4  col-md-4 pt-5 filterDiv  ${product.brand}">
+            <div class="col-sm-12 col-lg-4  col-md-4 pt-5 filterDiv  ${product.category}">
                   <div class="card" id="${product.id}">
                       <a href="#">
                           <img class="card-img-top" src="${product.images[0]}" onmouseout="this.src='${product.images[0]}'" onmouseover="this.src='${product.images[1]}'"  alt="Card image" style="width:100%" >
@@ -59,7 +42,7 @@ function createCard() {
                           <div class="description">
                               <h6 class="card-title my-3">${product.title}</h6>
                               <p class="card-text"> $ ${priceCards}</p>
-                              <a  class="btn btn-primary"   onclick="onAddBasketItem('${product.title}','${product.images}',${priceCards},1, '${product.id}')" >افزودن به سبد </a>
+                              <a   class="btn btn-primary"   onclick="onAddBasketItem('${product.title}','${product.images}',${priceCards},1, '${product.id}')" >افزودن به سبد </a>
                           </div>
                       </div>
                   </div>
@@ -94,7 +77,7 @@ function setGlobalParamtres() {
 }
 //#endregion
 
-//#region emptyModal
+//#region eptyModal
 function emptyModal() {
   if (shoppingBasketItems.length == 0) {
     modal.innerHTML =
@@ -124,7 +107,8 @@ function onAddBasketItem(name, image, price, count, productId) {
 
 function createBasketItems() {
   items = "";
-  shoppingBasketItems.forEach((product) => {
+
+  for (let product of shoppingBasketItems) {
     items += `
         <div class="shopping_cart_item" id="shopping_${product.id}">
         <div class="d-flex flex-row align-items-center justify-content-between pt-2">
@@ -144,7 +128,7 @@ function createBasketItems() {
         </div>
         </div>
         `;
-  });
+  }
   emptyModal();
   modal.innerHTML = items;
 }
@@ -304,8 +288,50 @@ function decrement(productId) {
 
 //#endregion
 
-//#region url
-// let params = (new URL(document.location)).searchParams;
-// let groupName = params.get('productGroup');
+//#region filter products
 
+filterSelection("all");
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("filterDiv");
+  if (c == "all") c = "";
+  for (i = 0; i < x.length; i++) {
+    removeClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");
+  }
+}
+
+function addClass(element, name) {
+  let i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {
+      element.className += " " + arr2[i];
+    }
+  }
+}
+
+function removeClass(element, name) {
+  let i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+// Add active class to the current button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn-filter");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function () {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
 //#endregion

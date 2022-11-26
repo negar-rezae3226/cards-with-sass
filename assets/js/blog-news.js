@@ -43,7 +43,7 @@ function createNews() {
           <span>${posts.reactions} بازدید</span>
         </div>
 
-        <div align="justify" class="pt-4" >${posts.body}</div>
+        <div align="justify" class="pt-4 text-body" >${posts.body}</div>
         <div class="pt-5 d-flex">
         <div class = "post-tags">${posts.tags[0]}</div>
         <div class = "post-tags">${posts.tags[1]}</div>

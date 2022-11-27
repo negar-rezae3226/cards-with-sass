@@ -49,6 +49,9 @@ function searchProducts(searchText) {
     });
 }
 
+//#endregion
+
+//#region createCard
 
 function createCard() {
   cardItem.innerHTML = "";
@@ -178,7 +181,7 @@ function getBasketItemById(productId) {
 function removeBasketItem(productId) {
   const basketItem = getBasketItemById(productId);
   shoppingBasketItems.splice(basketItem, 1);
-  if (confirm("کالا از سبد خرید شما حذف خواهد شد.آیا مطمئن هستید؟")) {
+  if (confirm("کالا از سبد خرید شما حذف خواهد شد.آیا مطمئن هستید؟") == true) {
     const cartItem = document.getElementById("shopping_" + productId);
     cartItem.remove();
     emptyModal();
@@ -320,5 +323,6 @@ function goProductGroup(productGroupName){
 }
 
 //#endregion
+
 
 

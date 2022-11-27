@@ -1,12 +1,13 @@
 let allUsers;
+let loginUserApi;
 let login = document.getElementById("login-form");
-// let username = document.getElementById("username").value;
-// let password = document.getElementById("password").value;
-// let email = document.getElementById("email");
 
 //#region API
-
+// loginSubmit();
 getAllUsers();
+loginUsersAPI();
+
+// console.log(username);
 
 function getAllUsers() {
   fetch("https://dummyjson.com/users")
@@ -17,28 +18,47 @@ function getAllUsers() {
     });
 }
 
+function loginUsersAPI(){
+
+  fetch('https://dummyjson.com/auth/login', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    
+    username: 'atuny0',
+    password: '9uQFF1Lh',
+  })
+})
+
+    .then((res) => res.json())
+    .then((json) => {
+      loginUserApi = json;
+      console.log(loginUserApi);
+    });
+}
+
 //#endregion
 
 //#region login
 
-function loginUser() {
+function loginSubmit() {
   let username = document.getElementById("username").value;
   let password = document.getElementById("password").value;
-  let email = document.getElementById("email").value;
 
   for (let index = 0; index < allUsers.length; index++) {
 
-    if (username === allUsers[index].username && password === allUsers[index].password && email === allUsers[index].email) {
+    if (username === allUsers[index].username && password === allUsers[index].password ) {
       
       alert("ورود شما با موفقیت انجام شد :) ");
 
       return;
     } 
-    if (username === "" ) {
-      alert('fgbgfg')
-    }
+    if (username === "" && password === "") {
+      alert("لطفا اطلاعات را وارد کنید");
+      return;
+ } 
     else {
-      alert("کاربر با این اطلاعات در سیستم ثبت نشده است");
+      alert("اطلاعات وارد شده صحیح نمی باشد");
       return;
     }
   }

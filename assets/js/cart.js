@@ -7,7 +7,6 @@ let items = "";
 let cardItem = document.getElementById("cardItems");
 let searchInput = document.getElementById("search-products");
 let buttonSearch = document.getElementById("button-search");
-// let phoneId = document.querySelectorAll("products-name");
 let url = "https://dummyjson.com/products";
 let dollarUS = Intl.NumberFormat("en-US");
 var shoppingBasketItems = [];

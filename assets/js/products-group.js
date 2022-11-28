@@ -10,7 +10,7 @@ let buttonSearch = document.getElementById("button-search");
 // let phoneId = document.querySelectorAll("products-name");
 let url = "https://dummyjson.com/products";
 let dollarUS = Intl.NumberFormat("en-US");
-let getProductsGroup = window.localStorage.getItem('productGroupNameSelected');
+let getProductsGroup = window.localStorage.getItem('productDeteilSelected');
 var shoppingBasketItems = [];
 
 //#region cardproducts

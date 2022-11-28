@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>گروه محصولات</title>
+    <title>محصولات</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/bootstrap-rtl.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css" />
     <link rel="shortcut icon" href="./assets/images/logo.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 
 
 </head>
@@ -29,9 +29,9 @@
 
 
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="جست و جو" aria-label="Search">
-            <button class="btn btn-outline-primary my-2 my-sm-0 mr-3" type="submit"> <i class="mdi mdi-magnify"></i>
-            </button>
+            <input class="form-control mr-sm-2"  type="search" placeholder="جست و جو" id="search-products" aria-label="Search">
+            <a class="btn btn-outline-primary my-2 my-sm-0 mr-3"   id="button-search"> <i class="mdi mdi-magnify"></i>
+            </a>
         </form>
 
         <div class="icon_menu d-flex flex-row ">
@@ -91,156 +91,11 @@
             </div>
         </div>
     </div>
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#03045e;">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon "></span>
-        </button>
-
-        <div class="collapse navbar-collapse navbarcollapse " id="navbarSupportedContent">
-            <ul class="navbar-nav  ml-auto ">
-                <li class="nav-item pl-2 pt-2">
-                    <a class="nav-link" href="#">
-                        <p><i class="mdi mdi-fire"></i> پرفروش ترین ها </p>
-                    </a>
-                </li>
-                <li class="nav-item pl-2 pt-2">
-                    <a class="nav-link" href="#">
-                        <p><i class="mdi mdi-percent"></i> تخفیف ها و پیشنهاد ها </p>
-                    </a>
-                </li>
-                <li class="nav-item pl-2 pt-2">
-                    <a class="nav-link" href="#">
-                        <p><i class="mdi mdi-brightness-percent"></i>شگفت انگیز </p>
-                    </a>
-                </li>
-                <li class="nav-item pl-2 pt-2">
-                    <a class="nav-link" href="#">
-                        <p><i class="mdi mdi-home"></i>خانه </p>
-                    </a>
-                </li>
-                <li class="nav-item pl-2 pt-2">
-                    <a class="nav-link" href="#">
-                        <p><i class="mdi mdi-advertisements"></i>تبلیغات </p>
-                    </a>
-                </li>
-                <li class="nav-item pl-2 pt-2">
-                    <a class="nav-link" href="http://127.0.0.1:5500/cards-with-sass/call-form.html">
-                        <p><i class="mdi mdi-phone"></i> تماس با ما </p>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>  -->
-     <!-- <div class="navbar">
-        <div class="subnav">
-            <button class="subnavbtn"><i class="mdi mdi-menu pl-2"></i>دسته بندی کالا ها</button>
-            <div class="subnav-content">
-                <div class=" d-flex align-items-center justify-content-center">
-                    <div class="subnav">
-                    <button class="subnavbtn">گوشی اپل</button>
-                    <div class="subnav-content" style="display: block;">
-                        <div class=" d-flex align-items-center justify-content-center">
-                            <a href="#company">1 </a>
-                            <a href="#team"> 2</a>
-                            <a href="#careers">3 </a>
-                            <a href="#careers">4 </a>
-                            <a href="#careers">5 </a>
-                        </div>
-                    </div>
-                    <a href="#team">گوشی سامسونگ</a>
-                    <a href="#careers">گوشی شیائومی</a>
-                    <a href="#careers">گوشی هوآوی</a>
-                    <a href="#careers">گوشی نوکیا</a>
-                </div>
-            </div>
-            </div>
-        </div>
-        <div class="subnav">
-            <button class="subnavbtn"><i class="mdi mdi-fire"></i>پرفروش ترین ها </button>
-            <div class="subnav-content">
-                <div class=" d-flex align-items-center justify-content-center">
-                    <a href="#company"> روز گذشته</a>
-                    <a href="#team">هفت روز گذشته</a>
-                    <a href="#careers">ماه گذشته</a>
-                </div>
-            </div>
-        </div>
-        <div class="subnav">
-            <button class="subnavbtn"><i class="mdi mdi-percent"></i> تخفیف ها و پیشنهاد ها </button>
-            <div class="subnav-content">
-                <div class=" d-flex align-items-center justify-content-center">
-                <a href="#bring">بیشترین تخفیف ها</a>
-                <a href="#package">پربازدیدترین تخفیفات</a>
-                <a href="#deliver">پیشنهادات امروز</a>
-                <a href="#express">تخفیفات شگفت انگیز</a>
-            </div>
-            </div>
-        </div>
-        <div class="subnav">
-            <button class="subnavbtn"><i class="mdi mdi-brightness-percent"></i>شگفت انگیز </button>
-        </div>
-        <div class="subnav">
-            <button class="subnavbtn"><i class="mdi mdi-advertisements"></i>تبلیغات </button>
-        </div>
-        <div class="subnav">
-            <button class="subnavbtn"><i class="mdi mdi-phone"></i> تماس با ما </button>
-        </div>
-
-    </div>  -->
     <div class="navbar">
         <div class="subnav">
             <button class="subnavbtn"><i class="mdi mdi-menu pl-2"></i>دسته بندی کالا ها</button>
             <div class="subnav-content">
                 <div class=" d-flex align-items-center justify-content-center" id="products-id">
-                    <div class="dropup">
-                        <button class="dropbtn">همه محصولات موبایل</button>
-                    </div>
-                    <!-- <div class="dropup">
-                      <button class="dropbtn">گوشی اپل</button>
-                      <div class="dropup-content" data-productgroup="11">
-                      </div>
-                    </div>
-
-                    <div class="dropup">
-                      <button class="dropbtn">گوشی سامسونگ</button>
-                      <div class="dropup-content" data-productgroup="22">
-                       <a href="#">Samsung S22 </a>
-                       <a href="#">Samsung Z Fold </a>
-                       <a href="#">Samsung A52</a>
-                       <a href="#">Samsung A73</a>
-                      </div>
-                    </div>
-
-                    <div class="dropup">
-                      <button class="dropbtn"> گوشی شیائومی </button>
-                      <div class="dropup-content" data-productgroup="4">
-                       <a href="#">Xiaomi Mi 11 Ultra</a>
-                       <a href="#">Xiaomi Note 11</a>
-                       <a href="#">Xiaomi Poco X4</a>
-                       <a href="#">Xiaomi 12T Pro</a>
-                      </div>
-                    </div>
-
-                    <div class="dropup">
-                      <button class="dropbtn">گوشی هوآوی</button>
-                      <div class="dropup-content" data-productgroup="50">
-                       <a href="#">Huawei P50 </a>
-                       <a href="#">Huawei Y9a</a>
-                       <a href="#">Huawei nova Y70</a>
-                       <a href="#">HUAWEI nova 9</a>
-                      </div>
-                    </div>
-
-                    <div class="dropup">
-                      <button class="dropbtn">گوشی نوکیا</button>
-                      <div class="dropup-content" data-productgroup="6">
-                       <a href="#">Nokia G21</a>
-                       <a href="#">Nokia C1</a>
-                       <a href="#">Nokia C31</a>
-                       <a href="#">Nokia G20</a>
-                      </div>
-                    </div> -->
                 </div>
 
 
@@ -280,79 +135,13 @@
     </div>
 
     <div class="d-flex  justify-content-center text pt-5">
-        <h1 class="font-weight-bold pt-5 pb-4 mr-5">جدیدترین محصولات </h1>
+        <h1 class="font-weight-bold pt-5 pb-4 mr-5">محصولات </h1>
     </div>
 
     <div class="container">
         <div class="row" id="cardItems">
 
-            <!-- <div class="col-sm-12 col-lg-4  col-md-4">
-                <div class="card " id="iphonId">
-                    <a href="http://127.0.0.1:5500/cards-with-sass/product_details.html">
-                        <img class="card-img-top " src="./assets/images/iphon13promax.jpg" alt="Card image"
-                            style="width:100%"></a>
-                    <div class="card-body">
-                        <div class="description">
-                            <h4 class="card-title my-3">iphon 13 pro max</h4>
-                            <p class="card-text">70,600,000</p>
-                            <a   class="btn btn-primary"   onclick="onAddBasketItem('iphon 13 promax','./assets/images/iphon13promax.jpg','70,600,000',1, 'iphonId')" >افزودن به سبد خرید</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-lg-4  col-md-4">
-                <div class="card " id="samsungId">
-                    <a href="http://127.0.0.1:5500/cards-with-sass/s22ultra.html">
-                        <img class="card-img-bottom" src="./assets/images/samsung-s22-ultra-rose.png" alt="Card image"
-                            style="width:100%"></a>
-                    <div class="card-body">
-                        <div class="description">
-                            <h4 class="card-title my-3">Samsung S22 Ultra</h4>
-                            <p class="card-text">38,900,000</p>
-                            <a  class="btn btn-primary"  onclick="onAddBasketItem('Samsung S Ultra','./assets/images/samsung-s22-ultra-rose.png','38,900,000',1,'samsungId')">افزودن به سبد خرید</a>
-                             <a href="#" class="btn btn-danger mt-3" onclick="onClickDeleteBtn('Samsung S22 Ultra')">حذف از سبد خرید</a> -->
-            <!-- </div>
-                    </div>
-                </div>
-            </div>
-
-            
-            <div class="col-sm-12 col-lg-4  col-md-4">
-                <div class="card " id="xiomiId">
-                    <a href="http://127.0.0.1:5500/cards-with-sass/galaxyzfold.html">
-                        <img class="card-img-bottom" src="./assets/images/z fold.jpg" alt="Card image"
-                            style="width:100%">
-                    </a>
-                    <div class="card-body">
-                        <div class="description">
-                            <h4 class="card-title my-3">Galaxy Z Fold 4</h4>
-                            <p class="card-text">60,000,000</p>
-                            <a  class="btn btn-primary"  onclick="onAddBasketItem('Galaxy Z Fold 4','./assets/images/z fold.jpg','60,000,000',1, 'xiomiId')" >افزودن به سبد خرید</a>
-                            <a href="#" class="btn btn-danger mt-3" onclick="onClickDeleteBtn('Galaxy Z Fold 4')">حذف از سبد خرید</a> -->
-            <!-- </div>
-                    </div>
-                </div>
-            </div> -->
-            <!-- 
-            <div class="col-sm-12 col-lg-4 mt-3 col-md-4">
-                <div class="card " id="zFoldId">
-                    <a href="http://127.0.0.1:5500/cards-with-sass/xiomi%20mi11.html">
-                        <img class="card-img-bottom" src="./assets/images/mi-11-Ultra-xiaomi.jpg" alt="Card image"
-                            style="width:100%"></a>
-                    <div class="card-body">
-                        <div class="description">
-                            <h4 class="card-title my-3">Xiaomi 11 ultra</h4>
-                            <p class="card-text">38,900,000</p>
-                            <a  class="btn btn-primary"  onclick="onAddBasketItem('Xiaomi 11 ultra','./assets/images/mi-11-Ultra-xiaomi.jpg','38,900,000' ,1, 'zFoldId')" >افزودن به سبد خرید</a>
-                            <a href="#" class="btn btn-danger mt-3" onclick="onClickDeleteBtn('Xiaomi 11 ultra')">حذف از سبد خرید</a>
-                        </div>
-                    </div>
-                </div>
-            </div>   -->
-
         </div>
-
 
 
         <section class="mt-5">
@@ -501,8 +290,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <!-- <script  src="./assets/js/card.js"></script> -->
-    <script src="./assets/js/product-group.js"></script>
+    <script src="./assets/js/products-group.js"></script>
 </body>
 
 </html>

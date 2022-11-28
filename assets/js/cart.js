@@ -1,12 +1,12 @@
 let modal;
 let allProducts;
+let productsCategories;
 let cartCount;
 let addToCartButton = "";
 let items = "";
 let cardItem = document.getElementById("cardItems");
 let searchInput = document.getElementById("search-products");
 let buttonSearch = document.getElementById("button-search");
-// let phoneId = document.querySelectorAll("products-name");
 let url = "https://dummyjson.com/products";
 let dollarUS = Intl.NumberFormat("en-US");
 var shoppingBasketItems = [];
@@ -18,16 +18,8 @@ searchInput.addEventListener("change", (event) => {
 });
 
 getAllProducts();
+allProductsCategories();
 
-function searchProducts(searchText) {
-  fetch(url + `/search?q=${searchText}`)
-    .then((res) => res.json())
-    .then((json) => {
-      allProducts = json.products;
-      console.log(allProducts);
-      createCard();
-    });
-}
 
 function getAllProducts() {
   fetch(url)
@@ -38,9 +30,30 @@ function getAllProducts() {
       createCard();
     });
 }
+function allProductsCategories() {
+  fetch(url + `/categories`)
+    .then((res) => res.json())
+    .then((json) => {
+      productsCategories = json;
+      console.log(productsCategories);
+      createGroupProducts();
+    });
+}
+function searchProducts(searchText) {
+  fetch(url + `/search?q=${searchText}`)
+    .then((res) => res.json())
+    .then((json) => {
+      allProducts = json.products;
+      console.log(allProducts);
+      createCard();
+    });
+}
+
+//#endregion
+
+//#region createCard
 
 function createCard() {
-
   cardItem.innerHTML = "";
   items = "";
   allProducts.forEach((product) => {
@@ -168,7 +181,7 @@ function getBasketItemById(productId) {
 function removeBasketItem(productId) {
   const basketItem = getBasketItemById(productId);
   shoppingBasketItems.splice(basketItem, 1);
-  if (confirm("کالا از سبد خرید شما حذف خواهد شد.آیا مطمئن هستید؟")) {
+  if (confirm("کالا از سبد خرید شما حذف خواهد شد.آیا مطمئن هستید؟") == true) {
     const cartItem = document.getElementById("shopping_" + productId);
     cartItem.remove();
     emptyModal();
@@ -285,27 +298,31 @@ function decrement(productId) {
 
 //#region menu
 
-// function createGroupProducts() {
-//   let productsGroups = "";
-//   let productsGroup = document.getElementById("products-id");
+function createGroupProducts() {
+  let productsGroups = "";
+  let productsGroup = document.getElementById("products-id");
 
-//   for (let i = 0; i < 5; i++) {
-//     productsGroups += `
-//       <div class="dropup">
-//       <button class="dropbtn"> <a href="./productsgroup.html"> ${products[i].productGroup} </a></button>
-//       <div class="dropup-content" >
-//       </div>
-//       </div>
-//           `;
+  for (let i = 0; i < 10; i++) {
+    
+    productsGroups += `
+    <div class="dropup">
+    <button class="dropbtn"> <a onclick="goProductGroup('${productsCategories[i]}')" target="_blank"> ${productsCategories[i]} </a></button>
+    <div class="dropup-content" >
+    </div>
+    </div>
+    `;
+    
+    productsGroup.innerHTML = productsGroups;
+  }
 
-//     productsGroup.innerHTML = productsGroups;
-//   }
-// }
+}
+
+function goProductGroup(productGroupName){
+  localStorage.setItem("productGroupNameSelected",productGroupName);
+  window.location.replace("http://127.0.0.1:5500/productsgroup.html");
+}
 
 //#endregion
 
-//#region url
-// let params = (new URL(document.location)).searchParams;
-// let groupName = params.get('productGroup');
 
-//#endregion
+

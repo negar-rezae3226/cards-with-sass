@@ -65,7 +65,7 @@ function createCard() {
     items += `
             <div class="col-sm-12 col-lg-4  col-md-4 pt-5 filterDiv  ${product.brand}">
                   <div class="card" id="${product.id}">
-                      <a href="#">
+                      <a onclick="goProductDetails('${product.id}')" >
                           <img class="card-img-top" src="${product.images[0]}" onmouseout="this.src='${product.images[0]}'" onmouseover="this.src='${product.images[1]}'"  alt="Card image" style="width:100%" >
                       </a>
                       <div class="card-body">
@@ -332,5 +332,14 @@ let search = `
 <a class="btn btn-outline-primary my-2 my-sm-0 mr-3"   id="button-search" onclick="searchProducts()"> <i class="mdi mdi-magnify"></i>
 `;
 allSearchProducts.innerHTML = search;
+
+//#endregion
+
+
+//#region productDeteils
+function goProductDetails(productdetail){
+  localStorage.setItem("productDeteilSelected", productdetail);
+  window.location.replace("http://127.0.0.1:5500/product_details.html");
+}
 
 //#endregion

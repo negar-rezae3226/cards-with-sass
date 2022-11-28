@@ -45,9 +45,11 @@ body {
   }
 }
 .product_img {
-  height: 400px;
+  height: 362px;
   width: 400px;
   border-radius: 85px;
+  margin-top: 20px;
+  
 }
 
 .product_summary {
@@ -55,6 +57,7 @@ body {
   justify-content: center;
   border: 1px #e6e6e6 solid;
   border-radius: 15px;
+  padding-bottom: 20px;
 }
 
 .description_product {
@@ -148,6 +151,9 @@ body {
 .button {
   display: flex;
   justify-content: center;
+}
+.Specification_table{
+  text-align: center;
 }
 .button i {
   color: #b4dfe5;

@@ -17,7 +17,10 @@
 
 </head>
 
-<body>
+<body onload="myFunction()" style="margin:0;">
+
+    <div id="loader"></div>
+
     <div class="menubar d-flex align-items-center  justify-content-between">
         <div class="logo_menu">
             <a href="http://127.0.0.1:5500/index.html#" class="d-flex flex-row align-items-center decor">
@@ -162,8 +165,8 @@
         </div>
 
     </div>
-
-    <div class="container mt-5 container-style">
+<div>
+    <div class="container mt-5 container-style animate-bottom" style="display:none;" id="myDiv" >
         <!-- <div class="row" id="cardItems">
         </div> -->
         <div class="title-panel d-flex justify-content-between">
@@ -230,9 +233,9 @@
             </div>
 
         </div>
-        <table class="table caption-top table-bordered mt-3">
+        <table class="table caption-top  mt-3 rounded">
             <thead>
-                <tr class="table-secondary">
+                <tr class="table-1">
                     <th scope="col">تصویر</th>
                     <th scope="col">نام محصول</th>
                     <th scope="col">توضیحات</th>
@@ -244,7 +247,7 @@
 
                 </tr>
             </thead>
-            <tbody id="table-items">
+            <tbody id="table-items" >
 
             </tbody>
         </table>

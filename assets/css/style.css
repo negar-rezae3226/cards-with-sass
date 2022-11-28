@@ -1,0 +1,420 @@
+@import url("../font/Vazir/Vazirmatn-font-face.css");
+body {
+  background-color: whitesmoke;
+  direction: rtl;
+  font-family: Vazirmatn;
+  margin: 0;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.menubar {
+  height: 100px;
+  background-color: #303c6c;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin: 0px;
+}
+
+.logo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+}
+
+.web_name {
+  color: #b4dfe5;
+  font-weight: bolder;
+  font-size: 40px;
+}
+
+.icon {
+  position: relative;
+  font-size: xx-large;
+  color: #b4dfe5;
+  background-color: #303c6c;
+}
+.icon .cart_count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  border-radius: 50%;
+  font-size: 12px;
+  background: red;
+  color: white;
+  height: 17px;
+  width: 15px;
+  bottom: 10px;
+  right: 0;
+}
+
+.icon_menu {
+  color: #b4dfe5;
+  font-weight: bolder;
+  font-size: 40px;
+}
+
+.shopping_cart {
+  padding-left: 40px;
+}
+
+.shopping_cart_text {
+  color: #303c6c;
+  font-size: 18px;
+  line-break: anywhere;
+  margin-left: 20px;
+}
+
+.input_number {
+  text-align: center;
+  color: #303c6c;
+  border: 2px solid;
+  width: 50px;
+  height: 35px;
+  font-size: small;
+}
+
+.text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #303c6c;
+  font-size: large;
+}
+
+.description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+@media only screen and (max-width: 480px) {
+  .item {
+    width: 100%;
+  }
+  .cart_item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .web_name {
+    display: none;
+  }
+  .responsive {
+    display: none;
+  }
+}
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .item {
+    width: 40%;
+  }
+}
+@media only screen and (min-width: 769px) and (max-width: 1279px) {
+  .item {
+    width: 30%;
+  }
+}
+@media only screen and (min-width: 1280px) {
+  .item {
+    width: 22%;
+  }
+}
+.drowdown_menu_icon {
+  color: #b4dfe5;
+  background-color: #303c6c;
+  font-size: xx-large;
+}
+
+.dropdown_icon {
+  color: #303c6c;
+}
+
+.btn-link:hover {
+  text-decoration: none;
+}
+
+.shopping_cart .btn {
+  background-color: #303c6c;
+  border: #303c6c;
+  border: 0px solid #303c6c;
+  color: white;
+}
+.shopping_cart .btn:focus {
+  box-shadow: o o o o #303c6c;
+}
+
+.shopping_cart_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-primary {
+  color: white !important;
+}
+
+.btn-primary:active {
+  box-shadow: o o o o #303c6c;
+}
+
+.submit-button {
+  margin-right: 45%;
+  font-size: large;
+  padding: 20px 30px;
+}
+
+.cart-icon-:active {
+  background-color: transparent !important;
+  border: 0px !important;
+  box-shadow: none !important;
+}
+.cart-icon-:focus {
+  background-color: transparent !important;
+  border: 0px !important;
+  box-shadow: none !important;
+}
+
+.footer-style {
+  background-color: #e6e6e6;
+}
+
+.footer-icon {
+  font-size: 80px;
+}
+
+.modal-body {
+  height: 500px;
+}
+
+.modal-content {
+  width: 650px;
+}
+
+.modaltext {
+  color: #303c6c;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.modaltext2 {
+  font-size: 20px;
+  padding-top: 10px;
+  text-align: center;
+  color: #e6e6e6;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #b4dfe5;
+  position: unset;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0pt;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: #303c6c;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+.subnav .subnavbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: #303c6c;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: #e6e6e6;
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: #e6e6e6;
+  width: 100%;
+  z-index: 1;
+}
+
+.subnav-content a {
+  float: right;
+  color: #303c6c;
+  text-decoration: none;
+}
+
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+.subnav:hover .subnav-content {
+  display: block;
+}
+
+.btn-outline-primary {
+  color: #b4dfe5;
+  border-color: #b4dfe5;
+  background-color: #ffff;
+}
+
+.navbar .megamenu {
+  padding: 1rem;
+}
+.btn-outline-primary:hover{
+  background-color: #b4dfe5;
+  border-color: #b4dfe5;
+}
+
+/* ============ desktop view ============ */
+@media all and (min-width: 992px) {
+  .navbar .has-megamenu {
+    position: static !important;
+  }
+  .navbar .megamenu {
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin-top: 0;
+  }
+}
+/* ============ desktop view .end// ============ */
+/* ============ mobile view ============ */
+@media (max-width: 991px) {
+  .navbar.fixed-top .navbar-collapse, .navbar.sticky-top .navbar-collapse {
+    overflow-y: auto;
+    max-height: 90vh;
+    margin-top: 10px;
+  }
+}
+/* ============ mobile view .end// ============ */
+.dropbtn {
+  background-color: #e6e6e6;
+  color: #303c6c;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+/* The container <div> - needed to position the dropup content */
+.dropup {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropup content (Hidden by Default) */
+.dropup-content {
+  display: none;
+  position: absolute;
+  top: 58px;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropup */
+.dropup-content a {
+  color: #303c6c;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropup links on hover */
+.dropup-content a:hover {
+  background-color: #ddd;
+  width: 100%;
+}
+
+/* Show the dropup menu on hover */
+.dropup:hover .dropup-content {
+  display: block;
+}
+
+/* Change the background color of the dropup button when the dropup content is shown */
+.dropup:hover .dropbtn {
+  background-color: #eee;
+}
+
+.card .card-img-top {
+  height: 250px;
+}/*# sourceMappingURL=style.css.map */
+
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  margin: -76px 0 0 -76px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+#myDiv {
+  display: none;
+  text-align: center;
+}
+.btn-outline-info {
+  color:#b4dfe5;
+    border-color: #303c6c;
+    background-color: #303c6c;
+}

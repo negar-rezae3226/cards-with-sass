@@ -17,7 +17,7 @@
 
 </head>
 
-<body>
+<body onload="myFunction()" style="margin:0;">
     <div class="menubar d-flex align-items-center  justify-content-between">
         <div class="logo_menu">
             <div class="d-flex flex-row align-items-center decor">
@@ -31,8 +31,8 @@
         </div>
 
 
-        <form class="form-inline my-2 my-lg-0" id = "search-products">
-            
+        <form class="form-inline my-2 my-lg-0" id="search-products">
+
         </form>
 
         <div class="icon_menu d-flex flex-row ">
@@ -107,7 +107,7 @@
         <div class="subnav">
             <button class="subnavbtn">
                 <a href="http://">
-                    <i class="mdi mdi-fire"></i>پرفروش ترین ها 
+                    <i class="mdi mdi-fire"></i>پرفروش ترین ها
                 </a>
             </button>
             <div class="subnav-content">
@@ -121,145 +121,152 @@
         <div class="subnav">
             <button class="subnavbtn">
                 <a href="http://">
-                    <i class="mdi mdi-percent"></i> تخفیف ها و پیشنهاد ها 
+                    <i class="mdi mdi-percent"></i> تخفیف ها و پیشنهاد ها
                 </a>
             </button>
             <div class="subnav-content">
                 <div class=" d-flex align-items-center justify-content-center">
-                <a href="#bring">بیشترین تخفیف ها</a>
-                <a href="#package">پربازدیدترین تخفیفات</a>
-                <a href="#deliver">پیشنهادات امروز</a>
-                <a href="#express">تخفیفات شگفت انگیز</a>
-            </div>
+                    <a href="#bring">بیشترین تخفیف ها</a>
+                    <a href="#package">پربازدیدترین تخفیفات</a>
+                    <a href="#deliver">پیشنهادات امروز</a>
+                    <a href="#express">تخفیفات شگفت انگیز</a>
+                </div>
             </div>
         </div>
         <div class="subnav">
             <button class="subnavbtn">
                 <a href="http://">
-                    <i class="mdi mdi-brightness-percent"></i>شگفت انگیز 
+                    <i class="mdi mdi-brightness-percent"></i>شگفت انگیز
                 </a>
-                </button>
+            </button>
         </div>
         <div class="subnav">
             <button class="subnavbtn">
                 <a href="http://">
-                    <i class="mdi mdi-advertisements"></i>تبلیغات 
+                    <i class="mdi mdi-advertisements"></i>تبلیغات
                 </a>
-                </button>
+            </button>
         </div>
         <div class="subnav">
             <button class="subnavbtn">
                 <a href="./blog.html">
-                    <i class="mdi mdi-post-outline"></i> 
-                     بلاگ  
+                    <i class="mdi mdi-post-outline"></i>
+                    بلاگ
                 </a>
-                </button>
+            </button>
         </div>
         <div class="subnav">
             <button class="subnavbtn">
                 <a href="./call-form.html">
-                    <i class="mdi mdi-phone"></i> 
-                    تماس با ما 
+                    <i class="mdi mdi-phone"></i>
+                    تماس با ما
                 </a></button>
         </div>
 
     </div>
 
-    <div class="d-flex  justify-content-center text pt-5">
-        <h1 class="font-weight-bold pt-5 pb-4 mr-5">جدیدترین محصولات </h1>
-    </div>
-
-    <div class="container">
-        <div class="row" id="cardItems">
+    <div id="loader"></div>
+<div class="animate-bottom" style="display:none;" id="myDiv">
+        <div class="d-flex  justify-content-center text pt-5">
+            <h1 class="font-weight-bold pt-5 pb-4 mr-5">جدیدترین محصولات </h1>
         </div>
 
-
-        <section class="mt-5">
-            <div>
-                <h4 class="font-weight-bold   text-secondary  mb-3">پرسش های متداول</h4>
+        <div class="container">
+            <div class="row" id="cardItems">
             </div>
 
-            <div class="accordion  " id="accordionExample">
-                <div class="card">
-                    <div class="card-header " id="headingOne">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-right text-dark  " type="button"
-                                data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                                aria-controls="collapseOne">
-                                هزینه ارسال چگونه محاسبه می شود؟
-                            </button>
-                        </h2>
-                    </div>
 
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                        data-parent="#accordionExample">
-                        <div class="card-body">
-                            هزینه ارسال بر اساس شیوه ارسال متفاوت است و در زمان ثبت سفارش نمایش داده می شود.
-                        </div>
-                    </div>
+            <section class="mt-5">
+                <div>
+                    <h4 class="font-weight-bold   text-secondary  mb-3">پرسش های متداول</h4>
                 </div>
-                <div class="card">
-                    <div class="card-header" id="headingTwo">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-right text-dark collapsed" type="button"
-                                data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-                                aria-controls="collapseTwo">
-                                چطور میتوانم سفارشم را پیگیری کنم ؟
-                            </button>
-                        </h2>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                        <div class="card-body">
-                            وارد سایت شوید، روی گزینه سفارش های من کلیک کنید و در این قسمت با کلیک روی جزییات میتوانید
-                            سفارش
-                            خود را ببینید. میتوانید در این قسمت روند آماده سازی و مراحل ارسال سفارش خود را پیگیری کنید.
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingThree">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-right text-dark collapsed" type="button"
-                                data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
-                                aria-controls="collapseThree">
-                                شرایط گارانتی محصولات چیست؟
-                            </button>
-                        </h2>
-                    </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                        data-parent="#accordionExample">
-                        <div class="card-body">
-                            امروزه توجه به کیفیت کالا از مهمترین وظایف فروشندگان کالا است و خدمات پس از فروش ضامن حفظ
-                            این
-                            کیفیت می باشد.
-                            در همین راستا شرکت ما مفتخر به ارائه سرویس در اسرع وقت به مشتریان گرامی می باشد.
-                            جهت سهولت در پیگیری گارانتی دستگاه خود می توانید از طریق شماره 02161930010 اقدام نمائید.
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingfour">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-right text-dark collapsed" type="button"
-                                data-toggle="collapse" data-target="#collapsefour" aria-expanded="false"
-                                aria-controls="collapseTwo">
-                                شرایط استفاده از کد تخفیف اولین خرید چیست؟
-                            </button>
-                        </h2>
-                    </div>
-                    <div id="collapsefour" class="collapse" aria-labelledby="headingfour"
-                        data-parent="#accordionExample">
-                        <div class="card-body">
-                            سیستم هوشمند ما ، پس از بررسی حساب کاربری در صورتی که مالک آن مشتری جدید باشد امکان استفاده
-                            از
-                            کد تخفیف خرید اول را ایجاد می کند .
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-    </div>
+                <div class="accordion  " id="accordionExample">
+                    <div class="card">
+                        <div class="card-header " id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-right text-dark  " type="button"
+                                    data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                    aria-controls="collapseOne">
+                                    هزینه ارسال چگونه محاسبه می شود؟
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                            data-parent="#accordionExample">
+                            <div class="card-body">
+                                هزینه ارسال بر اساس شیوه ارسال متفاوت است و در زمان ثبت سفارش نمایش داده می شود.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-right text-dark collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                    aria-controls="collapseTwo">
+                                    چطور میتوانم سفارشم را پیگیری کنم ؟
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                            data-parent="#accordionExample">
+                            <div class="card-body">
+                                وارد سایت شوید، روی گزینه سفارش های من کلیک کنید و در این قسمت با کلیک روی جزییات
+                                میتوانید
+                                سفارش
+                                خود را ببینید. میتوانید در این قسمت روند آماده سازی و مراحل ارسال سفارش خود را پیگیری
+                                کنید.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-right text-dark collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                                    aria-controls="collapseThree">
+                                    شرایط گارانتی محصولات چیست؟
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                            data-parent="#accordionExample">
+                            <div class="card-body">
+                                امروزه توجه به کیفیت کالا از مهمترین وظایف فروشندگان کالا است و خدمات پس از فروش ضامن
+                                حفظ
+                                این
+                                کیفیت می باشد.
+                                در همین راستا شرکت ما مفتخر به ارائه سرویس در اسرع وقت به مشتریان گرامی می باشد.
+                                جهت سهولت در پیگیری گارانتی دستگاه خود می توانید از طریق شماره 02161930010 اقدام نمائید.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingfour">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-right text-dark collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapsefour" aria-expanded="false"
+                                    aria-controls="collapseTwo">
+                                    شرایط استفاده از کد تخفیف اولین خرید چیست؟
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapsefour" class="collapse" aria-labelledby="headingfour"
+                            data-parent="#accordionExample">
+                            <div class="card-body">
+                                سیستم هوشمند ما ، پس از بررسی حساب کاربری در صورتی که مالک آن مشتری جدید باشد امکان
+                                استفاده
+                                از
+                                کد تخفیف خرید اول را ایجاد می کند .
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        <!-- </div> -->
     </div>
 
     <footer>
@@ -317,6 +324,7 @@
         </div>
     </footer>
     </div>
+</div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

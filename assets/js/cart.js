@@ -179,8 +179,8 @@ function getBasketItemById(productId) {
 }
 
 function removeBasketItem(productId) {
-  const basketItem = getBasketItemById(productId);
-  shoppingBasketItems.splice(basketItem, 1);
+  // const basketItem = getBasketItemById(productId);
+  // shoppingBasketItems.splice(basketItem, 1);
   if (confirm("کالا از سبد خرید شما حذف خواهد شد.آیا مطمئن هستید؟") == true) {
     const cartItem = document.getElementById("shopping_" + productId);
     cartItem.remove();
@@ -216,6 +216,8 @@ function deleteLocalStorage() {
 //#region quantityInput
 
 function addQuantityInputToProdutsCart(productId, count) {
+
+  
   let quantityInput = `
   <div class="shopping_cart_button d-flex justify-content-center align-items-center" >
 
@@ -259,6 +261,7 @@ function updateQuantityInputValue(productId, value) {
 function changeButton(productId) {
   let addToCartButton = "";
 
+if (confirm("کالا از سبد خرید شما حذف خواهد شد.آیا مطمئن هستید؟") == true) {
   for (let product of shoppingBasketItems) {
     addToCartButton = ` <a class="btn btn-primary"  onclick="onAddBasketItem('${product.productName}','${product.images}','${product.productPrice}',1,'${product.id}')" >
     افزودن به سبد 
@@ -271,6 +274,7 @@ function changeButton(productId) {
   div.innerHTML = addToCartButton;
   buttonCard.before(div);
   buttonCard.remove();
+}
 }
 //#endregion
 

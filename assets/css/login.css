@@ -19,7 +19,7 @@ a,
 a:link,
 a:visited,
 a:active {
-  color: #3ca9e2;
+  color: #303c6c;
   transition: all 0.2s ease;
 }
 
@@ -30,7 +30,7 @@ a:visited:focus,
 a:visited:hover,
 a:active:focus,
 a:active:hover {
-  color: #329dd5;
+  color: #303c6c;
   transition: all 0.2s ease;
 }
 
@@ -55,7 +55,7 @@ input {
   outline: none;
   height: 60px;
   line-height: 60px;
-  border-radius: 4px;
+  border-radius: 80px;
 }
 
 input[type=text],
@@ -79,7 +79,7 @@ input[type=password] {
 input[type=text]:focus,
 input[type=email]:focus,
 input[type=password]:focus {
-  border-color: #3ca9e2;
+  border-color: #303c6c;
 }
 
 input[type=text]:focus:invalid,
@@ -137,7 +137,7 @@ input[type=password]:valid ~ .validation span:last-child {
 input[type=submit] {
   border: none;
   display: block;
-  background-color: #3ca9e2;
+  background-color: #303c6c;
   color: #fff;
   font-weight: bold;
   text-transform: uppercase;
@@ -151,7 +151,7 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-  background-color: #329dd5;
+  background-color: #303c6c;
   transition: all 0.2s ease;
 }
 

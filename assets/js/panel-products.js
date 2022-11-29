@@ -125,7 +125,7 @@ function addNewProduct() {
      <td>${newProduct.category}</td>
      <td>
      <div class="icone-panel">
-     <i class="mdi  pr-2 icone-panel-edite mdi-square-edit-outline"></i>
+     <i class="mdi  pr-2 icone-panel-edite mdi-square-edit-outline" data-toggle="modal" data-target="#exampleModal" onclick="createModal('${newProduct.id}')"></i>
      <i class="mdi  pr-2 icon-panel-delete mdi-delete" data-toggle="tooltip" data-placement="bottom" onclick="deleteItemsTable('${newProduct.id}')"></i></div>
      </td>
      `;

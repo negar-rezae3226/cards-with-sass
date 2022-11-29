@@ -5,9 +5,10 @@ let addToCartButton = "";
 let items = "";
 let details = "";
 let cardItem = document.getElementById("cardItems");
-let getProduct = window.localStorage.getItem('productDeteilSelected');
+let getProduct = window.localStorage.getItem("productDeteilSelected");
 let dollarUS = Intl.NumberFormat("en-US");
 var shoppingBasketItems = [];
+let modalImage = document.getElementById("myModal");
 
 selectItem();
 
@@ -21,9 +22,8 @@ function allProductsCategories() {
     });
 }
 
-function selectItem(){
-
-  fetch('https://dummyjson.com/products/' +  `${getProduct} `)
+function selectItem() {
+  fetch("https://dummyjson.com/products/" + `${getProduct} `)
     .then((res) => res.json())
     .then((json) => {
       ProductDetail = json;
@@ -31,8 +31,7 @@ function selectItem(){
       productsDetail();
       createSpecificationTable();
     });
-};
-
+}
 
 //#region GlobalParamtres
 function initCart() {
@@ -62,7 +61,11 @@ function productsDetail() {
   details = `
 <div class="product_summary row">
 <div class="md-6">
-    <img src="${ProductDetail.images[0]}" alt="" class="product_img">
+    <img src="${ProductDetail.images[0]}" alt="" class="product_img" id="myImg">
+    <div id="myModal" class="modal">
+       <span class="close">&times;</span>
+       <img class="modal-content" id="img01">
+    </div>
 </div>
 <div class="md-6">
     <div class="description_product pt-3 pr-1">
@@ -105,8 +108,9 @@ function productsDetail() {
 }
 function createSpecificationTable() {
   let specificationItem;
-  totalValue =Math.floor(
-    (ProductDetail.price * (100 - ProductDetail.discountPercentage)) / 100);
+  totalValue = Math.floor(
+    (ProductDetail.price * (100 - ProductDetail.discountPercentage)) / 100
+  );
   let specificationTable = document.getElementById("Specification");
   specificationItem = `
     <div class="product_features">
@@ -356,12 +360,20 @@ function goProductGroup(productGroupName) {
 
 //#endregion
 
+//#region modal Image
+
+// let img = document.getElementById("myImg");
+// let modalImg = document.getElementById("img01");
+// function imagemodal(){
+//   modal.style.display = "block";
+//   modalImg.src = this.src;
+// }
+
+// let span = document.getElementsByClassName("close")[0];
 
 
+// span.onclick = function() { 
+//   modal.style.display = "none";
+// }
 
-
-
-
-
-
-
+//#endregion

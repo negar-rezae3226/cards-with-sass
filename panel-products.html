@@ -167,95 +167,114 @@
     </div>
 
     <div id="loader"></div>
-    <div class="animate-bottom" style="display:none;" id="myDiv">
-    <div class="container mt-5 container-style">
+    <div class="animate-bottom mt-5" style="display:none;" id="myDiv">
+    <div class="container mt-5 container-style mt-5">
         <!-- <div class="row" id="cardItems">
         </div> -->
-        <div>
-        <div class="title-panel d-flex justify-content-between">
-            <p class="text-panel">محصولات</p>
-            <!-- <button type="button" class="btn btn-success button-decor">جدید</button> -->
-            <div class="shopping_cart1">
-
-                <button type="button" class="btn btn-success button-decor cart-icon-1" data-toggle="modal"
-                    data-target="#exampleModal">جدید</button>
-
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                <h5 class="modal-title container" id="exampleModalLabel">محصول جدید</h5>
-                            </div>
-                            <div class="modal-body" id="modal">
-                                <div class="form-floating mb-3 d-flex mb-4 mt-4 mr-3 ml-3">
-                                    <input type="text" class="form-control m ml-2 " id="name_product"
-                                        placeholder="نام محصول">
-                                    <input type="text" class="form-control m" id="brand_product" placeholder="برند محصول">
+        <div class="card border-light mb-3 mt-5">
+            <div class="card-header" style="border-radius: 10px 10px 0px 0px; padding-top: 25px;">
+                <div class="title-panel d-flex justify-content-between">
+                    <p class="text-panel">لیست محصولات </p>
+                    <!-- <button type="button" class="btn btn-success button-decor">جدید</button> -->
+                    <div class="shopping_cart1">
+        
+                        <button type="button" class="btn btn-success button-decor cart-icon-1" data-toggle="modal"
+                            data-target="#exampleModal"> <i class="mdi mdi-plus-thick icon-pluse"></i>افزودن محصول جدید</button>
+        
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <h5 class="modal-title container" id="exampleModalLabel">محصول جدید</h5>
+                                    </div>
+                                    <div class="modal-body" id="modal">
+                                        <div class="form-floating mb-3 d-flex mb-4 mt-4 mr-3 ml-3">
+                                            <input type="text" class="form-control m ml-2 " id="name_product"
+                                                placeholder="نام محصول">
+                                            <input type="text" class="form-control m" id="brand_product" placeholder="برند محصول">
+                                        </div>
+                                        <div class="form-floating mb-3 d-flex mb-4 mr-3 ml-3">
+                                            <input type="number" class="form-control m ml-2" id="price_product" placeholder="قیمت">
+                                            <input type="number" class="form-control m" id="sale_product" placeholder="تخفیف ">
+                                        </div>
+                                        <div class="form-group mb-4 m mr-3 ml-3">
+                                            <select class="form-control" id="exampleFormControlSelect1">
+        
+                                                <option>دسته بندی</option>
+                                                <option>furniture</option>
+                                                <option>home-decoration</option>
+                                                <option>groceries </option>
+                                                <option>groceries</option>
+                                                <option>skincare</option>
+                                                <option>laptops</option>
+                                            </select>
+                                        </div>
+                                        <!-- <div class="input-group mb-4 mr-3 ml-3">
+                                            <input type="file" class="form-control m file-input pl-2" id="inputGroupFile04"
+                                                aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                                            <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">آپلود عکس</button> 
+                                            <button type="button" class="btn btn-primary  ml-4">آپلود عکس</button>
+                                        </div> -->
+                                        <div class="form-floating mr-3 ml-3">
+                                            <textarea class="form-control m mt-4" placeholder=" توضیحات محصول  "
+                                                id="floatingTextarea2" style="height: 150px"></textarea>
+                                        </div>
+                                        <div class="button-modal mt-4">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="addNewProduct()" id="button2">
+                                            <span aria-hidden="true">
+                                                <div class="button-save">ثبت</div> 
+                                            </span>
+                                        </button>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">
+                                                <div class="button-end">انصراف</div>
+                                            </span>
+                                        </button>
+                                        </div>
+                                        <div class="toast" id="toastt">
+                                            <div class="toast-header">
+                                              Toast Header
+                                            </div>
+                                            <div class="toast-body">
+                                              Some text inside the toast body
+                                            </div>
+                                          </div>
+                                    </div>
                                 </div>
-                                <div class="form-floating mb-3 d-flex mb-4 mr-3 ml-3">
-                                    <input type="number" class="form-control m ml-2" id="price_product" placeholder="قیمت">
-                                    <input type="number" class="form-control m" id="sale_product" placeholder="تخفیف ">
-                                </div>
-                                <div class="form-group mb-4 m mr-3 ml-3">
-                                    <select class="form-control" id="exampleFormControlSelect1">
-
-                                        <option>دسته بندی</option>
-                                        <option>furniture</option>
-                                        <option>home-decoration</option>
-                                        <option>groceries </option>
-                                        <option>groceries</option>
-                                        <option>skincare</option>
-                                        <option>laptops</option>
-                                    </select>
-                                </div>
-                                <div class="input-group mb-4 mr-3 ml-3">
-                                    <input type="file" class="form-control m file-input pl-2" id="inputGroupFile04"
-                                        aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                                    <!-- <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">آپلود عکس</button> -->
-                                    <button type="button" class="btn btn-primary  ml-4">آپلود عکس</button>
-                                </div>
-                                <div class="form-floating mr-3 ml-3">
-                                    <textarea class="form-control m mt-4" placeholder=" توضیحات محصول  "
-                                        id="floatingTextarea2" style="height: 100px"></textarea>
-                                </div>
-                                <div class="button-modal mt-4">
-                                    <button type="button" class="btn btn-success pl-4 pr-4" onclick="addNewProduct()">ثبت</button>
-                                <button type="button" class="btn btn-danger">انصراف</button>
-
-                                </div>
-
-
                             </div>
                         </div>
                     </div>
+        
                 </div>
             </div>
+            <div class="card-body">
+                <div>
 
-        </div>
-        <table class="table caption-top  mt-3 rounded">
-            <thead>
-                <tr class="table-1">
-                    <th scope="col">تصویر</th>
-                    <th scope="col">نام محصول</th>
-                    <th scope="col">توضیحات</th>
-                    <th scope="col">قیمت</th>
-                    <th scope="col"> تخفیف</th>
-                    <th scope="col">برند </th>
-                    <th scope="col">دسته بندی </th>
-                    <th scope="col">عملیات</th>
-
-                </tr>
-            </thead>
-            <tbody id="table-items" >
-
-            </tbody>
-        </table>
-    </div>
-
+                    <table class="table caption-top  rounded">
+                        <thead>
+                            <tr class="table-1">
+                                <th scope="col">تصویر</th>
+                                <th scope="col">نام محصول</th>
+                                <th scope="col">توضیحات</th>
+                                <th scope="col">قیمت</th>
+                                <th scope="col"> تخفیف</th>
+                                <th scope="col">برند </th>
+                                <th scope="col">دسته بندی </th>
+                                <th scope="col">عملیات</th>
+            
+                            </tr>
+                        </thead>
+                        <tbody id="table-items" >
+            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
     </div>
 
 
@@ -319,6 +338,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="./assets/js/panel-products.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#button2').click(function () {
+                $('#toastt').toast('show');
+            });
+        });
+    </script>
 </body>
 
 </html>

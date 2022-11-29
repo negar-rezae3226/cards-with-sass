@@ -49,12 +49,12 @@ function createTable() {
     <td>${product.title}</td>
     <td>${product.description}</td>
     <td>$${priceCards}</td>
-    <td>${product.discountPercentage}%</td>
+    <td class="sale-color">${product.discountPercentage}%</td>
     <td>${product.brand}</td>
     <td>${product.category}</td>
     <td>
     <div class="icone-panel">    
-    <i class="mdi  pr-2 icone-panel-edite mdi-square-edit-outline" data-toggle="modal"  data-target="#exampleModal" onclick="createModal('${product.id}')"></i>
+    <i class="mdi tooltip1  pr-2 icone-panel-edite mdi-square-edit-outline"  data-toggle="modal"   data-target="#exampleModal" onclick="createModal('${product.id}')"> <span class="tooltiptext"> ویرایش محصول</span></i>
     <i class="mdi  pr-2 icon-panel-delete mdi-delete" data-toggle="tooltip" data-placement="bottom" onclick="deleteItemsTable('${product.id}')"></i></div>
     </td>
   </tr>`;
@@ -92,7 +92,6 @@ function addNewProduct() {
   let priceNew = document.getElementById("price_product").value;
   let saleNew = document.getElementById("sale_product").value;
   let categoryNew = document.getElementById("exampleFormControlSelect1").value;
-  let picNew = document.getElementById("inputGroupFile04").value;
   let desNew = document.getElementById("floatingTextarea2").value;
 
   fetch("https://dummyjson.com/products/add", {
@@ -104,7 +103,6 @@ function addNewProduct() {
       category: categoryNew,
       price: priceNew,
       rating: saleNew,
-      images: picNew,
       description: desNew,
     }),
   })
@@ -117,7 +115,7 @@ function addNewProduct() {
   
        newItems += `
      <td>
-     <img src="${newProduct.thumbnail}" alt="logo"  class="image-panel rounded-circle">
+     <img src="./assets/images/default-image.jpg" alt="logo"  class="image-panel rounded-circle">
      </td>
      <td>${newProduct.title}</td>
      <td>${newProduct.description}</td>
@@ -135,7 +133,8 @@ function addNewProduct() {
 
      tableItems.appendChild(node);
     });
-}
+  }
+
 //#endregion
 
 //#region CreateModal
@@ -176,16 +175,20 @@ function createModal(productId) {
                                         <option>laptops</option>
                                     </select>
                                 </div>
-                                <div class="input-group mb-4 mr-3 ml-3">
-                                    <input type="file" class="form-control m file-input pl-2" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                                    <button type="button" class="btn btn-primary  ml-4">آپلود عکس</button>
-                                </div>
                                 <div class="form-floating mr-3 ml-3">
-                                    <textarea class="form-control m mt-4" placeholder="${panelProduct.description}" id="floatingTextarea2" style="height: 100px"></textarea>
+                                    <textarea class="form-control m mt-4" placeholder="${panelProduct.description}" id="floatingTextarea2" style="height: 150px"></textarea>
                                 </div>
                                 <div class="button-modal mt-4">
-                                    <button type="button" class="btn btn-success pl-4 pr-4" onclick="updateProductTable('${panelProduct.id}')" >ویرایش</button>
-                                <button type="button" class="btn btn-danger">انصراف</button>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="updateProductTable('${panelProduct.id}')">
+                                    <span aria-hidden="true">
+                                        <div class="button-save">ویرایش</div> 
+                                    </span>
+                                </button>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">
+                                        <div class="button-end">انصراف</div>
+                                    </span>
+                                </button>
                                 </div>
                             </div>
                         </div>
@@ -272,4 +275,14 @@ function RestoreBackgroundColor(row) { row.style.backgroundColor = TableBackgrou
 
 
 
+function closeModal(){
+  document.getElementById('exampleModal').style.display='none'
+}
+var modal1 = document.getElementById('exampleModal');
 
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal1) {
+    modal1.style.display = "none";
+  }
+}

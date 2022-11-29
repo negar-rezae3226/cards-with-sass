@@ -5,12 +5,25 @@ let addToCartButton = "";
 let items = "";
 let details = "";
 let cardItem = document.getElementById("cardItems");
+let getProduct = window.localStorage.getItem("productDeteilSelected");
 let dollarUS = Intl.NumberFormat("en-US");
 var shoppingBasketItems = [];
+let modalImage = document.getElementById("myModal");
 
-(function () {
+selectItem();
 
-  fetch("https://dummyjson.com/products/1")
+function allProductsCategories() {
+  fetch(url + `/categories`)
+    .then((res) => res.json())
+    .then((json) => {
+      productsCategories = json;
+      console.log(productsCategories);
+      createGroupProducts();
+    });
+}
+
+function selectItem() {
+  fetch("https://dummyjson.com/products/" + `${getProduct} `)
     .then((res) => res.json())
     .then((json) => {
       ProductDetail = json;
@@ -18,7 +31,7 @@ var shoppingBasketItems = [];
       productsDetail();
       createSpecificationTable();
     });
-})();
+}
 
 //#region GlobalParamtres
 function initCart() {
@@ -48,7 +61,11 @@ function productsDetail() {
   details = `
 <div class="product_summary row">
 <div class="md-6">
-    <img src="${ProductDetail.images[0]}" alt="iphon13promax" class="product_img">
+    <img src="${ProductDetail.images[0]}" alt="" class="product_img" id="myImg">
+    <div id="myModal" class="modal">
+       <span class="close">&times;</span>
+       <img class="modal-content" id="img01">
+    </div>
 </div>
 <div class="md-6">
     <div class="description_product pt-3 pr-1">
@@ -90,18 +107,20 @@ function productsDetail() {
   productDetails.innerHTML = details;
 }
 function createSpecificationTable() {
-  totalValue =Math.floor(
-    (ProductDetail.price * (100 - ProductDetail.discountPercentage)) / 100);
+  let specificationItem;
+  totalValue = Math.floor(
+    (ProductDetail.price * (100 - ProductDetail.discountPercentage)) / 100
+  );
   let specificationTable = document.getElementById("Specification");
   specificationItem = `
     <div class="product_features">
     <div class="Specification_item border-bottom pb-2 pt-4">
         
-        <p class="product_text"> <i class="mdi pl-1 mdi-store"></i>فروشگاه دیجیتال موبایل </p>
+        <p class="product_text"> <i class="mdi pl-1 mdi-store"></i>فروشگاه وین </p>
     </div>
     <div class="Specification_item border-bottom pt-3 pb-2">
         
-        <p class="product_text"> <i class="mdi pl-1 mdi-shield-check"></i>گارانتی 18 ماهه شهر دیجیتال</p>
+        <p class="product_text"> <i class="mdi pl-1 mdi-shield-check"></i>گارانتی 18 ماهه فروشگاه </p>
     </div>
     <div class="Specification_item border-bottom pt-3 pb-2">
         
@@ -313,4 +332,48 @@ function decrement(productId) {
     calcBasketItems();
   }
 }
+//#endregion
+
+//#region menu
+
+function createGroupProducts() {
+  let productsGroups = "";
+  let productsGroup = document.getElementById("products-id");
+
+  for (let i = 0; i < 10; i++) {
+    productsGroups += `
+    <div class="dropup">
+    <button class="dropbtn"> <a onclick="goProductGroup('${productsCategories[i]}')" target="_blank"> ${productsCategories[i]} </a></button>
+    <div class="dropup-content" >
+    </div>
+    </div>
+    `;
+
+    productsGroup.innerHTML = productsGroups;
+  }
+}
+
+function goProductGroup(productGroupName) {
+  localStorage.setItem("productGroupNameSelected", productGroupName);
+  window.location.replace("http://127.0.0.1:5500/productsgroup.html");
+}
+
+//#endregion
+
+//#region modal Image
+
+// let img = document.getElementById("myImg");
+// let modalImg = document.getElementById("img01");
+// function imagemodal(){
+//   modal.style.display = "block";
+//   modalImg.src = this.src;
+// }
+
+// let span = document.getElementsByClassName("close")[0];
+
+
+// span.onclick = function() { 
+//   modal.style.display = "none";
+// }
+
 //#endregion

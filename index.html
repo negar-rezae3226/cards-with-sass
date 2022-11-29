@@ -11,6 +11,7 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css" />
     <link rel="shortcut icon" href="./assets/images/logo.jpg" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="./assets/css/product_details.css"> -->
     <link rel="stylesheet" href="./assets/css/style.css">
 
 
@@ -19,19 +20,19 @@
 <body>
     <div class="menubar d-flex align-items-center  justify-content-between">
         <div class="logo_menu">
-            <a href="http://127.0.0.1:5500/index.html#" class="d-flex flex-row align-items-center decor">
-                <img src="./assets/images/logo.jpg" alt="logo" class="logo ">
+            <div class="d-flex flex-row align-items-center decor">
+                <a href="http://127.0.0.1:5500/index.html#">
+                    <img src="./assets/images/logo.jpg" alt="logo" class="logo ">
+                </a>
                 <div class="web_name pr-2">
                     <p class="pt-4 ">Technology</p>
                 </div>
-            </a>
+            </div>
         </div>
 
 
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2"  type="search" placeholder="جست و جو" id="search-products" aria-label="Search">
-            <a class="btn btn-outline-primary my-2 my-sm-0 mr-3"   id="button-search"> <i class="mdi mdi-magnify"></i>
-            </a>
+        <form class="form-inline my-2 my-lg-0" id = "search-products">
+            
         </form>
 
         <div class="icon_menu d-flex flex-row ">
@@ -82,7 +83,7 @@
                             نام</a>
                         <a class="dropdown-item text-right" href="#"><i
                                 class="mdi mdi-logout-variant dropdown_icon pl-2"></i>خروج کاربر</a>
-                        <a class="dropdown-item text-right" href="#"><i
+                        <a class="dropdown-item text-right" href=""><i
                                 class="mdi mdi-information dropdown_icon pl-2"></i>اطلاعات کاربر</a>
                         <a class="dropdown-item text-right" href="#"><i
                                 class="mdi mdi-ticket dropdown_icon pl-2"></i>سوابق تراکنش</a>

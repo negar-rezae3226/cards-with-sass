@@ -11,8 +11,8 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css" />
     <link rel="shortcut icon" href="./assets/images/logo.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="product.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/product.css">
 
 
 </head>
@@ -140,8 +140,6 @@
                 <div class=" d-flex align-items-center justify-content-center" id="products-id">
 
                 </div>
-
-
             </div>
         </div>
         <div class="subnav">
@@ -158,7 +156,7 @@
             <button class="subnavbtn"><i class="mdi mdi-percent"></i> تخفیف ها و پیشنهاد ها </button>
             <div class="subnav-content">
                 <div class=" d-flex align-items-center justify-content-center">
-                <a href="#bring">بیشترین تخفیف ها</a>
+                <a href="#bring" onclick="filterProductGroup()">بیشترین تخفیف ها</a>
                 <a href="#package">پربازدیدترین تخفیفات</a>
                 <a href="#deliver">پیشنهادات امروز</a>
                 <a href="#express">تخفیفات شگفت انگیز</a>
@@ -183,11 +181,11 @@
 
 <div id="myBtnContainer">
   <button class="btn-filter active" onclick="filterSelection('all')">همه محصولات</button>
-  <button class="btn-filter" onclick="filterSelection('آیفون')">iphone</button>
-  <button class="btn-filter" onclick="filterSelection('سامسونگ')">Samsung</button>
-  <button class="btn-filter" onclick="filterSelection('شیائومی')">Xiaomi</button>
-  <button class="btn-filter" onclick="filterSelection('هوآوی')">Huawei</button>
-  <button class="btn-filter" onclick="filterSelection('نوکیا')">Nokia</button>
+  <button class="btn-filter" onclick="filterSelection('smartphones')">phone</button>
+  <button class="btn-filter" onclick="filterSelection('laptops')">laptops</button>
+  <button class="btn-filter" onclick="filterSelection('fragrances')">fragrances</button>
+  <button class="btn-filter" onclick="filterSelection('skincare')">skincare</button>
+  <button class="btn-filter" onclick="filterSelection('groceries')">groceries</button>
 
 </div>
     <div class="container">

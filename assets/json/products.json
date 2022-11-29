@@ -2,13 +2,16 @@
      {
         "id": 1,
         "name": "iphone13promax",
+        "webName":"/iphone-group.html",
         "image": ["./assets/images/iphon13promax.jpg" , "./assets/images/iphone_13_pro.jpg" ],
         "price": 70600000,
         "productGroup": "آیفون"
+        
     },
     {
         "id": 2,
         "name": "Samsung S22 Ultra",
+        "webName":"/samsung-group.html",
         "image": ["./assets/images/samsung-s22-ultra-rose.png", "./assets/images/s22ultra-details.jpg"],
         "price": 38900000,
         "productGroup": "سامسونگ"
@@ -16,6 +19,7 @@
     {
         "id": 4,
         "name": "Xiaomi Mi 11 Ultra",
+        "webName":"/xiomi-group.html",
         "image": ["./assets/images/mi-11-Ultra-xiaomi.jpg", "./assets/images/1.jpg"],
         "price": 33499000,
         "productGroup": "شیائومی"
@@ -23,6 +27,7 @@
     {
         "id": 5,
         "name": "Huawei P50 Pocket",
+        "webName":"/huawei-group.html",
         "image": ["./assets/images/Huawei-P50.jpg", "./assets/images/2.jpg"],
         "price": 47999900,
         "productGroup": "هوآوی"
@@ -37,6 +42,7 @@
     {
         "id": 3,
         "name": "Samsung Z Fold 4",
+        "webName":"/samsung-group.html",
         "image": ["./assets/images/z fold.jpg", "./assets/images/4.png"],
         "price": 60000000,
         "productGroup": "سامسونگ"
@@ -44,6 +50,7 @@
         {
         "id": 7,
         "name": "Apple iPhone 13 CH",
+        "webName":"/iphone-group.html",
         "image": ["./assets/images/iphone-13.jpg", "./assets/images/5.jpg"],
         "price": 32389000,
         "productGroup": "آیفون"
@@ -51,6 +58,7 @@
         {
         "id": 8,
         "name": "Apple iPhone 12",
+        "webName":"/iphone-group.html",
         "image": ["./assets/images/iphone-12-1-2 (1).jpg", "./assets/images/6.jpg"],
         "price": 47999900,
         "productGroup": "آیفون"
@@ -58,6 +66,7 @@
         {
         "id": 9,
         "name": "Samsung  A52",
+        "webName":"/samsung-group.html",
         "image": ["./assets/images/a52.jpg", "./assets/images/"],
         "price": 9590000,
         "productGroup": "سامسونگ"
@@ -65,6 +74,7 @@
         {
         "id": 10,
         "name": "Samsung  A73",
+        "webName":"/samsung-group.html",
         "image": ["./assets/images/A73.jpg", "./assets/images/"],
         "price": 13899000,
         "productGroup": "سامسونگ"
@@ -72,6 +82,7 @@
         {
         "id": 11,
         "name": "Apple iPhone 11 ",
+        "webName":"/iphone-group.html",
         "image": ["./assets/images/iphone-11.jpg", "./assets/images/"],
         "price": 24200000,
         "productGroup": "آیفون"
@@ -100,6 +111,7 @@
         {
         "id": 15,
         "name": "Huawei Y9a",
+        "webName":"/huawei-group.html",
         "image": ["./assets/images/huawei-y9a.jpg", "./assets/images/"],
         "price": 5125000,
         "productGroup": "هوآوی"
@@ -107,6 +119,7 @@
         {
         "id": 16,
         "name": "Huawei nova Y70 ",
+        "webName":"/huawei-group.html",
         "image": ["./assets/images/nova-y70.jpg", "./assets/images/"],
         "price": 3699000 ,
         "productGroup": "هوآوی"
@@ -114,6 +127,7 @@
         {
         "id": 17,
         "name": "HUAWEI nova 9",
+        "webName":"/huawei-group.html",
         "image": ["./assets/images/huawei-nova.jpg", "./assets/images/"],
         "price": 3699000,
         "productGroup": "هوآوی"

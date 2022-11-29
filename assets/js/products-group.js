@@ -1,48 +1,76 @@
 let modal;
-let products;
+let allProducts;
+let productsCategories;
 let cartCount;
 let addToCartButton = "";
 let items = "";
 let cardItem = document.getElementById("cardItems");
+let searchInput = document.getElementById("search-products");
+let buttonSearch = document.getElementById("button-search");
 // let phoneId = document.querySelectorAll("products-name");
-
+let url = "https://dummyjson.com/products";
 let dollarUS = Intl.NumberFormat("en-US");
+let getProductsGroup = window.localStorage.getItem('productDeteilSelected');
 var shoppingBasketItems = [];
 
-//#region card
-(function () {
-  fetch("./assets/json/products.json")
-    .then((x) => x.json())
+//#region cardproducts
+
+searchInput.addEventListener("change", (event) => {
+  searchProducts(event.target.value);
+});
+
+getAllProducts();
+allProductsCategories();
+
+
+function getAllProducts() {
+  fetch('https://dummyjson.com/products/category/' + `${getProductsGroup} `)
+    .then((res) => res.json())
     .then((json) => {
-      products = json;
-      console.log(products);
+      allProducts = json.products;
+      console.log(allProducts);
+      createCard();
+    });
+}
+function allProductsCategories() {
+  fetch(url + `/categories`)
+    .then((res) => res.json())
+    .then((json) => {
+      productsCategories = json;
+      console.log(productsCategories);
       createGroupProducts();
     });
+}
+function searchProducts(searchText) {
+  fetch(url + `/search?q=${searchText}`)
+    .then((res) => res.json())
+    .then((json) => {
+      allProducts = json.products;
+      console.log(allProducts);
+      createCard();
+    });
+}
 
-  const timeOut = setTimeout(() => {
-    createCard();
-    clearTimeout(timeOut);
-  }, 100);
-})();
 
 function createCard() {
-  products.forEach((product) => {
+  cardItem.innerHTML = "";
+  items = "";
+  allProducts.forEach((product) => {
     let price = product.price;
     let dollarUSLocale = Intl.NumberFormat("en-US");
 
     let priceCards = dollarUSLocale.format(price);
-
     items += `
-            <div class="col-sm-12 col-lg-4  col-md-4 pt-5 filterDiv  ${product.productGroup}">
-                  <div class="card " id="${product.id}">
-                      <a href="./product_details.html/${product.name}">
-                          <img class="card-img-top " id="22" src="${product.image[0]}" onmouseout="this.src='${product.image[0]}'" onmouseover="this.src='${product.image[1]}'"  alt="Card image" style="width:100%" >
+            <div class="col-sm-12 col-lg-4  col-md-4 pt-5 filterDiv  ${product.brand}">
+                  <div class="card" id="${product.id}">
+                      <a href="#">
+                          <img class="card-img-top" src="${product.images[0]}" onmouseout="this.src='${product.images[0]}'" onmouseover="this.src='${product.images[1]}'"  alt="Card image" style="width:100%" >
                       </a>
                       <div class="card-body">
                           <div class="description">
-                              <h4 class="card-title my-3">${product.name}</h4>
-                              <p class="card-text"> ${priceCards}  تومان</p>
-                              <a   class="btn btn-primary"   onclick="onAddBasketItem('${product.name}','${product.image}',${product.price},1, '${product.id}')" >افزودن به سبد </a>
+                              <h6 class="card-title my-3">${product.title}</h6>
+                              <p class="card-text"> $ ${priceCards}</p>
+                              <a  class="btn btn-primary"   onclick="onAddBasketItem('${product.title}','${product.images}',${priceCards},1, '${product.id}')" >افزودن به سبد </a>
                           </div>
                       </div>
                   </div>
@@ -77,7 +105,7 @@ function setGlobalParamtres() {
 }
 //#endregion
 
-//#region eptyModal
+//#region emptyModal
 function emptyModal() {
   if (shoppingBasketItems.length == 0) {
     modal.innerHTML =
@@ -107,15 +135,13 @@ function onAddBasketItem(name, image, price, count, productId) {
 
 function createBasketItems() {
   items = "";
-
-  for (let product of shoppingBasketItems) {
+  shoppingBasketItems.forEach((product) => {
     items += `
         <div class="shopping_cart_item" id="shopping_${product.id}">
         <div class="d-flex flex-row align-items-center justify-content-between pt-2">
             <div 
                 class="cart_text_item d-flex flex-nowrap justify-content-center align-items-center">
-                <img src="${product.image}" alt="mobile"
-                    class="logo pl-2">
+                <img src="${product.images}" alt="mobile" class="logo pl-2">
                 <p class="shopping_cart_text">${product.productName}</p>
             </div>
             <p class="shopping_cart_text">${product.productPrice}</p>
@@ -129,7 +155,7 @@ function createBasketItems() {
         </div>
         </div>
         `;
-  }
+  });
   emptyModal();
   modal.innerHTML = items;
 }
@@ -178,6 +204,7 @@ function deleteButtonInBasket(productId) {
 function setBasketItemsInLocalStorage(productId) {
   localStorage.setItem("basketItems", JSON.stringify(shoppingBasketItems));
 }
+
 function deleteLocalStorage() {
   localStorage.removeItem("basketItems");
 }
@@ -231,7 +258,7 @@ function changeButton(productId) {
   let addToCartButton = "";
 
   for (let product of shoppingBasketItems) {
-    addToCartButton = ` <a class="btn btn-primary"  onclick="onAddBasketItem('${product.productName}','${product.image}','${product.productPrice}',1,'${product.id}')" >
+    addToCartButton = ` <a class="btn btn-primary"  onclick="onAddBasketItem('${product.productName}','${product.images}','${product.productPrice}',1,'${product.id}')" >
     افزودن به سبد 
     </a> `;
   }
@@ -273,30 +300,26 @@ function createGroupProducts() {
   let productsGroups = "";
   let productsGroup = document.getElementById("products-id");
 
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 10; i++) {
+    
     productsGroups += `
-      <div class="dropup">
-      <button class="dropbtn"> <a href="./productsgroup.html/?productGroup=${products[i].productGroup}"> ${products[i].productGroup} </a></button>
-      <div class="dropup-content" >
-      </div>
-      </div>
-          `;
-
+    <div class="dropup">
+    <button class="dropbtn"> <a onclick="goProductGroup('${productsCategories[i]}')"> ${productsCategories[i]} </a></button>
+    <div class="dropup-content" >
+    </div>
+    </div>
+    `;
+    
     productsGroup.innerHTML = productsGroups;
   }
+
+}
+
+function goProductGroup(productGroupName){
+  localStorage.setItem("productGroupNameSelected",productGroupName);
+  window.location.replace("http://127.0.0.1:5500/productsgroup.html");
 }
 
 //#endregion
 
-//#region url
-function url() {
-  let params = new URL(document.location).searchParams;
-  let groupName = params.get("productGroup");
-  // products.forEach((product) => {
-  // //  const found = product.find(product.productGroup => product.productGroup === groupName);
-  // });
-  let filterItems = products.filter(function (products) {
-    return products.productGroup === groupName;
-  });
-}
-//#endregion
+

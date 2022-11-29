@@ -41,22 +41,21 @@ function loginSubmit() {
   })
     .then((res) => res.json())
     .then((json) => {
-      loginUserApi = json.username;
-      pass = json.password;
+      loginUserApi = json;
       console.log(loginUserApi);
 
-      if (username === loginUserApi && password === pass) {
-        alert("ورود شما با موفقیت انجام شد :) ");
+      // if (username === loginUserApi && password === pass) {
+      //   alert("ورود شما با موفقیت انجام شد :) ");
 
-        return;
-      }
-      if (username === "" && password === "") {
-        alert("لطفا اطلاعات را وارد کنید");
-        return;
-      } else {
-        alert("اطلاعات وارد شده صحیح نمی باشد");
-        return;
-      }
+      //   return;
+      // }
+      // if (username === "" && password === "") {
+      //   alert("لطفا اطلاعات را وارد کنید");
+      //   return;
+      // } else {
+      //   alert("اطلاعات وارد شده صحیح نمی باشد");
+      //   return;
+      // }
     });
 }
 

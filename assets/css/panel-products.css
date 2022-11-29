@@ -6,6 +6,7 @@
 .icon-panel-delete{
 color: #d00000;
 font-size: 25px;
+cursor: pointer;
 }
 .image-panel{
   width: 70px;
@@ -102,18 +103,19 @@ font-size: 25px;
 }
 
 .icon-pluse{
-  background-color: aliceblue;
-  border-radius: 50px;
-  padding: 1px 4px 0px 3px;
+
   margin-left: 5px;
-  color: green;
+  color: white;
+  font-size: 20px;
 }
 .icone-panel-edite{
   color: #ee964b;
   font-size: 25px;
+  cursor: pointer;
 }
 .sale-color{
   color: #d00000;
+  
 }
 
 .tooltip1 {

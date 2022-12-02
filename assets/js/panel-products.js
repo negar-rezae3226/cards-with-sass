@@ -404,3 +404,18 @@ function goProductGroup(productGroupName) {
 //   });
 //   toastList.forEach((toast) => toast.show());
 // };
+
+//#region create search
+
+let allSearchProducts = document.getElementById("search-products");
+// let searchInput = document.getElementById("search-input").value;
+
+let search = `
+<input class="form-control mr-sm-2 mt-3"  type="search" placeholder="جست و جو" id="search-input" aria-label="Search">
+ <i class="mdi mdi-magnify search-buttton" id="button-search" onclick="searchProducts()"></i> 
+
+ 
+`;
+allSearchProducts.innerHTML = search;
+
+//#endregion

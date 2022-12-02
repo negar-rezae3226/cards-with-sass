@@ -308,11 +308,7 @@ function createGroupProducts() {
 
   for (let i = 0; i < 10; i++) {
     productsGroups += `
-    <div class="dropup">
-    <button class="dropbtn"> <a onclick="goProductGroup('${productsCategories[i]}')" target="_blank"> ${productsCategories[i]} </a></button>
-    <div class="dropup-content" >
-    </div>
-    </div>
+     <li><a class="dropdown-item" onclick="goProductGroup('${productsCategories[i]}')" target="_blank"> ${productsCategories[i]} </a></li>
     `;
 
     productsGroup.innerHTML = productsGroups;
@@ -333,7 +329,9 @@ let allSearchProducts = document.getElementById("search-products");
 
 let search = `
 <input class="form-control mr-sm-2"  type="search" placeholder="جست و جو" id="search-input" aria-label="Search">
-<a class="btn btn-outline-primary my-2 my-sm-0 mr-3"   id="button-search" onclick="searchProducts()"> <i class="mdi mdi-magnify"></i>
+ <i class="mdi mdi-magnify search-buttton" id="button-search" onclick="searchProducts()"></i> 
+
+ 
 `;
 allSearchProducts.innerHTML = search;
 

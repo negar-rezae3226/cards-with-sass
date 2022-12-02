@@ -173,6 +173,21 @@ cursor: pointer;
   opacity: unset;
   border-radius: 8px;
 }
+
+.navbar-nav {
+  padding-right: 0px;
+}
+.container-fluid {
+  padding-right: 0px;
+}
+.navbar{
+  background-color: #caf0f8 !important;
+}
+.search-buttton{
+  padding: 10px;
+  font-size: 30px;
+  cursor: pointer;
+}
 /* .table-1{
   background-color: #e9ecef;
 } */

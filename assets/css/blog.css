@@ -1,0 +1,28 @@
+.text-news {
+  color: #303c6c;
+}
+
+.news-table {
+  border-radius: 20px;
+}
+
+.post-tags {
+  background-color: #e6e6e6;
+  margin-right: 10px;
+  padding: 13px 13px;
+  border-radius: 5px;
+}
+
+.text-news- {
+  color: #303c6c;
+  text-align: center;
+}
+
+.news-blog- {
+  cursor: pointer;
+  color: #00b4d8 !important;
+}
+
+.text-body {
+  text-align: center;
+}/*# sourceMappingURL=blog.css.map */

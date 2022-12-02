@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بلاگ</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/bootstrap-rtl.min.css">
-    <title>تماس با ما</title>
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Spectral|Rubik">
     <link rel="shortcut icon" href="./assets/images/logo.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="./assets/css/call-form.css">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/blog.css">
+
 </head>
 
 <body>
@@ -75,7 +75,7 @@
                         <i class="mdi mdi-menu"></i>
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item text-right " href="./login.html"><i
+                        <a class="dropdown-item text-right " href="#"><i
                                 class="mdi mdi-login-variant dropdown_icon pl-2"></i>ورود </a>
                         <a class="dropdown-item text-right" href="#"><i
                                 class="mdi mdi-file-sign dropdown_icon pl-2"></i>ثبت
@@ -91,16 +91,67 @@
             </div>
         </div>
     </div>
+
     <div class="navbar">
         <div class="subnav">
             <button class="subnavbtn">
-                <a>
+                <a href="http://">
                     <i class="mdi mdi-menu pl-2"></i>دسته بندی کالا ها
                 </a>
             </button>
             <div class="subnav-content">
                 <div class=" d-flex align-items-center justify-content-center" id="products-id">
+                    <!-- <div class="dropup">
+                        <button class="dropbtn">همه محصولات موبایل</button>
+                    </div> -->
+                    <!-- <div class="dropup">
+                      <button class="dropbtn">گوشی اپل</button>
+                      <div class="dropup-content" data-productgroup="11">
+                      </div>
+                    </div>
+
+                    <div class="dropup">
+                      <button class="dropbtn">گوشی سامسونگ</button>
+                      <div class="dropup-content" data-productgroup="22">
+                       <a href="#">Samsung S22 </a>
+                       <a href="#">Samsung Z Fold </a>
+                       <a href="#">Samsung A52</a>
+                       <a href="#">Samsung A73</a>
+                      </div>
+                    </div>
+
+                    <div class="dropup">
+                      <button class="dropbtn"> گوشی شیائومی </button>
+                      <div class="dropup-content" data-productgroup="4">
+                       <a href="#">Xiaomi Mi 11 Ultra</a>
+                       <a href="#">Xiaomi Note 11</a>
+                       <a href="#">Xiaomi Poco X4</a>
+                       <a href="#">Xiaomi 12T Pro</a>
+                      </div>
+                    </div>
+
+                    <div class="dropup">
+                      <button class="dropbtn">گوشی هوآوی</button>
+                      <div class="dropup-content" data-productgroup="50">
+                       <a href="#">Huawei P50 </a>
+                       <a href="#">Huawei Y9a</a>
+                       <a href="#">Huawei nova Y70</a>
+                       <a href="#">HUAWEI nova 9</a>
+                      </div>
+                    </div>
+
+                    <div class="dropup">
+                      <button class="dropbtn">گوشی نوکیا</button>
+                      <div class="dropup-content" data-productgroup="6">
+                       <a href="#">Nokia G21</a>
+                       <a href="#">Nokia C1</a>
+                       <a href="#">Nokia C31</a>
+                       <a href="#">Nokia G20</a>
+                      </div>
+                    </div> -->
                 </div>
+
+
             </div>
         </div>
         <div class="subnav">
@@ -156,7 +207,7 @@
         </div>
         <div class="subnav">
             <button class="subnavbtn">
-                <a href="./call-form.html">
+                <a href="http://">
                     <i class="mdi mdi-phone"></i> 
                     تماس با ما 
                 </a></button>
@@ -164,90 +215,20 @@
 
     </div>
 
-    <div class="container mt-5 p-5">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="title d-flex justify-content-start font-weight-bold pt-5 mb-5">
-                    تماس با ما
-                </h1>
-                <div class="col-12">
-                    <div class="alert alert-dark mt-5 mb-5" role="alert">
-                        لطفاً پیش از ارسال ایمیل، ابتدا پرسش‌‌های متداول را مشاهده کنید.
-                    </div>
+    <div class="container">
+                <div class="row voucher rounded m-5 p-5">
+                    <table class="news-table border  w-100 ">
+                        <tbody id="blog-text">
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
-            <div class="form-group col-lg-6 col-xl-6 col-sm-12 col-md-6 d-flex flex-column">
-                <label for="exampleFormControlSelect1">موضوع:</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option>موضوع را انتخاب کنید</option>
-                    <option>پیشنهاد</option>
-                    <option>انتقاد و شکایات</option>
-                    <option>پیگیری سفارش</option>
-                    <option>پشتیبانی</option>
-                    <option>استعلام گارانتی</option>
-                    <option>سایر موضوعات</option>
-                </select>
-            </div>
-
-            <div class="col-lg-6 col-xl-6 col-sm-12 col-md-6 form-example d-flex flex-column mb-3">
-                <label for="name">نام و نام خانوادگی :</label>
-                <input class="form-control" type="text" class="p-2">
-            </div>
-
-            <div class="form-group col-lg-6 col-xl-6 col-sm-12 col-md-6 d-flex flex-column">
-                <label for="exampleInputEmail1">ایمیل:</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            </div>
-            <div class="col-lg-6 col-xl-6 col-sm-12 col-md-6 d-flex flex-column">
-                <label for="name">تلفن تماس :</label>
-                <input class="form-control" type="text" class="p-2">
-            </div>
-            <div class="col-12 mt-5 mb-5">
-
-                <label for="name"> جنسیت :</label>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="male" value="option1" checked>
-                    <label class="form-check-label" for="exampleRadios1">
-                        مرد
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="female" value="option2">
-                    <label class="form-check-label" for="exampleRadios2">
-                        زن
-                    </label>
-                </div>
-            </div>
-            <div class="form-group col-12 pb-3">
-                <label for="exampleFormControlTextarea1">متن پیام:</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
-            </div>
-
-            <div class="form-group form-check col-12 mr-4">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">به ایمیل جواب ارسال شود.</label>
-            </div>
-            <button type="button" class="btn btn-primary submit-button" id="button2">ارسال پیام</button>
-            <div class="position-fixed bottom-0 right-0 p-3" style="z-index: 5; right: 0; bottom: 0;">
-                <div id="toast2" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true"
-                    data-delay="2000">
-                    <div class="toast-header">
-                        <img src="./assets/images/logo.jpg" class="rounded mr-2 logo" alt="logo">
-                        <strong class="mr-2">Technology</strong>
-                        <small class="mr-3 ml-2">11 mins ago</small>
-                        <button type="button" class="mr-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="toast-body p-4">
-                        پیام شما با موفقیت ارسال شد.
-                    </div>
-                </div>
-            </div>
         </div>
+
     </div>
+    </div>
+
     <footer>
         <div class="footer-style mt-5 pr-5 pl-5">
             <div class=" logo_menu mr-5 pt-5  d-flex justify-content-center align-items-center">
@@ -255,8 +236,8 @@
                 <p class="pr-3 font-weight-bolder">Technology</p>
             </div>
             <div class="d-flex justify-content-center pt-4">
-                 <p ><i class="mdi mdi-phone"></i>
-                    تلفن پشتیبانی 45200000  -  031 | 24 ساعته پاسخگوی شما هستیم</p>
+                <p><i class="mdi mdi-phone"></i>
+                    تلفن پشتیبانی 45200000 - 031 | 24 ساعته پاسخگوی شما هستیم</p>
             </div>
             <div class="icon-footer d-flex justify-content-around align-items-center p-4">
                 <div class="d-flex justify-content-center align-items-center flex-column ">
@@ -269,11 +250,11 @@
                 </div>
                 <div class="d-flex justify-content-center align-items-center flex-column p-4">
                     <i class="mdi responsive pr-3 mdi-shield-check footer-icon"></i>
-                    <p class="responsive">  ضمانت اصل بودن کالا </p>
+                    <p class="responsive"> ضمانت اصل بودن کالا </p>
                 </div>
                 <div class="d-flex justify-content-center align-items-center flex-column p-4">
                     <i class="mdi responsive pr-3 mdi-package-variant footer-icon"></i>
-                    <p class="responsive">   ضمانت بازگشت کالا </p>
+                    <p class="responsive"> ضمانت بازگشت کالا </p>
                 </div>
             </div><br><br><br><br>
             <div>
@@ -287,11 +268,11 @@
                     </div>
                     <div class="d-flex align-items-center flex-column">
                         <h3 class="pb-3"> راهنمای خرید</h3>
-                        <p>   نحوه های ثبت سفارش </p>
+                        <p> نحوه های ثبت سفارش </p>
                         <p>رویه ارسال سفارش</p>
                         <p>شیوه های پرداخت </p>
                     </div>
-                    <div >
+                    <div>
                         <h3 class="pr-5 pb-3"> همراه ما باشید</h3>
                         <i class="mdi pr-3 mdi-whatsapp footer-icon"></i>
                         <i class="mdi pr-3 mdi-instagram footer-icon"></i>
@@ -302,18 +283,11 @@
             <br><br><br><br>
         </div>
     </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="/assets/js/bootstrap.bundle.min..js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#button2').click(function () {
-                $('#toast2').toast('show');
-            });
-        });
-    </script>
-    <script src="./assets/js/cart.js"></script>
+    <script src="./assets/js/blog.js"></script>
 </body>
 
 </html>

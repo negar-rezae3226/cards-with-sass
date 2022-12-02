@@ -1,0 +1,208 @@
+.icone-panel {
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+}
+.icon-panel-delete{
+color: #d00000;
+font-size: 25px;
+cursor: pointer;
+}
+.image-panel{
+  width: 70px;
+  height: 70px;
+}
+
+.container-style{
+  text-align: center;
+  padding-top:20px;
+
+}
+.text-panel {
+  color:aliceblue;
+  font-size: 28px;
+}
+.shopping_cart-1 .btn{
+  background-color: green;
+  padding: 10px;
+}
+.cart-icon-{
+  background-color: green;
+}
+.cart-icon-:focus {
+  background-color: green !important;
+}
+
+.file-input{
+  padding-bottom:35px;
+}
+.modal-style{
+  margin-right: 530px;
+  margin-top: 100px;
+}
+.modal-content{
+  margin-top: 100px;
+}
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  margin: -76px 0 0 -76px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #303c6c;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+#myDiv {
+  display: none;
+  text-align: center;
+}
+.table{
+  background-color: #ffff;
+}
+.card-body{
+  padding: 0px 20px;
+}
+.card-header {
+  background-color:#303c6c;
+  color: aliceblue;
+}
+
+.icon-pluse{
+
+  margin-left: 5px;
+  color: white;
+  font-size: 20px;
+}
+.icone-panel-edite{
+  color: #ee964b;
+  font-size: 25px;
+  cursor: pointer;
+}
+.sale-color{
+  color: #d00000;
+  
+}
+
+.tooltip1 {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip1 .tooltiptext {
+  font-size: 10px;
+  visibility: hidden;
+  width:80px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px; 
+  
+  /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.tooltip1:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.table td, .table th {
+  vertical-align: unset;
+}
+.button-end{
+  color: #f3f3f3;
+  background-color: #d00000;
+  padding: 10px;
+  border-radius: 8px;
+}
+.button-save{
+  color: #f3f3f3;
+  background-color: green;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+.close {
+  float: unset;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: unset;
+  color: black;
+  text-shadow: unset;
+  opacity: unset;
+  border-radius: 8px;
+}
+
+.navbar-nav {
+  padding-right: 0px;
+}
+.container-fluid {
+  padding-right: 0px;
+}
+.navbar{
+  background-color: #caf0f8 !important;
+}
+.search-buttton{
+  padding: 10px;
+  font-size: 30px;
+  cursor: pointer;
+}
+/* .table-1{
+  background-color: #e9ecef;
+} */
+/* 
+.button.close {
+  background-color: #d00000 !important;
+  padding: 10px !important;
+} */
+
+
+
+
+/* .table td{
+  border-top: 1px solid #dee2e6;
+  border-bottom: ;
+} */
+
+/*# sourceMappingURL=panel-products.css.map */

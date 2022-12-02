@@ -9,6 +9,8 @@ let items = "";
 let newItems = "";
 let dollarUS = Intl.NumberFormat("en-US");
 let modal = document.getElementById("exampleModal");
+let modalAlert = document.getElementById("modal-alert");
+let modalAlertEdite = document.getElementById("modal-edite");
 let productsCategories;
 //#region getproducts
 
@@ -69,10 +71,16 @@ function createTable() {
     <td>
     <div class="icone-panel">    
     <i class="mdi tooltip1  pr-2 icone-panel-edite mdi-square-edit-outline"  data-toggle="modal"   data-target="#exampleModal" onclick="createModal('${product.id}')"> <span class="tooltiptext"> ویرایش محصول</span></i>
-    <i class="mdi  pr-2 icon-panel-delete mdi-delete" data-toggle="tooltip" data-placement="bottom" onclick="deleteItemsTable('${product.id}')"></i></div>
+    <i class="mdi mdi-delete icon-panel-delete" data-toggle="modal" data-target="#myModal" onclick="modalAlertButton('${product.id}')"></i>
+    </div>
     </td>
   </tr>`;
-
+//  <i
+//    class="mdi  pr-2 icon-panel-delete mdi-delete"
+//    data-toggle="tooltip"
+//    data-placement="bottom"
+//    onclick="deleteItemsTable('${product.id}')"
+//  ></i>;
     tableItems.innerHTML = items;
   });
 }
@@ -82,7 +90,7 @@ function createTable() {
 //#region deleteItems
 
 function deleteItemsTable(productId) {
-  if (confirm("کالا از سبد خرید شما حذف خواهد شد.آیا مطمئن هستید؟") == true) {
+
     fetch("https://dummyjson.com/products/" + `${productId}`, {
       method: "DELETE",
     })
@@ -93,15 +101,14 @@ function deleteItemsTable(productId) {
 
         deleteItem.parentElement.removeChild(deleteItem);
       });
-  }
+
 }
 
 function deleteNewItemsTable(productId) {
-  if (confirm("کالا از سبد خرید شما حذف خواهد شد.آیا مطمئن هستید؟") == true) {
+
     let deleteItem = document.getElementById(productId);
     deleteItem.parentElement.removeChild(deleteItem);
   }
-}
 //#endregion
 
 //#region addNewProduct
@@ -220,7 +227,7 @@ function createModal(productId) {
     });
 }
 
-function createNewModal() {
+function createNewModal(productId) {
   // let newProductItem = document.getElementById(productId)
   let item = `
                         <div class="modal-content modal-style">
@@ -362,7 +369,6 @@ function RestoreBackgroundColor(row) {
 }
 //#endregion
 
-
 //#region onclickFunctions
 
 function onclickFunctions() {
@@ -397,14 +403,6 @@ function goProductGroup(productGroupName) {
 
 //#endregion
 
-// document.getElementById("toastbtn").onclick = function () {
-//   var toastElList = [].slice.call(document.querySelectorAll(".toast"));
-//   var toastList = toastElList.map(function (toastEl) {
-//     return new bootstrap.Toast(toastEl);
-//   });
-//   toastList.forEach((toast) => toast.show());
-// };
-
 //#region create search
 
 let allSearchProducts = document.getElementById("search-products");
@@ -419,3 +417,35 @@ let search = `
 allSearchProducts.innerHTML = search;
 
 //#endregion
+
+//#region alert
+
+function modalAlertButton(productId) {
+  let buttunModal = `
+        <button type="button" class="btn btn-success" class="close" data-dismiss="modal" aria-label="Close" onclick="yesButton(${productId})">بله</button>
+<button type="button" class="btn btn-danger" class="close" data-dismiss="modal" aria-label="Close" data-bs-dismiss="modal" onclick="closeModal()">خیر</button>
+  `;
+  modalAlert.innerHTML = buttunModal;
+}
+
+function yesButton(productId) {
+  deleteItemsTable(productId);
+   deleteNewItemsTable(productId);
+  closeModal();
+}
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+}
+let modal2 = document.getElementById("myModal");
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal2) {
+    modal2.style.display = "none";
+  }
+};
+
+//#endregion
+
+
+

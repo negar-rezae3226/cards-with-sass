@@ -22,15 +22,15 @@
 <body onload="myFunction()" style="margin:0;">
     <div class="menubar d-flex align-items-center  justify-content-between">
         <div class="logo_menu">
-            <div class="d-flex flex-row align-items-center decor">
+            <!-- <div class="d-flex flex-row align-items-center decor"> -->
                 <a href="http://127.0.0.1:5500/index.html#">
                     <img src="./assets/images/logo.jpg" alt="logo" class="logo ">
                 </a>
-                <div class="web_name pr-2">
-                    <p class="pt-4 ">Technology</p>
-                </div>
-            </div>
+            <!-- </div> -->
         </div>
+            <div class="web_name pr-2">
+                <p class="pt-4 ">Technology</p>
+            </div>
 
 
         <!-- <form class="form-inline my-2 my-lg-0" id="search-products">
@@ -54,17 +54,15 @@
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
-                        <div class="modal-content">
+                        <div class="modal-content modal-cart">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                                 <h5 class="modal-title container" id="exampleModalLabel">سبد خرید</h5>
                             </div>
-                            <div class="modal-body" id="modal">
-
-
-                            </div>
+                            <table class="table modal-body table-borderless" id="modal">
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -80,15 +78,14 @@
                     <div class="dropdown-menu">
                         <a class="dropdown-item text-right " href="./login.html"><i
                                 class="mdi mdi-login-variant dropdown_icon pl-2"></i>ورود </a>
-                        <a class="dropdown-item text-right" href="#"><i
-                                class="mdi mdi-file-sign dropdown_icon pl-2"></i>ثبت
-                            نام</a>
-                        <a class="dropdown-item text-right" href="#"><i
-                                class="mdi mdi-logout-variant dropdown_icon pl-2"></i>خروج کاربر</a>
+                        <a class="dropdown-item text-right" href="./panel-products.html"><i
+                                class="mdi mdi-file-sign dropdown_icon pl-2"></i>مدیریت محصولات</a>
                         <a class="dropdown-item text-right" href=""><i
                                 class="mdi mdi-information dropdown_icon pl-2"></i>اطلاعات کاربر</a>
                         <a class="dropdown-item text-right" href="#"><i
                                 class="mdi mdi-ticket dropdown_icon pl-2"></i>سوابق تراکنش</a>
+                        <a class="dropdown-item text-right" href="#"><i
+                                class="mdi mdi-logout-variant dropdown_icon pl-2"></i>خروج کاربر</a>
                     </div>
                 </div>
             </div>
@@ -147,12 +144,12 @@
         </div>
         </li>
       </ul>
-        <form class="form-inline me-auto my-2 my-lg-0" id="search-products">
-             <input class="form-control mr-sm-2" type="search" placeholder="جست و جو" id="search-products"
+      <div class=" me-auto my-2 my-lg-0 d-flex " id="search-products"></div>
+        <!-- <form class="form-inline me-auto my-2 my-lg-0" id="search-products"> -->
+             <!-- <input class="form-control mr-sm-2" type="search" placeholder="جست و جو" id="search-products"
                 aria-label="Search">
-            <i class="mdi mdi-magnify search-buttton" id="button-search"></i> 
-
-        </form>
+            <i class="mdi mdi-magnify search-buttton" id="button-search"></i>  -->
+        <!-- </form> -->
     </div>
   </div>
 </nav>
@@ -190,7 +187,22 @@
         <div class="container">
             <div class="row" id="cardItems">
             </div>
+            <!-- modal -->
 
+  <div class="modal fade" id="myModal" role="dialog">
+<div class="modal-dialog pb-3">
+    <div class="modal-content modal-delete">
+      <div class="modal-body">
+        <i class="mdi icon-modal mdi-alert-circle-outline "></i>
+        <p >کالا از سبد خرید شما حذف خواهد شد ، آیا مطمعن هستید؟</p>
+      </div>
+      <div class="mb-5" id="modal-alert">
+          <button type="button" class="btn btn-success" id="buttonDelete" onclick="yesButton()">بله</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="closeModal()">خیر</button>
+      </div>
+    </div>
+  </div>
+  </div>
 
             <section class="mt-5">
                 <div>

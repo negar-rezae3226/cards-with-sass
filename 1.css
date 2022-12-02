@@ -132,7 +132,7 @@ body {
   color: #b4dfe5;
   background-color: #303c6c;
   font-size: xx-large;
-}
+} 
 
 .dropdown_icon {
   color: #303c6c;
@@ -195,21 +195,9 @@ body {
   height: 500px;
 }
 
-.modal-cart {
+.modal-content {
   width: 650px;
   padding: 20px;
-}
-.modal-delete{
-  height: 220px;
-  width: 400px;
-  font-size: 15px;
-  font-weight: 900;
-  background-color: #f3f3f3;
-  border-radius: 10px;
-}
-.icon-modal{
-  font-size: 50px;
-  color: #d00000;
 }
 
 .modaltext {
@@ -228,7 +216,6 @@ body {
 
 .navbar {
   /* overflow: hidden; */
-  /* overflow: scroll; */
   background-color: #b4dfe5;
   position: unset;
   display: flex;
@@ -475,10 +462,10 @@ body {
   text-align: right;
   /* padding-left: 15px; */
 }
-.navbar-nav .dropdown-menu {
+/* .navbar-nav .dropdown-menu {
   background-color: #caf0f8;
   border: 0px solid #caf0f8;
-}
+} */
 .navbar-light .navbar-nav .nav-link {
   color:#303c6c;
   float: right;
@@ -504,9 +491,9 @@ body {
   margin-top: 40px;
   cursor: pointer;
 }
-/* .navbar-nav .dropdown-menu {
-  padding-right: 10px;
-    width: 200px;
-  height: 300px;
-  overflow: auto;
+/* .modal-body td{
+  height: 30px;
+} */
+/* .navbar-dark .navbar-nav .nav-link {
+color : unset;
 } */

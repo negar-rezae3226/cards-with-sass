@@ -12,8 +12,8 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css" />
      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Spectral|Rubik">
     <link rel="shortcut icon" href="./assets/images/logo.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/panel-products.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 
 
 </head>
@@ -52,8 +52,7 @@
                     </div>
                 </button>
 
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content modal-cart">
@@ -67,7 +66,7 @@
                             </table>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
 
 
@@ -225,7 +224,7 @@
                                             </span>
                                         </button>
                                         </div>
-            <div class="position-fixed bottom-0 right-0 p-3" style="z-index: 5; right: 0; bottom: 0;">
+            <!-- <div class="position-fixed bottom-0 right-0 p-3" style="z-index: 5; right: 0; bottom: 0;">
                 <div id="toast2" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true"
                     data-delay="2000">
                     <div class="toast-header">
@@ -240,7 +239,7 @@
                         پیام شما با موفقیت ارسال شد.
                     </div>
                 </div>
-            </div>
+            </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -275,6 +274,38 @@
             </div>
           </div>
     </div>
+      <div class="modal fade" id="myModal" role="dialog">
+<div class="modal-dialog pb-3">
+    <div class="modal-content modal-delete">
+      <div class="modal-body">
+        <i class="mdi icon-modal mdi-alert-circle-outline "></i>
+        <p >کالا حذف خواهد شد ، آیا مطمعن هستید؟</p>
+      </div>
+      <div class="mb-5" id="modal-alert">
+          <button type="button" class="btn btn-success" id="buttonDelete" onclick="yesButton()">بله</button>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal()">
+                                            <span aria-hidden="true">
+                                                <div class="button-end">انصراف</div>
+                                            </span>
+                                        </button>
+        <!-- <button type="button" class="btn btn-danger" class="close" data-dismiss="modal" aria-label="Close" data-bs-dismiss="modal" onclick="closeModal()">خیر</button> -->
+      </div>
+    </div>
+  </div>
+  </div>
+
+        <div class="modal fade" id="myModal-edite" role="dialog">
+<div class="modal-dialog pb-3">
+    <div class="modal-content modal-delete">
+      <div class="modal-body">
+        <i class="mdi icon-modal mdi-alert-circle-outline "></i>
+        <p >کالا از سبد خرید شما حذف خواهد شد ، آیا مطمعن هستید؟</p>
+      </div>
+      <div class="mb-5" id="modal-edite">
+      </div>
+    </div>
+  </div>
+  </div>
 
 
     <footer>

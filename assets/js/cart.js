@@ -321,6 +321,7 @@ function createGroupProducts() {
   let productsGroup = document.getElementById("products-id");
 
   for (let i = 0; i < 20; i++) {
+    
     productsGroups += `
      <li><a class="dropdown-item" onclick="goProductGroup('${productsCategories[i]}')" target="_blank"> ${productsCategories[i]} </a></li>
     `;
@@ -386,10 +387,13 @@ window.onclick = function (event) {
   }
 };
 //#endregion
+
+//#region alert
+
 function modalAlertButton(productId) {
   let buttunModal = `
-        <button type="button" class="btn btn-success" onclick="yesButton(${productId})">بله</button>
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="closeModal()">خیر</button>
+        <button type="button" class="btn btn-success" class="close" data-dismiss="modal" aria-label="Close" onclick="yesButton(${productId})">بله</button>
+        <button type="button" class="btn btn-danger" class="close" data-dismiss="modal" aria-label="Close"  data-bs-dismiss="modal" onclick="closeModal()">خیر</button>
   `;
   modalAlert.innerHTML = buttunModal;
 }
@@ -398,3 +402,5 @@ function yesButton(x) {
   deleteButtonInBasket(x);
   closeModal();
 }
+
+//#endregion

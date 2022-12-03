@@ -75,10 +75,10 @@ function createCard() {
                       <div class="card-body">
                           <div class="description">
                               <h6 class="card-title my-3">${product.title}</h6>
-                              <p class="text-del"><del> ${priceCards}</del> $</p>
-                              <p class="card-text">  ${priceSale} $</p>
+                              <p class="text-del"><del> ${product.price}</del> $</p>
+                              <p class="card-text">  ${totalValue} $</p>
                               
-                              <a  class="btn btn-primary"   onclick="onAddBasketItem('${product.title}','${product.thumbnail}',${priceCards},1, '${product.id}','${product.discountPercentage}')" >افزودن به سبد </a>
+                              <a  class="btn btn-primary"   onclick="onAddBasketItem('${product.title}','${product.thumbnail}',${product.price},1, '${product.id}','${product.discountPercentage}')" >افزودن به سبد </a>
                           </div>
                       </div>
                   </div>
@@ -160,9 +160,9 @@ function createBasketItems() {
     );
     let priceSale = dollarUSLocale.format(totalValue);
     items += `
-        <tr id="shopping_${product.id}" style="height: 10px;" class="d">
+      <tr id="shopping_${product.id}" class="d">
       <td>
-        <img src="${product.thumbnail}" alt="" class="logo">
+        <img src="${product.thumbnail}"  class="logo">
       </td>
       <td>
         <p class="shopping_cart_text">${product.title}</p>
@@ -196,6 +196,7 @@ function calcBasketItems() {
   let shoppingCartItems = shoppingBasketItems.length;
   cartCount.innerText = shoppingCartItems;
 }
+
 function calcBasketItemsDelete() {
   let shoppingCartItems = shoppingBasketItems.length - 1;
   cartCount.innerText = shoppingCartItems;
@@ -210,12 +211,19 @@ function getBasketItemById(productId) {
 }
 
 function deleteButtonInBasket(productId) {
-  const cartItem = document.getElementById("shopping_" + productId);
-  cartItem.remove();
-  changeButton(productId);
-  emptyModal();
-  deleteLocalStorage();
-  calcBasketItemsDelete();
+  // var idx = shoppingBasketItems.indexOf(productId);
+  // shoppingBasketItems.splice(idx, 1);
+  // let x = document.getElementById(productId);
+  // shoppingBasketItems.splice(shoppingBasketItems.indexOf(x),1);
+  if (confirm('آیا محصول ازسبد خرید حذف شود؟') === true) {
+    const cartItem = document.getElementById("shopping_" + productId);
+    cartItem.remove();
+    changeButton(productId);
+    emptyModal();
+    deleteLocalStorage();
+    calcBasketItemsDelete();
+  }
+
 }
 //#endregion
 
@@ -245,7 +253,7 @@ function addQuantityInputToProdutsCart(productId, count) {
 
    <input type="text" class="input_number mr-2 ml-2" data-productId="${productId}"  value="${count} " >
 
-   <button type="button" class="btn btn-outline-info " onclick="decrement('${productId}')">
+   <button type="button" class="btn btn-outline-info" id="button-" onclick="decrement('${productId}')">
    -
    </button>
 
@@ -344,7 +352,7 @@ let allSearchProducts = document.getElementById("search-products");
 
 let search = `
 <input class="form-control mr-sm-2 mt-3"  type="search" placeholder="جست و جو" id="search-input" aria-label="Search">
- <i class="mdi mdi-magnify search-buttton" id="button-search" onclick="searchProducts()"></i> 
+ <i class="mdi mdi-magnify search-buttton" id="button-search" onclick="spinner1();searchProducts();"></i> 
 
  
 `;
@@ -370,6 +378,9 @@ function myFunction() {
 function showPage() {
   document.getElementById("loader").style.display = "none";
   document.getElementById("myDiv").style.display = "block";
+}
+function spinner1() {
+  document.getElementsByClassName("loaderSearch")[0].style.display = "block";
 }
 
 //#endregion
@@ -397,9 +408,8 @@ function modalAlertButton(productId) {
   `;
   modalAlert.innerHTML = buttunModal;
 }
-
-function yesButton(x) {
-  deleteButtonInBasket(x);
+function yesButton(productId) {
+  deleteButtonInBasket(productId);
   closeModal();
 }
 

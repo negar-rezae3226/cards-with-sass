@@ -504,9 +504,9 @@ body {
   margin-top: 40px;
   cursor: pointer;
 }
-/* .navbar-nav .dropdown-menu {
+.navbar-nav .dropdown-menu {
   padding-right: 10px;
     width: 200px;
   height: 300px;
   overflow: auto;
-} */
+}

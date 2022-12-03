@@ -321,6 +321,7 @@ function createGroupProducts() {
   let productsGroup = document.getElementById("products-id");
 
   for (let i = 0; i < 20; i++) {
+    
     productsGroups += `
      <li><a class="dropdown-item" onclick="goProductGroup('${productsCategories[i]}')" target="_blank"> ${productsCategories[i]} </a></li>
     `;

@@ -11,12 +11,14 @@ let dollarUS = Intl.NumberFormat("en-US");
 let modal = document.getElementById("exampleModal");
 let modalAlert = document.getElementById("modal-alert");
 let modalAlertEdite = document.getElementById("modal-edite");
+let modalEdite = document.getElementById("edite-table-items");
+let editeModalInnerhtml = document.getElementById("modal-body-table");
 let productsCategories;
+
 //#region getproducts
 
 getAllProducts();
 allProductsCategories();
-
 
 function getAllProducts() {
   fetch("https://dummyjson.com/products")
@@ -35,6 +37,7 @@ function allProductsCategories() {
       productsCategories = json;
       console.log(productsCategories);
       createGroupProducts();
+      // inputProductCategory();
     });
 }
 
@@ -70,17 +73,11 @@ function createTable() {
     <td>${product.category}</td>
     <td>
     <div class="icone-panel">    
-    <i class="mdi tooltip1  pr-2 icone-panel-edite mdi-square-edit-outline"  data-toggle="modal"   data-target="#exampleModal" onclick="createModal('${product.id}')"> <span class="tooltiptext"> ویرایش محصول</span></i>
+    <i class="mdi tooltip1  pr-2 icone-panel-edite mdi-square-edit-outline"  data-toggle="modal"   data-target="#edite-table-items" onclick="createModal('${product.id}')"> <span class="tooltiptext"> ویرایش محصول</span></i>
     <i class="mdi mdi-delete icon-panel-delete" data-toggle="modal" data-target="#myModal" onclick="modalAlertButton('${product.id}')"></i>
     </div>
     </td>
   </tr>`;
-//  <i
-//    class="mdi  pr-2 icon-panel-delete mdi-delete"
-//    data-toggle="tooltip"
-//    data-placement="bottom"
-//    onclick="deleteItemsTable('${product.id}')"
-//  ></i>;
     tableItems.innerHTML = items;
   });
 }
@@ -90,25 +87,22 @@ function createTable() {
 //#region deleteItems
 
 function deleteItemsTable(productId) {
+  fetch("https://dummyjson.com/products/" + `${productId}`, {
+    method: "DELETE",
+  })
+    .then((res) => res.json())
+    .then((json) => {
+      deleteProduct = json.id;
+      let deleteItem = document.getElementById(deleteProduct);
 
-    fetch("https://dummyjson.com/products/" + `${productId}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        deleteProduct = json.id;
-        let deleteItem = document.getElementById(deleteProduct);
-
-        deleteItem.parentElement.removeChild(deleteItem);
-      });
-
+      deleteItem.parentElement.removeChild(deleteItem);
+    });
 }
 
 function deleteNewItemsTable(productId) {
-
-    let deleteItem = document.getElementById(productId);
-    deleteItem.parentElement.removeChild(deleteItem);
-  }
+  let deleteItem = document.getElementById(productId);
+  deleteItem.parentElement.removeChild(deleteItem);
+}
 //#endregion
 
 //#region addNewProduct
@@ -152,15 +146,16 @@ function addNewProduct() {
      <td>${newProduct.brand}</td>
      <td>${newProduct.category}</td>
      <td>
-     <div class="icone-panel">
-        <i class="mdi tooltip1  pr-2 icone-panel-edite mdi-square-edit-outline"  data-toggle="modal"   data-target="#exampleModal" onclick="createNewModal('${newProduct.id}')"> <span class="tooltiptext"> ویرایش محصول</span></i>
-        <i class="mdi  pr-2 icon-panel-delete mdi-delete" data-toggle="tooltip" data-placement="bottom" onclick=" deleteNewItemsTable('${newProduct.id}')"></i></div>
+        <div class="icone-panel">
+          <i class="mdi tooltip1  pr-2 icone-panel-edite mdi-square-edit-outline"  data-toggle="modal"   data-target="#edite-table-items"  onclick="createNewModal('${newProduct.id}')"> <span class="tooltiptext"> ویرایش محصول</span></i>
+          <i class="mdi mdi-delete icon-panel-delete" data-toggle="modal" data-target="#myModal" onclick="modalAlertButton('${newProduct.id}')"></i>
+        </div>
      </td>
      `;
       node.innerHTML = newItems;
       allProducts.push(newProduct);
       tableItems.appendChild(node);
-      return
+      return;
     });
 }
 
@@ -176,26 +171,32 @@ function createModal(productId) {
       console.log(panelProduct);
 
       let item = `
-                        <div class="modal-content modal-style">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                <h5 class="modal-title container" id="exampleModalLabel"> ویرایش محصول </h5>
-                            </div>
-                            <div class="modal-body" id="modal">
-                                <div class="form-floating mb-3 d-flex mb-4 mt-4 mr-3 ml-3">
-                                    <input type="text" class="form-control m ml-2 " id="name_product" placeholder=" ${panelProduct.title} ">
-                                    <input type="text" class="form-control m" id="brand_product" placeholder="${panelProduct.brand}  ">
+                                <div class="form-floating  d-flex mb-2  mr-3 ml-3">
+                                  <div>
+                                    <label for="title">نام محصول:</label>
+                                    <input type="text" class="form-control m ml-2 " id="name_product_1"  placeholder="نام محصول">
+                                  </div>
+                                  <div  class="mr-2">
+                                    <label for="brand">برند:</label>
+                                    <input type="text" class="form-control m" id="brand_product_1" placeholder="برند محصول" ">
+                                  </div>
                                 </div>
-                                <div class="form-floating mb-3 d-flex mb-4 mr-3 ml-3">
-                                    <input type="number" class="form-control m ml-2" id="price_product" placeholder="${panelProduct.price} $ ">
-                                    <input type="number" class="form-control m" id="sale_product" placeholder="% ${panelProduct.rating}">
+                                
+                                <div class="form-floating mb-2 d-flex  mr-3 ml-3">
+                                  <div>
+                                    <label for="price">قیمت:</label>
+                                    <input type="number" class="form-control m ml-2" id="price_product_1" placeholder="قیمت">
+                                  </div>
+                                  <div  class="mr-2">
+                                    <label for="sale">تخفیف:</label>
+                                    <input type="number" class="form-control m" id="sale_product_1" placeholder="تخفیف">
+                                  </div>
                                 </div>
-                                <div class="form-group mb-4 m mr-3 ml-3">
-                                    <select class="form-control" id="exampleFormControlSelect1">
 
-                                        <option>${panelProduct.category}  </option>
+                                <div class="form-group mb-2 m mr-3 ml-3">
+                                <label for="category">دسته بندی:</label>
+                                    <select class="form-control" id="exampleFormControlSelect2">
+                                        <option>${panelProduct.category}</option>
                                         <option>furniture</option>
                                         <option>home-decoration</option>
                                         <option>groceries </option>
@@ -205,10 +206,11 @@ function createModal(productId) {
                                     </select>
                                 </div>
                                 <div class="form-floating mr-3 ml-3">
-                                    <textarea class="form-control m mt-4" placeholder="${panelProduct.description}" id="floatingTextarea2" style="height: 150px"></textarea>
+                                    <label for="description">توضیحات:</label>
+                                    <textarea class="form-control m " id="textArea_1" placeholder=" توضیحات محصول "  style="height: 150px"></textarea>
                                 </div>
-                                <div class="button-modal mt-4">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="updateProductTable('${panelProduct.id}')">
+                                <div class="button-modal mt-3">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="updateProductTable('${panelProduct.id}') ; snackbarFunction();">
                                     <span aria-hidden="true">
                                         <div class="button-save">ویرایش</div> 
                                     </span>
@@ -219,12 +221,38 @@ function createModal(productId) {
                                     </span>
                                 </button>
                                 </div>
-                            </div>
-                        </div>
                     `;
-      modal.innerHTML = item;
+      editeModalInnerhtml.innerHTML = item;
+      inputValueEdite();
       updateProductTable(productId);
     });
+}
+
+// function inputProductCategory() {
+//   const nodes = document.createElement("option");
+//   let categoryId = document.getElementById("exampleFormControlSelect2");
+//   productsCategories.forEach((product) => {  
+//       nodes.innerHTML = product;
+//       categoryId.appendChild(nodes);
+//   });
+
+  // categoryId.appendChild(nodeOption);
+  
+// }
+
+function inputValueEdite() {
+
+  let editeTitle = document.getElementById("name_product_1");
+  let editeTextarea = document.getElementById("textArea_1");
+  let editeSale = document.getElementById("sale_product_1");
+  let editePrice = document.getElementById("price_product_1");
+  let editeBrand = document.getElementById("brand_product_1");
+
+  editeTitle.value = panelProduct.title;
+  editeTextarea.value = panelProduct.description;
+  editeSale.value = panelProduct.rating;
+  editePrice.value = panelProduct.price;
+  editeBrand.value = panelProduct.brand;
 }
 
 function createNewModal(productId) {
@@ -262,7 +290,7 @@ function createNewModal(productId) {
                                     <textarea class="form-control m mt-4" placeholder="${allProducts[30].description}" id="floatingTextarea2" style="height: 150px"></textarea>
                                 </div>
                                 <div class="button-modal mt-4">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="updateProductTable('${allProducts[30].id}')">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="updateProductTable('${allProducts[30].id}') ; snackbarFunction();">
                                     <span aria-hidden="true">
                                         <div class="button-save">ویرایش</div> 
                                     </span>
@@ -281,12 +309,12 @@ function createNewModal(productId) {
 }
 
 function updateProductTable(productId) {
-  let titleNew = document.getElementById("name_product").value;
-  let brandNew = document.getElementById("brand_product").value;
-  let priceNew = document.getElementById("price_product").value;
-  let saleNew = document.getElementById("sale_product").value;
+  let titleNew = document.getElementById("name_product_1").value;
+  let brandNew = document.getElementById("brand_product_1").value;
+  let priceNew = document.getElementById("price_product_1").value;
+  let saleNew = document.getElementById("sale_product_1").value;
   let categoryNew = document.getElementById("exampleFormControlSelect1").value;
-  let desNew = document.getElementById("floatingTextarea2").value;
+  let desNew = document.getElementById("textArea_1").value;
 
   fetch("https://dummyjson.com/products/" + `${productId}`, {
     method: "PUT",
@@ -315,14 +343,13 @@ function updateProductTable(productId) {
   <td>${updateProduct.title}</td>
   <td>${updateProduct.description}</td>
   <td>$ ${updateProduct.price}</td>
-  <td>${updateProduct.rating}%</td>
+  <td class="sale-color">${updateProduct.rating}%</td>
   <td>${updateProduct.brand}</td>
-  <td>${updateProduct.category}</td>
+  <td>${panelProduct.category}</td>
   <td>
   <div class="icone-panel">    
-  <i class="mdi  pr-2 icone-panel-edite mdi-square-edit-outline" data-toggle="modal" data-target="#exampleModal" onclick="createModal('${updateProduct.id}')"></i>
-  <i class="mdi  pr-2 icon-panel-delete mdi-delete" data-toggle="tooltip" data-placement="bottom" onclick="deleteItemsTable('${updateProduct.id}')"></i></div>
-  </td>
+  <i class="mdi  pr-2 icone-panel-edite mdi-square-edit-outline" data-toggle="modal" data-target="#edite-table-items" onclick="createModal('${updateProduct.id}')"></i>
+  <i class="mdi mdi-delete icon-panel-delete" data-toggle="modal" data-target="#myModal" onclick="modalAlertButton('${updateProduct.id}')"></i>  </td>
   `;
       itemTable.innerHTML = itemChange;
     });
@@ -345,7 +372,6 @@ window.onclick = function (event) {
 //#endregion
 
 //#region loader
-
 
 function myFunction() {
   myVar = setTimeout(showPage, 1500);
@@ -430,7 +456,7 @@ function modalAlertButton(productId) {
 
 function yesButton(productId) {
   deleteItemsTable(productId);
-   deleteNewItemsTable(productId);
+  deleteNewItemsTable(productId);
   closeModal();
 }
 function closeModal() {
@@ -447,5 +473,14 @@ window.onclick = function (event) {
 
 //#endregion
 
+//#region snackbar
 
+function snackbarFunction() {
+  let snackbar = document.getElementById("snackbar");
+  snackbar.className = "show";
+  setTimeout(function () {
+    snackbar.className = snackbar.className.replace("show", "");
+  }, 3000);
+}
 
+//#endregion

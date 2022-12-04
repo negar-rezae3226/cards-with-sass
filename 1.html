@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="1.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <section class="modal2 hidden">
+        <div class="modal-dialog pb-3">
+            <div class="modal-content modal-delete">
+              <div class="modal-body">
+                <i class="mdi icon-modal mdi-alert-circle-outline "></i>
+                <p >کالا از سبد خرید شما حذف خواهد شد ، آیا مطمعن هستید؟</p>
+              </div>
+              <div class="mb-5" id="modal-alert">
+                  <button type="button" class="btn btn-success" id="buttonDelete" onclick="yesButton()">بله</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="closeModal()">خیر</button>
+              </div>
+            </div>
+          </div>
+      </section>
+      
+      <div class="overlay hidden"></div>
+      <button class="btn btn-open">Open Modal</button>
+      <script src="1.js"></script>
+</body>
+
+</html>

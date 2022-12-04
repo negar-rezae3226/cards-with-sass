@@ -174,22 +174,22 @@ function createModal(productId) {
                                 <div class="form-floating  d-flex mb-2  mr-3 ml-3">
                                   <div>
                                     <label for="title">نام محصول:</label>
-                                    <input type="text" class="form-control m ml-2 " id="name_product_1"  placeholder="نام محصول">
+                                    <input type="text" class="form-control  m ml-2 " id="name_product_1"  placeholder="نام محصول">
                                   </div>
                                   <div  class="mr-2">
                                     <label for="brand">برند:</label>
-                                    <input type="text" class="form-control m" id="brand_product_1" placeholder="برند محصول" ">
+                                    <input type="text" class="form-control  m" id="brand_product_1" placeholder="برند محصول" ">
                                   </div>
                                 </div>
                                 
                                 <div class="form-floating mb-2 d-flex  mr-3 ml-3">
                                   <div>
                                     <label for="price">قیمت:</label>
-                                    <input type="number" class="form-control m ml-2" id="price_product_1" placeholder="قیمت">
+                                    <input type="number" class="form-control  m ml-2" id="price_product_1" placeholder="قیمت">
                                   </div>
                                   <div  class="mr-2">
                                     <label for="sale">تخفیف:</label>
-                                    <input type="number" class="form-control m" id="sale_product_1" placeholder="تخفیف">
+                                    <input type="number" class="form-control  m" id="sale_product_1" placeholder="تخفیف">
                                   </div>
                                 </div>
 
@@ -253,18 +253,31 @@ function inputValueEdite() {
   editeSale.value = panelProduct.rating;
   editePrice.value = panelProduct.price;
   editeBrand.value = panelProduct.brand;
+
 }
 
+function emptyInputs() {
+
+  let elements = document.getElementsByClassName('empty-input');
+  for (var ii=0; ii < elements.length; ii++) {
+      elements[ii].value = "";
+  }
+  let selected = document.getElementById("exampleFormControlSelect1");
+  let selectInnerHtml = "";
+   selectInnerHtml = `
+   <option>دسته بندی</option>
+   <option>furniture</option>
+   <option>home-decoration</option>
+   <option>groceries </option>
+   <option>groceries</option>
+   <option>skincare</option>
+   <option>laptops</option>
+   `;
+   selected.innerHTML = selectInnerHtml;
+}
 function createNewModal(productId) {
   // let newProductItem = document.getElementById(productId)
   let item = `
-                        <div class="modal-content modal-style">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                <h5 class="modal-title container" id="exampleModalLabel"> ویرایش محصول </h5>
-                            </div>
                             <div class="modal-body" id="modal">
                                 <div class="form-floating mb-3 d-flex mb-4 mt-4 mr-3 ml-3">
                                     <input type="text" class="form-control m ml-2 " id="name_product" placeholder=" ${allProducts[30].title} ">
@@ -302,9 +315,8 @@ function createNewModal(productId) {
                                 </button>
                                 </div>
                             </div>
-                        </div>
                     `;
-  modal.innerHTML = item;
+  editeModalInnerhtml.innerHTML = item;
   updateProductTable(productId);
 }
 
@@ -313,7 +325,7 @@ function updateProductTable(productId) {
   let brandNew = document.getElementById("brand_product_1").value;
   let priceNew = document.getElementById("price_product_1").value;
   let saleNew = document.getElementById("sale_product_1").value;
-  let categoryNew = document.getElementById("exampleFormControlSelect1").value;
+  let categoryNew = document.getElementById("exampleFormControlSelect2").value;
   let desNew = document.getElementById("textArea_1").value;
 
   fetch("https://dummyjson.com/products/" + `${productId}`, {
@@ -345,10 +357,10 @@ function updateProductTable(productId) {
   <td>$ ${updateProduct.price}</td>
   <td class="sale-color">${updateProduct.rating}%</td>
   <td>${updateProduct.brand}</td>
-  <td>${panelProduct.category}</td>
+  <td>${updateProduct.category}</td>
   <td>
   <div class="icone-panel">    
-  <i class="mdi  pr-2 icone-panel-edite mdi-square-edit-outline" data-toggle="modal" data-target="#edite-table-items" onclick="createModal('${updateProduct.id}')"></i>
+  <i class="mdi  pr-2 icone-panel-edite mdi-square-edit-outline" data-toggle="modal" data-target="#edite-table-items" onclick="updateProductTable('${updateProduct.id}')"></i>
   <i class="mdi mdi-delete icon-panel-delete" data-toggle="modal" data-target="#myModal" onclick="modalAlertButton('${updateProduct.id}')"></i>  </td>
   `;
       itemTable.innerHTML = itemChange;
@@ -360,6 +372,7 @@ function updateProductTable(productId) {
 //#region closeModal
 function closeModal() {
   document.getElementById("exampleModal").style.display = "none";
+  
 }
 var modal1 = document.getElementById("exampleModal");
 

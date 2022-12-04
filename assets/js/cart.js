@@ -13,10 +13,6 @@ let modalAlert = document.getElementById("modal-alert");
 
 //#region cardproducts
 
-// searchInput.addEventListener("input", (event) => {
-//   searchProducts(event.target.value);
-// });
-
 getAllProducts();
 allProductsCategories();
 
@@ -39,16 +35,6 @@ function allProductsCategories() {
     });
 }
 
-function searchProducts() {
-  let searchInput = document.getElementById("search-input").value;
-  fetch(url + `/search?q=${searchInput}`)
-    .then((res) => res.json())
-    .then((json) => {
-      allProducts = json.products;
-      console.log(allProducts);
-      createCard();
-    });
-}
 
 //#endregion
 
@@ -77,7 +63,6 @@ function createCard() {
                               <h6 class="card-title my-3">${product.title}</h6>
                               <p class="text-del"><del> ${product.price}</del> $</p>
                               <p class="card-text">  ${totalValue} $</p>
-                              
                               <a  class="btn btn-primary"   onclick="onAddBasketItem('${product.title}','${product.thumbnail}',${product.price},1, '${product.id}','${product.discountPercentage}')" >افزودن به سبد </a>
                           </div>
                       </div>
@@ -117,7 +102,7 @@ function setGlobalParamtres() {
 function emptyModal() {
   if (shoppingBasketItems.length == 0) {
     modal.innerHTML =
-      ' <p class="modaltext mt-5">سبد خرید شما خالی است!</p><p class="modaltext2">می‌توانید برای مشاهده محصولات بیشتر به صفحه <a href="./product.html">محصولات</a> بروید.</p>';
+      ' <p class="modaltext mt-5">سبد خرید شما خالی است!</p><p class="modaltext2 mb-5">می‌توانید برای مشاهده محصولات بیشتر به صفحه <a href="./product.html">محصولات</a> بروید.</p>';
   }
 }
 //#endregion
@@ -168,7 +153,7 @@ function createBasketItems() {
         <p class="shopping_cart_text">${product.title}</p>
       </td>
       <td>
-            <p class="card-text">  ${priceSale} $</p>
+            <p class="card-text">${priceSale} $</p>
       </td>
       <td>
             <div class="shopping_cart_button d-flex justify-content-center align-items-center">
@@ -197,11 +182,6 @@ function calcBasketItems() {
   cartCount.innerText = shoppingCartItems;
 }
 
-function calcBasketItemsDelete() {
-  let shoppingCartItems = shoppingBasketItems.length - 1;
-  cartCount.innerText = shoppingCartItems;
-}
-
 function getBasketItemById(productId) {
   const product = shoppingBasketItems.find((item) => {
     return item.id === productId;
@@ -211,19 +191,20 @@ function getBasketItemById(productId) {
 }
 
 function deleteButtonInBasket(productId) {
-  // var idx = shoppingBasketItems.indexOf(productId);
-  // shoppingBasketItems.splice(idx, 1);
-  // let x = document.getElementById(productId);
-  // shoppingBasketItems.splice(shoppingBasketItems.indexOf(x),1);
   if (confirm('آیا محصول ازسبد خرید حذف شود؟') === true) {
     const cartItem = document.getElementById("shopping_" + productId);
     cartItem.remove();
     changeButton(productId);
+    deleteItemInArray(productId); 
     emptyModal();
     deleteLocalStorage();
-    calcBasketItemsDelete();
+    calcBasketItems();
   }
-
+}
+function deleteItemInArray(productId) {
+  const index = shoppingBasketItems.findIndex(object => {
+    return object.id === productId;});
+    shoppingBasketItems.splice(index, 1);
 }
 //#endregion
 
@@ -283,13 +264,12 @@ function updateQuantityInputValue(productId, value) {
 
 //#region change
 function changeButton(productId) {
+  let result = shoppingBasketItems.find(item => item.id === productId);
   let addToCartButton = "";
 
-  for (let product of shoppingBasketItems) {
-    addToCartButton = ` <a class="btn btn-primary"  onclick="onAddBasketItem('${product.title}','${product.thumbnail}','${product.price}',1,'${product.id}','${product.discountPercentage}')" >
+    addToCartButton = ` <a class="btn btn-primary"  onclick="onAddBasketItem('${result.title}','${result.thumbnail}','${result.price}',1,'${result.id}','${result.discountPercentage}')" >
     افزودن به سبد 
     </a> `;
-  }
   addQuantityInputToProdutsCart(productId);
   let card = document.getElementById(productId);
   let buttonCard = card.querySelector(".shopping_cart_button");
@@ -316,7 +296,9 @@ function decrement(productId) {
     updateQuantityInputValue(productId, product.count);
     setBasketItemsInLocalStorage();
   } else if (product.count <= 1) {
-    deleteButtonInBasket(productId);
+    s();
+    // deleteButtonInBasket(productId);
+
     // calcBasketItems();
   }
 }
@@ -347,6 +329,17 @@ function goProductGroup(productGroupName) {
 
 //#region create search
 
+function searchProducts() {
+  let searchInput = document.getElementById("search-input").value;
+  fetch(url + `/search?q=${searchInput}`)
+    .then((res) => res.json())
+    .then((json) => {
+      allProducts = json.products;
+      console.log(allProducts);
+      createCard();
+    });
+}
+
 let allSearchProducts = document.getElementById("search-products");
 // let searchInput = document.getElementById("search-input").value;
 
@@ -360,7 +353,9 @@ let search = `
 allSearchProducts.innerHTML = search;
 
 function searchClose(){
-
+  let closeSeach = document.getElementById('search-input');
+  closeSeach.value = "";
+  searchProducts();
 }
 
 //#endregion
@@ -416,6 +411,11 @@ function modalAlertButton(productId) {
 function yesButton(productId) {
   deleteButtonInBasket(productId);
   closeModal();
+}
+function s(){
+  let d = document.getElementById("button-");
+  d.setAttribute('data-target', '#myModal');
+  d.setAttribute('data-toggle', 'modal');
 }
 
 //#endregion

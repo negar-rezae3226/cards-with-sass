@@ -19,20 +19,20 @@
 <body>
     <div class="menubar d-flex align-items-center  justify-content-between">
         <div class="logo_menu">
-            <a href="http://127.0.0.1:5500/index.html#" class="d-flex flex-row align-items-center decor">
-                <img src="./assets/images/logo.jpg" alt="logo" class="logo ">
-                <div class="web_name pr-2">
-                    <p class="pt-4 ">Technology</p>
-                </div>
-            </a>
+            <!-- <div class="d-flex flex-row align-items-center decor"> -->
+                <a href="http://127.0.0.1:5500/index.html#">
+                    <img src="./assets/images/logo.jpg" alt="logo" class="logo ">
+                </a>
+            <!-- </div> -->
         </div>
+            <div class="web_name pr-2">
+                <p class="pt-4 ">Technology</p>
+            </div>
 
 
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2"  type="search" placeholder="جست و جو" id="search-products" aria-label="Search">
-            <a class="btn btn-outline-primary my-2 my-sm-0 mr-3"   id="button-search"> <i class="mdi mdi-magnify"></i>
-            </a>
-        </form>
+        <!-- <form class="form-inline my-2 my-lg-0" id="search-products">
+
+        </form> -->
 
         <div class="icon_menu d-flex flex-row ">
 
@@ -51,17 +51,19 @@
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
+                        <div class="modal-content modal-cart pb-5">
+                            <div class="modal-header sticky-title-modal">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
+                                    <span aria-hidden="true" class="close-modal-cart">&times;</span>
                                 </button>
                                 <h5 class="modal-title container" id="exampleModalLabel">سبد خرید</h5>
                             </div>
-                            <div class="modal-body" id="modal">
-
-
-                            </div>
+                            <table class="table modal-body table-borderless" id="modal">
+                                <thead>
+                                </thead>
+                                  <tbody id="modal">
+                                  </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -75,64 +77,83 @@
                         <i class="mdi mdi-menu"></i>
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item text-right " href="#"><i
+                        <a class="dropdown-item text-right " href="./login.html"><i
                                 class="mdi mdi-login-variant dropdown_icon pl-2"></i>ورود </a>
-                        <a class="dropdown-item text-right" href="#"><i
-                                class="mdi mdi-file-sign dropdown_icon pl-2"></i>ثبت
-                            نام</a>
-                        <a class="dropdown-item text-right" href="#"><i
-                                class="mdi mdi-logout-variant dropdown_icon pl-2"></i>خروج کاربر</a>
-                        <a class="dropdown-item text-right" href="#"><i
+                        <a class="dropdown-item text-right" href="./panel-products.html"><i
+                                class="mdi mdi-file-sign dropdown_icon pl-2"></i>مدیریت محصولات</a>
+                        <a class="dropdown-item text-right" href=""><i
                                 class="mdi mdi-information dropdown_icon pl-2"></i>اطلاعات کاربر</a>
                         <a class="dropdown-item text-right" href="#"><i
                                 class="mdi mdi-ticket dropdown_icon pl-2"></i>سوابق تراکنش</a>
+                        <a class="dropdown-item text-right" href="#"><i
+                                class="mdi mdi-logout-variant dropdown_icon pl-2"></i>خروج کاربر</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="navbar">
-        <div class="subnav">
-            <button class="subnavbtn"><i class="mdi mdi-menu pl-2"></i>دسته بندی کالا ها</button>
-            <div class="subnav-content">
-                <div class=" d-flex align-items-center justify-content-center" id="products-id">
-                </div>
-
-
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <ul class="navbar-nav  mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="padding-bottom: 30px;">
+                    <i class="mdi mdi-menu pl-2"></i>دسته بندی کالا ها
+          </a>
+          <ul class="dropdown-menu" id="products-id">
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="padding-bottom: 30px;">
+                    <i class="mdi mdi-fire"></i>پرفروش ترین ها
+          </a>
+          <ul class="dropdown-menu" id="products-id">
+            <li><a class="dropdown-item" href="#">روز گذشته</a></li>
+            <li><a class="dropdown-item" href="#"> هفت روز گذشته</a></li>
+            <li><a class="dropdown-item" href="#"> ماه گذشته </a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+            <div class="subnav">
+            <button class="subnavbtn">
+                <a href="http://" style="padding-bottom: 19px;">
+                    <i class="mdi mdi-brightness-percent"></i>شگفت انگیز
+                </a>
+            </button>
+           </div>
+        </li>
+        <li class="nav-item">
+            <div class="subnav">
+            <button class="subnavbtn">
+                <a href="./blog.html" style="padding-bottom: 19px;">
+                    <i class="mdi mdi-post-outline"></i>
+                    بلاگ
+                </a>
+            </button>
             </div>
-        </div>
+        </li>
+        <li class="nav-item">
         <div class="subnav">
-            <button class="subnavbtn"><i class="mdi mdi-fire"></i>پرفروش ترین ها </button>
-            <div class="subnav-content">
-                <div class=" d-flex align-items-center justify-content-center">
-                    <a href="#company"> روز گذشته</a>
-                    <a href="#team">هفت روز گذشته</a>
-                    <a href="#careers">ماه گذشته</a>
-                </div>
-            </div>
+            <button class="subnavbtn">
+                <a href="./call-form.html" style="padding-bottom: 19px;">
+                    <i class="mdi mdi-phone"></i>
+                    تماس با ما
+                </a></button>
         </div>
-        <div class="subnav">
-            <button class="subnavbtn"><i class="mdi mdi-percent"></i> تخفیف ها و پیشنهاد ها </button>
-            <div class="subnav-content">
-                <div class=" d-flex align-items-center justify-content-center">
-                <a href="#bring">بیشترین تخفیف ها</a>
-                <a href="#package">پربازدیدترین تخفیفات</a>
-                <a href="#deliver">پیشنهادات امروز</a>
-                <a href="#express">تخفیفات شگفت انگیز</a>
-            </div>
-            </div>
-        </div>
-        <div class="subnav">
-            <button class="subnavbtn"><i class="mdi mdi-brightness-percent"></i>شگفت انگیز </button>
-        </div>
-        <div class="subnav">
-            <button class="subnavbtn"><i class="mdi mdi-advertisements"></i>تبلیغات </button>
-        </div>
-        <div class="subnav">
-            <button class="subnavbtn"><i class="mdi mdi-phone"></i> تماس با ما </button>
-        </div>
-
+        </li>
+      </ul>
+      <div class=" me-auto my-2 my-lg-0 d-flex " id="search-products"></div>
+        <!-- <form class="form-inline me-auto my-2 my-lg-0" id="search-products"> -->
+             <!-- <input class="form-control mr-sm-2" type="search" placeholder="جست و جو" id="search-products"
+                aria-label="Search">
+            <i class="mdi mdi-magnify search-buttton" id="button-search"></i>  -->
+        <!-- </form> -->
     </div>
+  </div>
+</nav>
 
     <div class="d-flex  justify-content-center text pt-5">
         <h1 class="font-weight-bold pt-5 pb-4 mr-5">محصولات </h1>

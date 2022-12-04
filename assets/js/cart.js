@@ -35,7 +35,6 @@ function allProductsCategories() {
     });
 }
 
-
 //#endregion
 
 //#region createCard
@@ -46,11 +45,11 @@ function createCard() {
   allProducts.forEach((product) => {
     let price = product.price;
     let dollarUSLocale = Intl.NumberFormat("en-US");
-    let priceCards = dollarUSLocale.format(price);
+    // let priceCards = dollarUSLocale.format(price);
     let totalValue = Math.floor(
       (product.price * (100 - product.discountPercentage)) / 100
     );
-    let priceSale = dollarUSLocale.format(totalValue);
+    // let priceSale = dollarUSLocale.format(totalValue);
 
     items += `
             <div class="col-sm-12 col-lg-4  col-md-4 pt-5 filterDiv  ${product.brand}">
@@ -139,7 +138,7 @@ function createBasketItems() {
   shoppingBasketItems.forEach((product) => {
     let price = product.price;
     let dollarUSLocale = Intl.NumberFormat("en-US");
-    let priceCards = dollarUSLocale.format(price);
+    // let priceCards = dollarUSLocale.format(price);
     let totalValue = Math.floor(
       (product.price * (100 - product.discountPercentage)) / 100
     );
@@ -159,7 +158,7 @@ function createBasketItems() {
             <div class="shopping_cart_button d-flex justify-content-center align-items-center">
                 <button type="button" class="btn btn-outline-info ml-2"  onclick="increment('${product.id}')">+</button>
                 <input type="text" class="input_number" data-productId="${product.id}"  value="${product.count}" >
-                <button type="button" class="btn btn-outline-info mr-2" onclick="decrement('${product.id}')">-</button>
+                <button type="button" class="btn btn-outline-info mr-2" id="button-${product.id}"  onclick="decrement('${product.id}')">-</button>
             </div>
       </td>
       <td>
@@ -168,7 +167,6 @@ function createBasketItems() {
 
     </tr>
     `;
-    modalAlertButton(product.id);
   });
   modal.innerHTML = items;
 }
@@ -183,28 +181,30 @@ function calcBasketItems() {
 }
 
 function getBasketItemById(productId) {
+  debugger;
   const product = shoppingBasketItems.find((item) => {
-    return item.id === productId;
+    return item.id == productId;
   });
 
   return product;
 }
 
 function deleteButtonInBasket(productId) {
-  if (confirm('آیا محصول ازسبد خرید حذف شود؟') === true) {
-    const cartItem = document.getElementById("shopping_" + productId);
-    cartItem.remove();
-    changeButton(productId);
-    deleteItemInArray(productId); 
-    emptyModal();
-    deleteLocalStorage();
-    calcBasketItems();
-  }
+  const cartItem = document.getElementById("shopping_" + productId);
+  // const cartItemDelete = document.getElementById( productId);
+  // cartItemDelete.remove();
+  cartItem.remove();
+  changeButton(productId);
+  deleteItemInArray(productId);
+  emptyModal();
+  deleteLocalStorage();
+  calcBasketItems();
 }
 function deleteItemInArray(productId) {
-  const index = shoppingBasketItems.findIndex(object => {
-    return object.id === productId;});
-    shoppingBasketItems.splice(index, 1);
+  const index = shoppingBasketItems.findIndex((object) => {
+    return object.id === productId;
+  });
+  shoppingBasketItems.splice(index, 1);
 }
 //#endregion
 
@@ -234,7 +234,7 @@ function addQuantityInputToProdutsCart(productId, count) {
 
    <input type="text" class="input_number mr-2 ml-2" data-productId="${productId}"  value="${count} " >
 
-   <button type="button" class="btn btn-outline-info" id="button-" onclick="decrement('${productId}')">
+   <button type="button" class="btn btn-outline-info" id="button-${productId}-" onclick="decrement('${productId}')">
    -
    </button>
 
@@ -264,10 +264,10 @@ function updateQuantityInputValue(productId, value) {
 
 //#region change
 function changeButton(productId) {
-  let result = shoppingBasketItems.find(item => item.id === productId);
+  let result = shoppingBasketItems.find((item) => item.id == productId);
   let addToCartButton = "";
 
-    addToCartButton = ` <a class="btn btn-primary"  onclick="onAddBasketItem('${result.title}','${result.thumbnail}','${result.price}',1,'${result.id}','${result.discountPercentage}')" >
+  addToCartButton = ` <a class="btn btn-primary"  onclick="onAddBasketItem('${result.title}','${result.thumbnail}','${result.price}',1,'${result.id}','${result.discountPercentage}')" >
     افزودن به سبد 
     </a> `;
   addQuantityInputToProdutsCart(productId);
@@ -296,7 +296,8 @@ function decrement(productId) {
     updateQuantityInputValue(productId, product.count);
     setBasketItemsInLocalStorage();
   } else if (product.count <= 1) {
-    s();
+    addAttributeModal(productId);
+    modalAlertButton(productId);
     // deleteButtonInBasket(productId);
 
     // calcBasketItems();
@@ -311,7 +312,6 @@ function createGroupProducts() {
   let productsGroup = document.getElementById("products-id");
 
   for (let i = 0; i < 20; i++) {
-    
     productsGroups += `
      <li><a class="dropdown-item" onclick="goProductGroup('${productsCategories[i]}')" target="_blank"> ${productsCategories[i]} </a></li>
     `;
@@ -341,19 +341,17 @@ function searchProducts() {
 }
 
 let allSearchProducts = document.getElementById("search-products");
-// let searchInput = document.getElementById("search-input").value;
-
 let search = `
-<input class="form-control mr-sm-2 mt-3"  type="text" placeholder="جست و جو" id="search-input" aria-label="Search">
-<i class="mdi mdi-close search-buttton" style="color:#6c757d;" id="button-search" onclick="searchClose();"></i> 
+    <div class="buttonIn">
+      <input class="form-control input-search mr-sm-2 mt-3"  type="text" placeholder="جست و جو" id="search-input" aria-label="Search">
+      <i class="mdi mdi-close search-buttton close-search-button" id="button-search" onclick="searchClose();"></i> 
+    </div>
  <i class="mdi mdi-magnify search-buttton" id="button-search" onclick="searchProducts();"></i> 
-
- 
 `;
 allSearchProducts.innerHTML = search;
 
-function searchClose(){
-  let closeSeach = document.getElementById('search-input');
+function searchClose() {
+  let closeSeach = document.getElementById("search-input");
   closeSeach.value = "";
   searchProducts();
 }
@@ -361,6 +359,7 @@ function searchClose(){
 //#endregion
 
 //#region productDeteils
+
 function goProductDetails(productdetail) {
   localStorage.setItem("productDeteilSelected", productdetail);
   window.location.replace("http://127.0.0.1:5500/product_details.html");
@@ -369,18 +368,15 @@ function goProductDetails(productdetail) {
 //#endregion
 
 //#region loader
-let myVar;
 
 function myFunction() {
+  let myVar;
   myVar = setTimeout(showPage, 1000);
 }
 
 function showPage() {
   document.getElementById("loader").style.display = "none";
   document.getElementById("myDiv").style.display = "block";
-}
-function spinner1() {
-  document.getElementsByClassName("loaderSearch")[0].style.display = "block";
 }
 
 //#endregion
@@ -391,7 +387,6 @@ function closeModal() {
 }
 let modal1 = document.getElementById("myModal");
 
-// When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
   if (event.target == modal1) {
     modal1.style.display = "none";
@@ -404,7 +399,7 @@ window.onclick = function (event) {
 function modalAlertButton(productId) {
   let buttunModal = `
         <button type="button" class="btn btn-success" class="close" data-dismiss="modal" aria-label="Close" onclick="yesButton(${productId})">بله</button>
-        <button type="button" class="btn btn-danger" class="close" data-dismiss="modal" aria-label="Close"  data-bs-dismiss="modal" onclick="closeModal()">خیر</button>
+        <button type="button" class="btn btn-danger" class="close" data-dismiss="modal" aria-label="Close"  data-bs-dismiss="modal" onclick="closeModal()" >خیر</button>
   `;
   modalAlert.innerHTML = buttunModal;
 }
@@ -412,10 +407,14 @@ function yesButton(productId) {
   deleteButtonInBasket(productId);
   closeModal();
 }
-function s(){
-  let d = document.getElementById("button-");
-  d.setAttribute('data-target', '#myModal');
-  d.setAttribute('data-toggle', 'modal');
+
+function addAttributeModal(productId) {
+  let setAttribute = document.getElementById("button-" + productId);
+  let setAttributeCard = document.getElementById("button-" + productId + "-");
+  setAttributeCard.setAttribute("data-target", "#myModal");
+  setAttributeCard.setAttribute("data-toggle", "modal");
+  setAttribute.setAttribute("data-target", "#myModal");
+  setAttribute.setAttribute("data-toggle", "modal");
 }
 
 //#endregion

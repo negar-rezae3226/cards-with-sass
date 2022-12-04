@@ -351,12 +351,17 @@ let allSearchProducts = document.getElementById("search-products");
 // let searchInput = document.getElementById("search-input").value;
 
 let search = `
-<input class="form-control mr-sm-2 mt-3"  type="search" placeholder="جست و جو" id="search-input" aria-label="Search">
- <i class="mdi mdi-magnify search-buttton" id="button-search" onclick="spinner1();searchProducts();"></i> 
+<input class="form-control mr-sm-2 mt-3"  type="text" placeholder="جست و جو" id="search-input" aria-label="Search">
+<i class="mdi mdi-close search-buttton" style="color:#6c757d;" id="button-search" onclick="searchClose();"></i> 
+ <i class="mdi mdi-magnify search-buttton" id="button-search" onclick="searchProducts();"></i> 
 
  
 `;
 allSearchProducts.innerHTML = search;
+
+function searchClose(){
+
+}
 
 //#endregion
 

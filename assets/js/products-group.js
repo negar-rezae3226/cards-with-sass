@@ -15,9 +15,9 @@ var shoppingBasketItems = [];
 
 //#region cardproducts
 
-searchInput.addEventListener("change", (event) => {
-  searchProducts(event.target.value);
-});
+// searchInput.addEventListener("change", (event) => {
+//   searchProducts(event.target.value);
+// });
 
 getAllProducts();
 allProductsCategories();

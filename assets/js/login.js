@@ -28,58 +28,25 @@ function getAllUsers() {
 //#region login
 
 function loginSubmit() {
-     debugger
-    fetch("https://dummyjson.com/users")
-      .then((res) => res.json())
-      .then((json) => {
-        allUsers = json.users;
-        console.log(allUsers);
+  // event.preventDefault();
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value.trim();
+  loginApi(username, password);
+}
 
-        let username = document.getElementById("username").value;
-        let password = document.getElementById("password").value;
-
-        // fetch("https://dummyjson.com/auth/login", {
-        //   method: "POST",
-        //   headers: { "Content-Type": "application/json" },
-        //   body: JSON.stringify({
-        //     username: username,
-        //     password: password,
-        //   }),
-        // })
-        //   .then((res) => res.json())
-        //   .then((json) => {
-        //     loginUserApi = json;
-        //     console.log(loginUserApi);
-
-        // if (username === loginUserApi && password === pass) {
-        //   alert("ورود شما با موفقیت انجام شد :) ");
-
-        //   return;
-        // }
-        // if (username === "" && password === "") {
-        //   alert("لطفا اطلاعات را وارد کنید");
-        //   return;
-        // } else {
-        //   alert("اطلاعات وارد شده صحیح نمی باشد");
-        //   return;
-        // }
-        // });
-
-        for (let index = 0; index < allUsers.length; index++) {
-
-          if (username === allUsers[index].username && password === allUsers[index].password) {
-            alert("ورود شما با موفقیت انجام شد :) ");
-            return;
-          }
-
-        if (username === "" && password === "") {
-          alert("لطفا اطلاعات را وارد کنید");
-          return;
-        } else {
-          alert("اطلاعات وارد شده صحیح نمی باشد");
-          return;
-        }
-      }
+function loginApi(userName, password) {
+  fetch("https://dummyjson.com/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      username: userName,
+      password: password,
+    }),
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      localStorage.setItem("login", "login successfull");
+      window.location.replace("http://127.0.0.1:5500/index.html");
     });
 }
 

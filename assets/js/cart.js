@@ -9,12 +9,9 @@ let buttonSearch = document.getElementById("button-search");
 let url = "https://dummyjson.com/products";
 let dollarUS = Intl.NumberFormat("en-US");
 var shoppingBasketItems = [];
+let modalAlert = document.getElementById("modal-alert");
 
 //#region cardproducts
-
-// searchInput.addEventListener("input", (event) => {
-//   searchProducts(event.target.value);
-// });
 
 getAllProducts();
 allProductsCategories();
@@ -38,17 +35,6 @@ function allProductsCategories() {
     });
 }
 
-function searchProducts() {
-  let searchInput = document.getElementById("search-input").value;
-  fetch(url + `/search?q=${searchInput}`)
-    .then((res) => res.json())
-    .then((json) => {
-      allProducts = json.products;
-      console.log(allProducts);
-      createCard();
-    });
-}
-
 //#endregion
 
 //#region createCard
@@ -59,8 +45,11 @@ function createCard() {
   allProducts.forEach((product) => {
     let price = product.price;
     let dollarUSLocale = Intl.NumberFormat("en-US");
-
-    let priceCards = dollarUSLocale.format(price);
+    // let priceCards = dollarUSLocale.format(price);
+    let totalValue = Math.floor(
+      (product.price * (100 - product.discountPercentage)) / 100
+    );
+    // let priceSale = dollarUSLocale.format(totalValue);
 
     items += `
             <div class="col-sm-12 col-lg-4  col-md-4 pt-5 filterDiv  ${product.brand}">
@@ -71,8 +60,9 @@ function createCard() {
                       <div class="card-body">
                           <div class="description">
                               <h6 class="card-title my-3">${product.title}</h6>
-                              <p class="card-text"> $ ${priceCards}</p>
-                              <a  class="btn btn-primary"   onclick="onAddBasketItem('${product.title}','${product.images}',${priceCards},1, '${product.id}')" >افزودن به سبد </a>
+                              <p class="text-del"><del> ${product.price}</del> $</p>
+                              <p class="card-text">  ${totalValue} $</p>
+                              <a  class="btn btn-primary"   onclick="onAddBasketItem('${product.title}','${product.thumbnail}',${product.price},1, '${product.id}','${product.discountPercentage}')" >افزودن به سبد </a>
                           </div>
                       </div>
                   </div>
@@ -90,13 +80,13 @@ function createCard() {
 function initCart() {
   setGlobalParamtres();
   const items = JSON.parse(localStorage.getItem("basketItems"));
-  calcBasketItems();
 
   if (items) {
     shoppingBasketItems = items;
     createBasketItems();
     shoppingBasketItems.forEach((item) => {
       addQuantityInputToProdutsCart(item.id, item.count);
+      calcBasketItems();
     });
   }
 }
@@ -111,54 +101,73 @@ function setGlobalParamtres() {
 function emptyModal() {
   if (shoppingBasketItems.length == 0) {
     modal.innerHTML =
-      ' <p class="modaltext mt-5">سبد خرید شما خالی است!</p><p class="modaltext2">می‌توانید برای مشاهده محصولات بیشتر به صفحه <a href="./product.html">محصولات</a> بروید.</p>';
+      ' <p class="modaltext mt-5">سبد خرید شما خالی است!</p><p class="modaltext2 mb-5">می‌توانید برای مشاهده محصولات بیشتر به صفحه <a href="./product.html">محصولات</a> بروید.</p>';
   }
 }
 //#endregion
 
 //#region Basket
 
-function onAddBasketItem(name, images, price, count, productId) {
+function onAddBasketItem(
+  name,
+  images,
+  price,
+  count,
+  productId,
+  discountPercentage
+) {
   const newBasketItem = {
     id: productId,
-    productName: name,
-    image: images,
+    title: name,
+    thumbnail: images,
     count: 1,
-    productPrice: price,
+    price: price,
+    discountPercentage: discountPercentage,
   };
 
   shoppingBasketItems.push(newBasketItem);
 
   createBasketItems();
-  calcBasketItems();
   addQuantityInputToProdutsCart(productId, count);
   setBasketItemsInLocalStorage();
+  calcBasketItems();
 }
 
 function createBasketItems() {
   items = "";
   shoppingBasketItems.forEach((product) => {
+    let price = product.price;
+    let dollarUSLocale = Intl.NumberFormat("en-US");
+    // let priceCards = dollarUSLocale.format(price);
+    let totalValue = Math.floor(
+      (product.price * (100 - product.discountPercentage)) / 100
+    );
+    let priceSale = dollarUSLocale.format(totalValue);
     items += `
-        <div class="shopping_cart_item" id="shopping_${product.id}">
-        <div class="d-flex flex-row align-items-center justify-content-between pt-2">
-            <div 
-                class="cart_text_item d-flex flex-nowrap justify-content-center align-items-center">
-                <img src="${product.image}" alt="" class="logo pl-2">
-                <p class="shopping_cart_text">${product.productName}</p>
-            </div>
-            <p class="shopping_cart_text">${product.productPrice} $</p>
-            <div
-                class="shopping_cart_button d-flex justify-content-center align-items-center">
+      <tr id="shopping_${product.id}" class="d">
+      <td>
+        <img src="${product.thumbnail}"  class="logo">
+      </td>
+      <td>
+        <p class="shopping_cart_text">${product.title}</p>
+      </td>
+      <td>
+            <p class="card-text">${priceSale} $</p>
+      </td>
+      <td>
+            <div class="shopping_cart_button d-flex justify-content-center align-items-center">
                 <button type="button" class="btn btn-outline-info ml-2"  onclick="increment('${product.id}')">+</button>
                 <input type="text" class="input_number" data-productId="${product.id}"  value="${product.count}" >
-                <button type="button" class="btn btn-outline-info mr-2" onclick="decrement('${product.id}')">-</button>
+                <button type="button" class="btn btn-outline-info mr-2" id="button-${product.id}"  onclick="decrement('${product.id}')">-</button>
             </div>
-            <button class=" btn-danger btn-sm float-right mr-3 delete"   onclick="deleteButtonInBasket('${product.id}')">X</button>
-        </div>
-        </div>
-        `;
+      </td>
+      <td>
+      <i class="mdi mdi-trash-can delete-items" data-toggle="modal" data-target="#myModal" onclick="modalAlertButton('${product.id}')"></i>
+      </td>
+
+    </tr>
+    `;
   });
-  emptyModal();
   modal.innerHTML = items;
 }
 
@@ -167,37 +176,36 @@ function calcBasketItems() {
     cartCount.innerText = 0;
     return;
   }
-  cartCount.innerText = shoppingBasketItems.length;
+  let shoppingCartItems = shoppingBasketItems.length;
+  cartCount.innerText = shoppingCartItems;
 }
 
 function getBasketItemById(productId) {
   const product = shoppingBasketItems.find((item) => {
-    return item.id === productId;
+    return item.id == productId;
   });
 
   return product;
 }
 
-function removeBasketItem(productId) {
-  // const basketItem = getBasketItemById(productId);
-  // shoppingBasketItems.splice(basketItem, 1);
-  if (confirm("کالا از سبد خرید شما حذف خواهد شد.آیا مطمئن هستید؟") == true) {
-    const cartItem = document.getElementById("shopping_" + productId);
-    cartItem.remove();
-    emptyModal();
-    deleteLocalStorage();
-  }
+function deleteButtonInBasket(productId) {
+  const cartItem = document.getElementById("shopping_" + productId);
+  // const cartItemDelete = document.getElementById( productId);
+  // cartItemDelete.remove();
+  cartItem.remove();
+  changeButton(productId);
+  deleteItemInArray(productId);
+  emptyModal();
+  deleteLocalStorage();
+  calcBasketItems();
 }
 
-function deleteButtonInBasket(productId) {
-  if (confirm("کالا از سبد خرید شما حذف خواهد شد.آیا مطمئن هستید؟") == true) {
-    const cartItem = document.getElementById("shopping_" + productId);
-    cartItem.remove();
-    changeButton(productId);
-    calcBasketItems();
-    emptyModal();
-    deleteLocalStorage();
-  }
+function deleteItemInArray(productId) {
+
+  const index = shoppingBasketItems.findIndex((object) => {
+    return object.id == productId;
+  });
+  if (index > -1) shoppingBasketItems.splice(index, 1);
 }
 //#endregion
 
@@ -216,8 +224,6 @@ function deleteLocalStorage() {
 //#region quantityInput
 
 function addQuantityInputToProdutsCart(productId, count) {
-
-  
   let quantityInput = `
   <div class="shopping_cart_button d-flex justify-content-center align-items-center" >
 
@@ -229,7 +235,7 @@ function addQuantityInputToProdutsCart(productId, count) {
 
    <input type="text" class="input_number mr-2 ml-2" data-productId="${productId}"  value="${count} " >
 
-   <button type="button" class="btn btn-outline-info " onclick="decrement('${productId}')">
+   <button type="button" class="btn btn-outline-info" id="button-${productId}-" onclick="decrement('${productId}')">
    -
    </button>
 
@@ -259,23 +265,24 @@ function updateQuantityInputValue(productId, value) {
 
 //#region change
 function changeButton(productId) {
+  debugger;
+
+  let result = shoppingBasketItems.find((item) => item.id == productId);
   let addToCartButton = "";
 
-if (confirm("کالا از سبد خرید شما حذف خواهد شد.آیا مطمئن هستید؟") == true) {
-  for (let product of shoppingBasketItems) {
-    addToCartButton = ` <a class="btn btn-primary"  onclick="onAddBasketItem('${product.productName}','${product.images}','${product.productPrice}',1,'${product.id}')" >
+  addToCartButton = ` <a class="btn btn-primary"  onclick="onAddBasketItem('${result.title}','${result.thumbnail}','${result.price}',1,'${result.id}','${result.discountPercentage}')" >
     افزودن به سبد 
     </a> `;
-  }
   addQuantityInputToProdutsCart(productId);
   let card = document.getElementById(productId);
   let buttonCard = card.querySelector(".shopping_cart_button");
   let div = document.createElement("div");
+
   div.innerHTML = addToCartButton;
   buttonCard.before(div);
   buttonCard.remove();
 }
-}
+
 //#endregion
 
 //#region incer-decr
@@ -293,9 +300,11 @@ function decrement(productId) {
     updateQuantityInputValue(productId, product.count);
     setBasketItemsInLocalStorage();
   } else if (product.count <= 1) {
-    changeButton(productId);
-    removeBasketItem(productId);
-    calcBasketItems();
+    addAttributeModal(productId);
+    modalAlertButton(productId);
+    // deleteButtonInBasket(productId);
+
+    // calcBasketItems();
   }
 }
 //#endregion
@@ -306,13 +315,9 @@ function createGroupProducts() {
   let productsGroups = "";
   let productsGroup = document.getElementById("products-id");
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 20; i++) {
     productsGroups += `
-    <div class="dropup">
-    <button class="dropbtn"> <a onclick="goProductGroup('${productsCategories[i]}')" target="_blank"> ${productsCategories[i]} </a></button>
-    <div class="dropup-content" >
-    </div>
-    </div>
+     <li><a class="dropdown-item" onclick="goProductGroup('${productsCategories[i]}')" target="_blank"> ${productsCategories[i]} </a></li>
     `;
 
     productsGroup.innerHTML = productsGroups;
@@ -328,20 +333,38 @@ function goProductGroup(productGroupName) {
 
 //#region create search
 
-let allSearchProducts = document.getElementById("search-products");
-// let searchInput = document.getElementById("search-input").value;
+function searchProducts() {
+  let searchInput = document.getElementById("search-input").value;
+  fetch(url + `/search?q=${searchInput}`)
+    .then((res) => res.json())
+    .then((json) => {
+      allProducts = json.products;
+      console.log(allProducts);
+      createCard();
+    });
+}
 
+let allSearchProducts = document.getElementById("search-products");
 let search = `
-<input class="form-control mr-sm-2"  type="search" placeholder="جست و جو" id="search-input" aria-label="Search">
-<a class="btn btn-outline-primary my-2 my-sm-0 mr-3"   id="button-search" onclick="searchProducts()"> <i class="mdi mdi-magnify"></i>
+    <div class="buttonIn">
+      <input class="form-control input-search mr-sm-2 mt-3"  type="text" placeholder="جست و جو" id="search-input" aria-label="Search">
+      <i class="mdi mdi-close search-buttton close-search-button" id="button-search" onclick="searchClose();"></i> 
+    </div>
+ <i class="mdi mdi-magnify search-buttton" id="button-search" onclick="searchProducts();"></i> 
 `;
 allSearchProducts.innerHTML = search;
 
+function searchClose() {
+  let closeSeach = document.getElementById("search-input");
+  closeSeach.value = "";
+  searchProducts();
+}
+
 //#endregion
 
-
 //#region productDeteils
-function goProductDetails(productdetail){
+
+function goProductDetails(productdetail) {
   localStorage.setItem("productDeteilSelected", productdetail);
   window.location.replace("http://127.0.0.1:5500/product_details.html");
 }
@@ -349,9 +372,9 @@ function goProductDetails(productdetail){
 //#endregion
 
 //#region loader
-let myVar;
 
 function myFunction() {
+  let myVar;
   myVar = setTimeout(showPage, 1000);
 }
 
@@ -360,4 +383,42 @@ function showPage() {
   document.getElementById("myDiv").style.display = "block";
 }
 
-//#region end
+//#endregion
+
+//#region closeModal
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+}
+let modal1 = document.getElementById("myModal");
+
+window.onclick = function (event) {
+  if (event.target == modal1) {
+    modal1.style.display = "none";
+  }
+};
+//#endregion
+
+//#region alert
+
+function modalAlertButton(productId) {
+  let buttunModal = `
+        <button type="button" class="btn btn-success" class="close" data-dismiss="modal" aria-label="Close" onclick="yesButton(${productId})">بله</button>
+        <button type="button" class="btn btn-danger" class="close" data-dismiss="modal" aria-label="Close"  data-bs-dismiss="modal" onclick="closeModal()" >خیر</button>
+  `;
+  modalAlert.innerHTML = buttunModal;
+}
+function yesButton(productId) {
+  deleteButtonInBasket(productId);
+  closeModal();
+}
+
+function addAttributeModal(productId) {
+  let setAttribute = document.getElementById("button-" + productId);
+  let setAttributeCard = document.getElementById("button-" + productId + "-");
+  setAttributeCard.setAttribute("data-target", "#myModal");
+  setAttributeCard.setAttribute("data-toggle", "modal");
+  setAttribute.setAttribute("data-target", "#myModal");
+  setAttribute.setAttribute("data-toggle", "modal");
+}
+
+//#endregion

@@ -10,9 +10,12 @@ let url = "https://dummyjson.com/products";
 let dollarUS = Intl.NumberFormat("en-US");
 var shoppingBasketItems = [];
 let modalAlert = document.getElementById("modal-alert");
+let loginUser = window.localStorage.getItem('login');
 
 //#region cardproducts
-
+if (!loginUser) {
+  window.location.replace("http://127.0.0.1:5500/login.html");
+}
 getAllProducts();
 allProductsCategories();
 
@@ -33,6 +36,18 @@ function allProductsCategories() {
       console.log(productsCategories);
       createGroupProducts();
     });
+}
+
+//#endregion
+
+//#region login
+
+let loginElementInIndex = document.getElementById("login-index");
+loginElementInIndex.style.display = "none";
+
+function logOut() {
+  localStorage.removeItem("login");
+  window.location.replace("http://127.0.0.1:5500/login.html");
 }
 
 //#endregion

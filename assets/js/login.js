@@ -3,11 +3,8 @@ let loginUserApi;
 let login = document.getElementById("login-form");
 
 //#region API
-// loginSubmit();
-getAllUsers();
-// loginUsersAPI();
 
-// console.log(username);
+getAllUsers();
 
 function getAllUsers() {
   fetch("https://dummyjson.com/users")
@@ -18,19 +15,17 @@ function getAllUsers() {
       // loginSubmit();
     });
 }
-
-// function loginUsersAPI(){
-
-// }
+document.getElementById("login").addEventListener("click", function(event){
+  event.preventDefault();
+});
 
 //#endregion
 
 //#region login
 
 function loginSubmit() {
-  // event.preventDefault();
-  const username = document.getElementById("username").value.trim();
-  const password = document.getElementById("password").value.trim();
+   const username = document.getElementById("username").value.trim();
+   const password = document.getElementById("password").value.trim();
   loginApi(username, password);
 }
 
@@ -43,11 +38,28 @@ function loginApi(userName, password) {
       password: password,
     }),
   })
-    .then((res) => res.json())
+    .then((res) =>
+      res.json().then((data) => ({ status: res.status, body: data }))
+    )
     .then((res) => {
-      localStorage.setItem("login", "login successfull");
-      window.location.replace("http://127.0.0.1:5500/index.html");
+      if (res.status == 200) {
+        localStorage.setItem("login", "login successfull");
+        window.location.replace("http://127.0.0.1:5500/index.html");
+      } 
+      else{
+        addAttributeModal();
+      }
     });
 }
 
 //#endregion
+
+
+function addAttributeModal() {
+  let setAttributeCard = document.getElementById("login");
+  setAttributeCard.setAttribute("data-target", "#myModal");
+  setAttributeCard.setAttribute("data-toggle", "modal");
+}
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+}

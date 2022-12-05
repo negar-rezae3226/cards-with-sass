@@ -61,7 +61,6 @@ input {
 }
 
 input[type=text],
-input[type=email],
 input[type=password] {
   width: 100%;
   padding: 0 0 0 10px;
@@ -80,27 +79,23 @@ input[type=password] {
 }
 
 input[type=text]:focus,
-input[type=email]:focus,
 input[type=password]:focus {
   border-color: #303c6c;
 }
 
 input[type=text]:focus:invalid,
-input[type=email]:focus:invalid,
 input[type=password]:focus:invalid {
   color: #cc1e2b;
   border-color: #cc1e2b;
 }
 
 input[type=text]:valid ~ .validation,
-input[type=email]:valid ~ .validation,
 input[type=password]:valid ~ .validation {
   display: block;
   border-color: #0C0;
 }
 
 input[type=text]:valid ~ .validation span,
-input[type=email]:valid ~ .validation span,
 input[type=password]:valid ~ .validation span {
   background: #0C0;
   position: absolute;
@@ -108,7 +103,6 @@ input[type=password]:valid ~ .validation span {
 }
 
 input[type=text]:valid ~ .validation span:first-child,
-input[type=email]:valid ~ .validation span:first-child,
 input[type=password]:valid ~ .validation span:first-child {
   top: 30px;
   left: 14px;
@@ -118,7 +112,6 @@ input[type=password]:valid ~ .validation span:first-child {
 }
 
 input[type=text]:valid ~ .validation span:last-child,
-input[type=email]:valid ~ .validation span:last-child,
 input[type=password]:valid ~ .validation span:last-child {
   top: 35px;
   left: 8px;
@@ -157,9 +150,26 @@ input[type=submit]:hover {
   background-color: #303c6c;
   transition: all 0.2s ease;
 }
+.submit-login{
+  border: none;
+  display: block;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: #303c6c;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 18px;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+}
 
 #create-account-wrap {
-  background-color: #cfe0c3;
+  background-color: #e5e5e5;
   color: #6b705c;
   font-size: 18px;
   width: 100%;

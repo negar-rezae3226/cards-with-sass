@@ -181,7 +181,6 @@ function calcBasketItems() {
 }
 
 function getBasketItemById(productId) {
-  debugger;
   const product = shoppingBasketItems.find((item) => {
     return item.id == productId;
   });
@@ -200,11 +199,13 @@ function deleteButtonInBasket(productId) {
   deleteLocalStorage();
   calcBasketItems();
 }
+
 function deleteItemInArray(productId) {
+
   const index = shoppingBasketItems.findIndex((object) => {
-    return object.id === productId;
+    return object.id == productId;
   });
-  shoppingBasketItems.splice(index, 1);
+  if (index > -1) shoppingBasketItems.splice(index, 1);
 }
 //#endregion
 
@@ -264,6 +265,8 @@ function updateQuantityInputValue(productId, value) {
 
 //#region change
 function changeButton(productId) {
+  debugger;
+
   let result = shoppingBasketItems.find((item) => item.id == productId);
   let addToCartButton = "";
 
@@ -274,6 +277,7 @@ function changeButton(productId) {
   let card = document.getElementById(productId);
   let buttonCard = card.querySelector(".shopping_cart_button");
   let div = document.createElement("div");
+
   div.innerHTML = addToCartButton;
   buttonCard.before(div);
   buttonCard.remove();

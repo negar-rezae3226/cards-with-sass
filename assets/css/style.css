@@ -218,6 +218,9 @@ body {
   font-size: 50px;
   color: #d00000;
 }
+.modal-body{
+  text-align: center;
+}
 
 .modaltext {
   color: #303c6c;
@@ -599,4 +602,7 @@ body {
   outline: none;
   height: 30px;
   border-radius: 5px;
+}
+.dropdown-item-icone{
+  cursor: pointer;
 }
